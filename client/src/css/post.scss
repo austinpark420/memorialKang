@@ -1,0 +1,22 @@
+.post-wrap {
+  padding-top: 60px;
+
+  h2 {
+    text-align: center;
+    margin: 40px 0;
+    font-weight: 350;
+  }
+
+  p {
+    text-align: center;
+    color: #666666;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .notice-wrap {
+    h2 {
+      margin: 20px 0;
+    }
+  }
+}

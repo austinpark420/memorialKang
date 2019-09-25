@@ -1,0 +1,19 @@
+.board-wrap {
+  padding: 60px 0;
+  background-color: #f2f3f4;
+
+  .list {
+    width: 80%;
+    margin: 20px auto 0;
+    background-color: #fff;
+    border-radius: 3px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .board-wrap {
+    .list {
+      width: 94%;
+    }
+  }
+}

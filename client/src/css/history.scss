@@ -1,0 +1,49 @@
+.history-wrap {
+  h2 {
+    height: 660px;
+    background-color: skyblue;
+    text-align: center;
+    line-height: 660px;
+  }
+
+  .introduce {
+    width: 80%;
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+    img {
+      width: 18%;
+      margin: 0 1%;
+    }
+
+    section {
+      width: 80%;
+
+      align-items: center;
+
+      b,
+      span {
+        display: block;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .history-wrap {
+    .introduce {
+      width: 98%;
+      flex-direction: column;
+      -webkit-flex-direction: column;
+
+      img {
+        width: 200px;
+        margin: 0;
+      }
+
+      section {
+        width: 98%;
+      }
+    }
+  }
+}
