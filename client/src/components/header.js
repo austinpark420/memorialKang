@@ -74,7 +74,7 @@ const Header = () => {
                 <Link to='/video' children='영상자료' />
               </li>
               <li>
-                <Link to='/board' children='문서자료' />
+                <Link to='/document' children='문서자료' />
               </li>
             </ul>
           </li>

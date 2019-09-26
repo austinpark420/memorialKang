@@ -5,8 +5,8 @@ import {
   // ADD_POST,
   // EDIT_POST,
   // REMOVE_POST,
-  POST_ERRORS,
-  POST_ERROR
+  POST_ERRORS
+  // POST_ERROR
 } from './types';
 
 // import setAuthToken from '../utils/setAuthToken';

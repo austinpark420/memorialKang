@@ -5,4 +5,7 @@ export { default as History } from './history';
 export { default as Parents } from './parents';
 export { default as Notice } from './notice';
 export { default as Login } from './login';
-export { default as emergencyMeasure } from './emergencyMeasure';
+export { default as EmergencyMeasure } from './emergencyMeasure';
+export { default as Image } from './image';
+export { default as Video } from './video';
+export { default as Document } from './document';

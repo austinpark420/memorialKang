@@ -9,7 +9,7 @@ import dateFormat from 'dateformat';
 import 'css/common.scss';
 import 'css/emergencyMeasure.scss';
 
-const Notice = ({ match, posts: { posts }, loadPosts }) => {
+const EmergencyMeasure = ({ match, posts: { posts }, loadPosts }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
 
@@ -84,4 +84,4 @@ const mapStateToProps = state => ({ posts: state.posts });
 export default connect(
   mapStateToProps,
   { loadPosts }
-)(Notice);
+)(EmergencyMeasure);

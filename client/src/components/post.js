@@ -8,7 +8,7 @@ import 'css/post.scss';
 const Post = ({ match, posts: { post }, loadPost }) => {
   useEffect(() => {
     loadPost(match.params.id);
-  }, [loadPost]);
+  }, [loadPost, match.params.id]);
 
   return (
     <div>

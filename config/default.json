@@ -1,3 +1,4 @@
 {
+  "mongoURI": "mongodb+srv://austin:04qlqjs20@memorial-test1-bbb88.mongodb.net/test?retryWrites=true&w=majority",
   "jsonwebtokenSecret": "jsonwebtokenSecret"
 }

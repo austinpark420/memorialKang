@@ -7,7 +7,7 @@ import store from './store';
 import { loadUser } from './actions/auth';
 
 import { Notice } from 'screen';
-import { Header, Footer, Post, Posts } from 'components';
+import { Header, Footer, Post } from 'components';
 import './App.css';
 
 const App = () => {
@@ -30,7 +30,6 @@ const App = () => {
         <Route path='/notice/:id' component={Post} />
         <Route path='/notice' component={Notice} />
       </Switch>
-      {/* <Route path='/posts' component={Posts} /> */}
       <Footer />
     </Router>
   );

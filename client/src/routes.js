@@ -5,7 +5,10 @@ import {
   History,
   Parents,
   Login,
-  emergencyMeasure
+  EmergencyMeasure,
+  Image,
+  Video,
+  Document
 } from 'screen';
 
 export const routes = [
@@ -35,6 +38,18 @@ export const routes = [
   },
   {
     path: '/emergencyMeasure',
-    component: emergencyMeasure
+    component: EmergencyMeasure
+  },
+  {
+    path: '/image',
+    component: Image
+  },
+  {
+    path: '/video',
+    component: Video
+  },
+  {
+    path: '/document',
+    component: Document
   }
 ];

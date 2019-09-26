@@ -1,0 +1,158 @@
+.document-wrap {
+  padding-top: 60px;
+  width: 80%;
+  margin: 0 auto;
+
+  .heading {
+    display: flex;
+
+    .tab {
+      border: 1px solid #cccccc;
+      border-bottom: 1px solid #ffffff;
+      padding: 5px 10px;
+      border-radius: 3px 3px 0 0;
+      h2 {
+        font-weight: 400;
+      }
+    }
+
+    .active {
+      color: #ffffff;
+      background-color: #222d5a;
+    }
+  }
+
+  section {
+    + ul {
+      display: none;
+      + li {
+        display: inline-flex;
+        width: 30%;
+        flex-direction: column;
+        margin: 1%;
+      }
+    }
+    .document-list {
+      display: none;
+      margin: 0 auto 60px;
+
+      .subtitle {
+        display: flex;
+        border-top: solid 1px #181818;
+        border-bottom: solid 1px #181818;
+        padding: 10px 0;
+        span {
+          &:first-child {
+            flex-basis: 70%;
+            text-align: center;
+          }
+          &:nth-child(2) {
+            flex-basis: 15%;
+            text-align: center;
+          }
+          &:last-child {
+            flex-basis: 15%;
+            text-align: center;
+          }
+        }
+      }
+
+      .postList {
+        a {
+          > li {
+            &:hover {
+              background-color: #f9f9f9;
+            }
+
+            div {
+              display: flex;
+              padding: 15px 0;
+              border-bottom: solid 1px #eee;
+
+              span {
+                &:first-child {
+                  flex-basis: 70%;
+                  text-align: center;
+                }
+                &:nth-child(2) {
+                  flex-basis: 15%;
+                  text-align: center;
+                }
+                &:last-child {
+                  flex-basis: 15%;
+                  text-align: center;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        li {
+          padding: 5px 10px;
+          border: 1px solid #ccc;
+          cursor: pointer;
+        }
+        .active {
+          color: #ffffff;
+          border: 1px solid #222d5a;
+          background-color: #222d5a;
+        }
+      }
+    }
+
+    .active-document {
+      display: block;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .document-wrap {
+    h2 {
+      margin: 20px 0;
+    }
+
+    .literary-list {
+      width: 90%;
+
+      .subtitle {
+        span {
+          &:first-child {
+            flex-basis: 50%;
+          }
+          &:nth-child(2) {
+            flex-basis: 25%;
+          }
+          &:last-child {
+            flex-basis: 25%;
+          }
+        }
+      }
+
+      .postList {
+        a {
+          li {
+            div {
+              span {
+                &:first-child {
+                  flex-basis: 50%;
+                }
+                &:nth-child(2) {
+                  flex-basis: 25%;
+                }
+                &:last-child {
+                  flex-basis: 25%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
