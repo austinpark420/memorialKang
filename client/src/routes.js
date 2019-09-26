@@ -4,7 +4,8 @@ import {
   Organization,
   History,
   Parents,
-  Login
+  Login,
+  emergencyMeasure
 } from 'screen';
 
 export const routes = [
@@ -31,5 +32,9 @@ export const routes = [
   {
     path: '/login',
     component: Login
+  },
+  {
+    path: '/emergencyMeasure',
+    component: emergencyMeasure
   }
 ];
