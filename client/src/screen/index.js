@@ -9,3 +9,4 @@ export { default as EmergencyMeasure } from './emergencyMeasure';
 export { default as Image } from './image';
 export { default as Video } from './video';
 export { default as Document } from './document';
+export { default as Struggle } from './struggle';

@@ -33,7 +33,9 @@ const Header = () => {
               <li>
                 <Link to='/history' children='열사 연혁' />
               </li>
-              <li>91년도 투쟁</li>
+              <li>
+                <Link to='/struggle' children='91년도 투쟁' />
+              </li>
               <li>
                 <Link to='/elevenHero' children='11인의 열사' />
               </li>

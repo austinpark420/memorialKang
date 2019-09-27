@@ -8,7 +8,8 @@ import {
   EmergencyMeasure,
   Image,
   Video,
-  Document
+  Document,
+  Struggle
 } from 'screen';
 
 export const routes = [
@@ -51,5 +52,9 @@ export const routes = [
   {
     path: '/document',
     component: Document
+  },
+  {
+    path: '/struggle',
+    component: Struggle
   }
 ];
