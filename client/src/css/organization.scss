@@ -1,53 +1,105 @@
-.tabset {
+// .tabset {
+//   padding-top: 60px;
+//   width: 80%;
+//   margin: 0 auto 60px;
+
+//   > input[type="radio"] {
+//     position: absolute;
+//     left: -200vw;
+
+//     &:checked + label,
+//     &:focus + label {
+//       color: #06c;
+//     }
+
+//     &:checked + label {
+//       border-color: #ccc;
+//       border-bottom: 1px solid #fff;
+//       margin-bottom: -1px;
+//     }
+
+//     &:nth-child(1):checked ~ .tab-panels > .tab-panel:nth-child(1),
+//     &:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2) {
+//       display: block;
+//     }
+//   }
+
+//   .tab-panel {
+//     display: none;
+//     padding: 30px;
+//     border: 1px solid #ccc;
+//   }
+
+//   > label {
+//     position: relative;
+//     display: inline-block;
+//     padding: 15px;
+//     border: 1px solid transparent;
+//     border-bottom: 0;
+//     cursor: pointer;
+//     font-weight: 600;
+
+//     &:hover {
+//       color: #06c;
+//     }
+//   }
+// }
+
+// .organization-map {
+//   background-color: skyblue;
+//   height: 600px;
+//   line-height: 600px;
+//   text-align: center;
+// }
+
+.organization-wrap {
   padding-top: 60px;
   width: 80%;
-  margin: 0 auto 60px;
+  margin: 0 auto;
 
-  > input[type="radio"] {
-    position: absolute;
-    left: -200vw;
+  .heading {
+    display: flex;
 
-    &:checked + label,
-    &:focus + label {
-      color: #06c;
+    .tab {
+      border: 1px solid #cccccc;
+      border-bottom: 1px solid #ffffff;
+      padding: 5px 10px;
+      border-radius: 3px 3px 0 0;
+
+      h2 {
+        font-weight: 400;
+      }
     }
 
-    &:checked + label {
-      border-color: #ccc;
-      border-bottom: 1px solid #fff;
-      margin-bottom: -1px;
+    .active {
+      color: #ffffff;
+      background-color: #222d5a;
     }
+  }
 
-    &:nth-child(1):checked ~ .tab-panels > .tab-panel:nth-child(1),
-    &:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2) {
+  section {
+    ul {
+      display: none;
+      li {
+        display: inline-flex;
+        flex-direction: column;
+        margin: 1%;
+      }
+    }
+    .active-word {
       display: block;
     }
   }
 
-  .tab-panel {
-    display: none;
-    padding: 30px;
-    border: 1px solid #ccc;
-  }
-
-  > label {
-    position: relative;
-    display: inline-block;
-    padding: 15px;
-    border: 1px solid transparent;
-    border-bottom: 0;
-    cursor: pointer;
-    font-weight: 600;
-
-    &:hover {
-      color: #06c;
-    }
+  .organization-map {
+    background-color: skyblue;
+    height: 600px;
+    line-height: 600px;
+    text-align: center;
   }
 }
 
-.organization-map {
-  background-color: skyblue;
-  height: 600px;
-  line-height: 600px;
-  text-align: center;
+@media only screen and (max-width: 768px) {
+  .organization-wrap {
+  }
 }
