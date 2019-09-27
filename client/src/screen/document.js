@@ -8,7 +8,6 @@ import $ from 'jquery';
 import { loadPosts } from '../actions/posts';
 import dateFormat from 'dateformat';
 
-import 'css/common.scss';
 import 'css/document.scss';
 
 const Documentary = ({ match, posts: { posts }, loadPosts }) => {

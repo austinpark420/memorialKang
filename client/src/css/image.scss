@@ -28,7 +28,7 @@
       display: none;
       li {
         display: inline-flex;
-        width: 30%;
+        width: 48%;
         flex-direction: column;
         margin: 1%;
       }
@@ -38,7 +38,6 @@
     }
   }
 }
-/* 공지사항 및 자료실 */
 
 @media only screen and (max-width: 768px) {
   .image-wrap {
