@@ -10,3 +10,5 @@ export { default as Image } from './image';
 export { default as Video } from './video';
 export { default as Document } from './document';
 export { default as Struggle } from './struggle';
+export { default as Introduce } from './introduce';
+export { default as MemorialHistory } from './memorialHistory';

@@ -62,8 +62,12 @@ const Header = () => {
           <li className='menu-list'>
             <p className='sub-title'>추모제</p>
             <ul className='sub-menu'>
-              <li>추모제 소개</li>
-              <li>추모제 연혁</li>
+              <li>
+                <Link to='/introduce' children='추모제 소개' />
+              </li>
+              <li>
+                <Link to='/memorialHistory' children='추모제 연혁' />
+              </li>
             </ul>
           </li>
           <li className='menu-list'>

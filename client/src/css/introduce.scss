@@ -1,4 +1,4 @@
-.struggle-wrap {
+.introduce-wrap {
   h2 {
     height: 660px;
     background-color: skyblue;
@@ -30,7 +30,7 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .struggle-wrap {
+  .introduce-wrap {
     .introduce {
       width: 98%;
       flex-direction: column;

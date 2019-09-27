@@ -9,7 +9,9 @@ import {
   Image,
   Video,
   Document,
-  Struggle
+  Struggle,
+  Introduce,
+  MemorialHistory
 } from 'screen';
 
 export const routes = [
@@ -56,5 +58,13 @@ export const routes = [
   {
     path: '/struggle',
     component: Struggle
+  },
+  {
+    path: '/introduce',
+    component: Introduce
+  },
+  {
+    path: '/memorialHistory',
+    component: MemorialHistory
   }
 ];
