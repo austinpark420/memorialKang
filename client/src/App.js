@@ -7,7 +7,7 @@ import store from './store';
 import { loadUser } from './actions/auth';
 
 import { Notice } from 'screen';
-import { Header, Footer, Post } from 'components';
+import { Header, Footer, Post, NewPost, EditPost } from 'components';
 import './App.css';
 
 const App = () => {
@@ -27,8 +27,10 @@ const App = () => {
         />
       ))}
       <Switch>
-        <Route path='/notice/:id' component={Post} />
-        <Route path='/notice' component={Notice} />
+        <Route path='/notices/reWrite' component={EditPost} />
+        <Route path='/notices/write' component={NewPost} />
+        <Route path='/notices/:id' component={Post} />
+        <Route path='/notices' component={Notice} />
       </Switch>
       <Footer />
     </Router>

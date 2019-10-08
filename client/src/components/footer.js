@@ -1,13 +1,15 @@
-import React from "react";
-import "css/common.scss";
-import "css/footer.scss";
+import React from 'react';
+import 'css/common.scss';
+import 'css/footer.scss';
 
 const Footer = () => {
   return (
-    <div className="footer-wrap">
-      <div className="container">
-        <div className="logo">추모사업회 로고</div>
-        <ul className="memorial-address">
+    <div className='footer-wrap'>
+      <div className='container'>
+        <div className='logo'>
+          <img src={require('images/fullLogo.png')} alt='' />
+        </div>
+        <ul className='memorial-address'>
           <li>
             추모사업회: 서울 서대문구 거북골로 34 명지대학교 학생회관 5층 2503호
             추모사업회실

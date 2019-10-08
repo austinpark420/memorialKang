@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     const posts = await Post.find().sort({ date: -1 });
     res.json(posts);
   } catch (error) {
-    console.error(error.message);
+    console.error(error.msg);
     res.status(500).send('Sever Error');
   }
 });
@@ -30,10 +30,8 @@ router.get('/:id', async (req, res) => {
 
     res.json(post);
   } catch (error) {
-    console.error(error.message);
-
     if (error.kind === 'ObjectId') {
-      return res.status(404).json({ message: 'Post not Found' });
+      return res.status(404).json({ msg: 'Post not Found' });
     }
     res.status(500).send('Server Error');
   }

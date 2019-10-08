@@ -1,20 +1,66 @@
 .post-wrap {
   padding-top: 60px;
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto;
 
   h2 {
-    text-align: center;
-    margin: 40px 0;
-    font-weight: 350;
+    padding: 20px 0;
+    font-size: 2rem;
   }
 
-  p {
+  section {
+    border-top: 1px solid #181818;
+    border-bottom: 2px solid #181818;
+
+    .info {
+      > span {
+        display: block;
+        padding: 6px;
+        border-bottom: 1px solid #ccc;
+
+        .title {
+          margin-right: 10px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .content {
+      min-height: 400px;
+      padding: 10px 5px;
+    }
+  }
+  .list,
+  .edit {
+    a {
+      background-color: #222d5a;
+      color: white;
+      margin: 20px 0;
+      padding: 15px 32px;
+      text-align: center;
+      font-size: 18px;
+    }
+  }
+
+  .remove {
+    background-color: #222d5a;
+    color: white;
+    margin: 20px 0;
+    padding: 15px 32px;
     text-align: center;
-    color: #666666;
+    font-size: 18px;
+    margin-right: 5px;
+  }
+
+  .edit,
+  .remove {
+    float: right;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .notice-wrap {
+  .post-wrap {
     h2 {
       margin: 20px 0;
     }

@@ -3,8 +3,8 @@ import {
   USER_LOADED,
   AUTH_ERROR,
   LOGIN_SUCCESS,
-  LOGIN_FAIL
-  // LOGOUT
+  LOGIN_FAIL,
+  LOGOUT
 } from './types';
 
 import setAuthToken from '../utils/setAuthToken';
@@ -41,7 +41,6 @@ export const login = ({ name, password }) => async dispatch => {
 
   try {
     const res = await axios.post('/api/auth', body, config);
-
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data
@@ -49,8 +48,16 @@ export const login = ({ name, password }) => async dispatch => {
 
     dispatch(loadUser());
   } catch (error) {
+    const errors = error.response.data.errors;
+
     dispatch({
-      type: LOGIN_FAIL
+      type: LOGIN_FAIL,
+      payload: errors
     });
   }
+};
+
+// Logout / Clear Profile
+export const logout = () => dispatch => {
+  dispatch({ type: LOGOUT });
 };

@@ -13,3 +13,4 @@ export const REMOVE_POST = 'REMOVE_POST';
 export const POST_ERRORS = 'POST_ERRORS';
 export const LOAD_POST = 'LOAD_POST';
 export const POST_ERROR = 'POST_ERROR';
+export const REDIRECT_POST = 'REDIRECT_POST';

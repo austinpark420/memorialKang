@@ -4,8 +4,9 @@ import { login } from '../actions/auth';
 
 import { connect } from 'react-redux';
 import 'css/common.scss';
+import 'css/login.scss';
 
-const Login = ({ login, isAuthenticated }) => {
+const Login = ({ login, auth: { isAuthenticated, errors } }) => {
   const [formData, setFormData] = useState({
     name: '',
     password: ''
@@ -18,8 +19,8 @@ const Login = ({ login, isAuthenticated }) => {
     });
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = event => {
+    event.preventDefault();
     login(formData);
   };
 
@@ -29,10 +30,8 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <div>
-      <h1>로그인</h1>
-      <h1>테스트</h1>
-      <form onSubmit={handleSubmit}>
+    <div className='login-wrap'>
+      <form className='form' onSubmit={handleSubmit}>
         <label htmlFor='name'>ID</label>
         <input id='name' name='name' type='text' onChange={handleChange} />
         <label htmlFor='password'>Password</label>
@@ -42,14 +41,15 @@ const Login = ({ login, isAuthenticated }) => {
           type='password'
           onChange={handleChange}
         />
-        <input type='submit' />
+        {errors && <span>{errors[0].message}</span>}
+        <input type='submit' value='로그인' />
       </form>
     </div>
   );
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+  auth: state.auth
 });
 
 export default connect(

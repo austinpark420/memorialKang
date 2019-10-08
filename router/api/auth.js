@@ -47,7 +47,9 @@ router.post(
       const user = await User.findOne({ name });
 
       if (!user) {
-        res.status(400).json({ errors: [{ message: 'Invalid Credentials' }] });
+        res
+          .status(400)
+          .json({ errors: [{ message: '아이디를 다시 확인하세요.' }] });
       }
 
       // Check user password
@@ -55,7 +57,9 @@ router.post(
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        res.status(400).json({ errors: [{ message: 'Invalid Password' }] });
+        res
+          .status(400)
+          .json({ errors: [{ message: '비밀번호를 다시 확인하세요.' }] });
       }
 
       // return jsonwebtoken

@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
+
+import { logout } from 'actions/auth';
+
 import 'css/common.scss';
 import 'css/header.scss';
 
-const Header = () => {
+const Header = ({ isAuthenticated, logout }) => {
   // header
   useEffect(() => {
     $(window).on('scroll', () => {
@@ -16,10 +20,16 @@ const Header = () => {
     });
   });
 
+  const handleClick = () => {
+    logout();
+  };
+
   return (
     <div className='header-wrap clearfix'>
       <div className='logo'>
-        <Link to='/' children='추모사업회 로고' />
+        <Link to='/' children='추모사업회 로고'>
+          <img src={require('images/fullLogo.png')} alt='' />
+        </Link>
       </div>
       <nav className='nav'>
         <input type='checkbox' />
@@ -51,7 +61,7 @@ const Header = () => {
                 <Link to='/organization' children='조직도' />
               </li>
               <li>
-                <Link to='/notice' children='공지사항' />
+                <Link to='/notices' children='공지사항' />
               </li>
               <li>
                 <Link to='/emergencyMeasure' children='동판사수 대책위원회' />
@@ -84,10 +94,22 @@ const Header = () => {
               </li>
             </ul>
           </li>
+          {isAuthenticated && (
+            <li className='menu-list' onClick={handleClick}>
+              <p className='sub-title'>Logout</p>
+            </li>
+          )}
         </ul>
       </nav>
     </div>
   );
 };
 
-export default Header;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(
+  mapStateToProps,
+  { logout }
+)(Header);

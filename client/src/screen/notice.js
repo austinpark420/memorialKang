@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Route, Link } from 'react-router-dom';
-import { Post } from 'components';
+import { Link } from 'react-router-dom';
+// import { Post, NewPost } from 'components';
 
 import { loadPosts } from '../actions/posts';
 import dateFormat from 'dateformat';
@@ -9,15 +9,15 @@ import dateFormat from 'dateformat';
 import 'css/common.scss';
 import 'css/notice.scss';
 
-const Notice = ({ match, posts: { posts }, loadPosts }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(5);
-
+const Notice = ({ match: { url }, posts, isAuthenticated, loadPosts }) => {
   useEffect(() => {
-    loadPosts();
+    loadPosts('notices');
   }, [loadPosts]);
 
   // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(15);
+
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
@@ -44,7 +44,7 @@ const Notice = ({ match, posts: { posts }, loadPosts }) => {
         <ul className='postList'>
           {!!posts &&
             currentPosts.map((post, index) => (
-              <Link to={`${match.url}/${post._id}`}>
+              <Link to={`${url}/${post._id}`}>
                 <li key={index}>
                   <div>
                     <span>{post.title}</span>
@@ -72,14 +72,23 @@ const Notice = ({ match, posts: { posts }, loadPosts }) => {
             )
           )}
         </ul>
+        {isAuthenticated && (
+          <button className='new-post'>
+            <Link to={`${url}/write`}>글쓰기</Link>
+          </button>
+        )}
       </div>
 
-      <Route path={`${match.url}/:id`} component={Post} />
+      {/* <Route path={`${url}/:id`} component={Post} />
+      <Route path={`${url}/write`} component={NewPost} /> */}
     </div>
   );
 };
 
-const mapStateToProps = state => ({ posts: state.posts });
+const mapStateToProps = state => ({
+  posts: state.posts.posts,
+  isAuthenticated: state.auth.isAuthenticated
+});
 
 export default connect(
   mapStateToProps,
