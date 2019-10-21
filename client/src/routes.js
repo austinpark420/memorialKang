@@ -6,8 +6,7 @@ import {
   Parents,
   Login,
   EmergencyMeasure,
-  Image,
-  Video,
+  Videos,
   Document,
   Struggle,
   Introduce,
@@ -44,12 +43,8 @@ export const routes = [
     component: EmergencyMeasure
   },
   {
-    path: '/image',
-    component: Image
-  },
-  {
-    path: '/video',
-    component: Video
+    path: '/videos',
+    component: Videos
   },
   {
     path: '/document',

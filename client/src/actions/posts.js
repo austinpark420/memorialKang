@@ -2,7 +2,6 @@ import axios from 'axios';
 import {
   LOAD_POSTS,
   LOAD_POST,
-  POST_ERRORS,
   POST_ERROR,
   ADD_POST,
   EDIT_POST,
@@ -10,7 +9,7 @@ import {
   REMOVE_POST
 } from './types';
 
-// import setAuthToken from '../utils/setAuthToken';
+let postNumber = 1;
 
 // Load posts
 export const loadPosts = posts => async dispatch => {
@@ -23,7 +22,7 @@ export const loadPosts = posts => async dispatch => {
     });
   } catch (error) {
     dispatch({
-      type: POST_ERRORS
+      type: POST_ERROR
     });
   }
 };
@@ -61,7 +60,8 @@ export const addPost = ({
     }
   };
 
-  const body = JSON.stringify({ title, category, content });
+  const body = JSON.stringify({ title, category, content, postNumber });
+  postNumber++;
 
   try {
     const res = await axios.post(`/api/${path}`, body, config);

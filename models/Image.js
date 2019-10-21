@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const NoticeSchema = new mongoose.Schema({
+const ImageSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
@@ -9,23 +9,15 @@ const NoticeSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  number: {
-    type: Number,
-    required: true
-  },
   writer: {
     type: String,
     required: true
   },
+  images: [{ type: String }],
+  keys: [{ type: String }],
   category: {
     type: String,
     required: true
-  },
-  content: {
-    type: String
-  },
-  file: {
-    type: Buffer
   },
   date: {
     type: Date,
@@ -34,4 +26,4 @@ const NoticeSchema = new mongoose.Schema({
   }
 });
 
-module.exports = Notice = mongoose.model('notice', NoticeSchema);
+module.exports = Image = mongoose.model('image', ImageSchema);

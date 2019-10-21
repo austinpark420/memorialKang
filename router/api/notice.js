@@ -65,16 +65,17 @@ router.post(
     try {
       const user = await User.findById(req.user.id).select('name');
 
-      const { title, category, content, file } = req.body;
+      const { title, category, content, file, postNumber } = req.body;
 
       const newNotice = new Notice({
-        // number: number,
         title: title,
         writer: user.name,
         category: category,
         content: content,
-        file: file
+        file: file,
+        number: postNumber
       });
+      console.log('newNotice', newNotice);
 
       const notice = await newNotice.save();
 

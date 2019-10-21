@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-// import { Post, NewPost } from 'components';
+import { Link, Route } from 'react-router-dom';
+import { Post, NewPost } from 'components';
 
 import { loadPosts } from '../actions/posts';
 import dateFormat from 'dateformat';
@@ -37,16 +37,20 @@ const Notice = ({ match: { url }, posts, isAuthenticated, loadPosts }) => {
 
       <div className='group'>
         <div className='subtitle'>
+          <span>번호</span>
+          <span>분류</span>
           <span>제목</span>
           <span>글쓴이</span>
           <span>등록일</span>
         </div>
         <ul className='postList'>
-          {!!posts &&
+          {posts &&
             currentPosts.map((post, index) => (
               <Link to={`${url}/${post._id}`}>
                 <li key={index}>
                   <div>
+                    <span>{index}</span>
+                    <span>{post.category}</span>
                     <span>{post.title}</span>
                     <span>{post.writer}</span>
                     <span>{dateFormat(post.date, 'yyyy-mm-dd')}</span>
@@ -79,8 +83,8 @@ const Notice = ({ match: { url }, posts, isAuthenticated, loadPosts }) => {
         )}
       </div>
 
-      {/* <Route path={`${url}/:id`} component={Post} />
-      <Route path={`${url}/write`} component={NewPost} /> */}
+      <Route path={`${url}/:id`} component={Post} />
+      <Route path={`${url}/write`} component={NewPost} />
     </div>
   );
 };

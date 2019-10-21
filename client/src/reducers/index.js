@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import App_reducer from './App_reducer';
 import auth from './auth';
 import posts from './posts';
+import videos from './videos';
+import images from './images';
 
 export default combineReducers({
-  App_reducer,
   auth,
-  posts
+  posts,
+  videos,
+  images
 });

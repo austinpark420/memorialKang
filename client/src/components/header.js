@@ -25,7 +25,7 @@ const Header = ({ isAuthenticated, logout }) => {
   };
 
   return (
-    <div className='header-wrap clearfix'>
+    <div className='header-wrap'>
       <div className='logo'>
         <Link to='/' children='추모사업회 로고'>
           <img src={require('images/fullLogo.png')} alt='' />
@@ -84,10 +84,10 @@ const Header = ({ isAuthenticated, logout }) => {
             <p className='sub-title'>자료 복원실</p>
             <ul className='sub-menu'>
               <li>
-                <Link to='/image' children='사진자료' />
+                <Link to='/images' children='사진자료' />
               </li>
               <li>
-                <Link to='/video' children='영상자료' />
+                <Link to='/videos' children='영상자료' />
               </li>
               <li>
                 <Link to='/document' children='문서자료' />

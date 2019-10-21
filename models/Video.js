@@ -1,17 +1,9 @@
 const mongoose = require('mongoose');
 
-const NoticeSchema = new mongoose.Schema({
+let VideoSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
-  },
-  title: {
-    type: String,
-    required: true
-  },
-  number: {
-    type: Number,
-    required: true
   },
   writer: {
     type: String,
@@ -22,10 +14,8 @@ const NoticeSchema = new mongoose.Schema({
     required: true
   },
   content: {
-    type: String
-  },
-  file: {
-    type: Buffer
+    type: String,
+    required: true
   },
   date: {
     type: Date,
@@ -34,4 +24,4 @@ const NoticeSchema = new mongoose.Schema({
   }
 });
 
-module.exports = Notice = mongoose.model('notice', NoticeSchema);
+module.exports = Video = mongoose.model('video', VideoSchema);

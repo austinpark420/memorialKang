@@ -1,5 +1,5 @@
 import React, { useEffect, Fragment } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadPost, redirectToPost, removePost } from 'actions/posts';
 
@@ -25,13 +25,10 @@ const Post = ({
   const handleClickEdit = () => {
     redirectToPost();
   };
+
   const handleClickRemove = () => {
     removePost(url);
   };
-
-  if (!post) {
-    return <Redirect to={`/${path}`}></Redirect>;
-  }
 
   return (
     <div>

@@ -6,8 +6,8 @@ import { routes } from 'routes';
 import store from './store';
 import { loadUser } from './actions/auth';
 
-import { Notice } from 'screen';
-import { Header, Footer, Post, NewPost, EditPost } from 'components';
+import { Notice, Images } from 'screen';
+import { Header, Footer, Post, NewPost, EditPost, Image } from 'components';
 import './App.css';
 
 const App = () => {
@@ -31,6 +31,10 @@ const App = () => {
         <Route path='/notices/write' component={NewPost} />
         <Route path='/notices/:id' component={Post} />
         <Route path='/notices' component={Notice} />
+      </Switch>
+      <Switch>
+        <Route path='/images/:id' component={Image} />
+        <Route path='/images' component={Images} />
       </Switch>
       <Footer />
     </Router>

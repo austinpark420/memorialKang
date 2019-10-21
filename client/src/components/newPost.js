@@ -11,7 +11,6 @@ import 'css/newPost.scss';
 const NewPost = ({
   match: { url },
   addPost,
-  redirectToPost,
   posts: { post, error, loading }
 }) => {
   const path = url.split('/')[1];
