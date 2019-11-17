@@ -11,7 +11,8 @@ const initialState = {
   isAuthenticated: null,
   loading: true,
   user: null,
-  errors: null
+  errors: null,
+  message: null
 };
 
 export default (state = initialState, action) => {

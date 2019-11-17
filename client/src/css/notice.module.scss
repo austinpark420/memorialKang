@@ -1,0 +1,147 @@
+.container {
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 60px;
+    background-color: #222d5a;
+  }
+  min-height: 75vh;
+  .wraper {
+    padding-top: 59px;
+
+    h2 {
+      text-align: center;
+      margin: 40px 0;
+      font-weight: 350;
+    }
+
+    .group {
+      width: 80%;
+      margin: 0 auto 60px;
+      max-width: 1080px;
+      min-width: 768px;
+
+      .subtitle {
+        display: flex;
+        border-top: solid 1px #181818;
+        border-bottom: solid 1px #181818;
+        padding: 10px 0;
+        span {
+          &:first-child {
+            flex-basis: 10%;
+            text-align: center;
+          }
+          &:nth-child(2) {
+            flex-basis: 15%;
+            text-align: center;
+          }
+          &:nth-child(3) {
+            flex-basis: 50%;
+            text-align: center;
+          }
+          &:nth-child(4) {
+            flex-basis: 10%;
+            text-align: center;
+          }
+          &:last-child {
+            flex-basis: 15%;
+            text-align: center;
+          }
+        }
+      }
+
+      .postList {
+        a {
+          > li {
+            &:hover {
+              background-color: #f9f9f9;
+            }
+
+            div {
+              display: flex;
+              padding: 15px 0;
+              border-bottom: solid 1px #eee;
+
+              span {
+                &:first-child {
+                  flex-basis: 10%;
+                  text-align: center;
+                }
+                &:nth-child(2) {
+                  flex-basis: 15%;
+                  text-align: center;
+                }
+                &:nth-child(3) {
+                  flex-basis: 50%;
+                  text-align: center;
+                }
+                &:nth-child(4) {
+                  flex-basis: 10%;
+                  text-align: center;
+                }
+                &:last-child {
+                  flex-basis: 15%;
+                  text-align: center;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        li {
+          padding: 5px 10px;
+          border: 1px solid #ccc;
+          cursor: pointer;
+        }
+        .active {
+          color: #ffffff;
+          border: 1px solid #222d5a;
+          background-color: #222d5a;
+        }
+      }
+
+      .newPost {
+        a {
+          background-color: #222d5a;
+          color: white;
+          margin: 20px 0;
+          padding: 15px 32px;
+          text-align: center;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    .wraper {
+      h2 {
+        margin: 20px 0;
+      }
+
+      .group {
+        width: 96%;
+        min-width: 0;
+
+        .subtitle,
+        .postList {
+          font-size: 0.8rem;
+        }
+
+        .newPost {
+          a {
+            padding: 10px 20px;
+          }
+        }
+      }
+    }
+  }
+}

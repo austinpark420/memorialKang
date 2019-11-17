@@ -1,4 +1,9 @@
-import { LOAD_VIDEOS, ADD_VIDEO, VIDEO_ERROR } from 'actions/types';
+import {
+  LOAD_VIDEOS,
+  ADD_VIDEO,
+  REMOVE_VIDEO,
+  VIDEO_ERROR
+} from 'actions/types';
 
 const initialState = {
   videos: [],
@@ -12,6 +17,7 @@ export default (state = initialState, action) => {
   switch (type) {
     case LOAD_VIDEOS:
     case ADD_VIDEO:
+    case REMOVE_VIDEO:
       return {
         ...state,
         videos: [...payload]

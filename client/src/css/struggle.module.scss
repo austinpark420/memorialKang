@@ -1,0 +1,138 @@
+.container {
+  .wraper {
+    .article {
+      display: flex;
+      align-items: center;
+
+      height: 70vh;
+      overflow: hidden;
+      background-image: url('../images/struggleCover.png');
+      background-size: cover;
+      background-position: 50% 50%;
+      .subtitle,
+      .subdescription {
+        width: 50%;
+      }
+
+      .subtitle {
+        text-align: center;
+        font-size: 86px;
+        font-weight: 200;
+        color: #fff;
+      }
+
+      .subdescription {
+        color: #fff;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.4;
+        letter-spacing: -0.7px;
+      }
+    }
+
+    .group {
+      width: 80%;
+      max-width: 1080px;
+      margin: 0 auto;
+
+      li {
+        display: flex;
+        align-items: center;
+        min-height: 350px;
+        border-bottom: 1px solid #ddd;
+
+        h3 {
+          font-size: 36px;
+          line-height: 1.2;
+          font-weight: normal;
+          margin-bottom: 10px;
+          color: #222d5a;
+        }
+        span {
+          display: block;
+          font-size: 16px;
+          line-height: 1.6;
+        }
+
+        &:nth-child(even) {
+          flex-direction: row-reverse;
+          -webkit-flex-direction: row-revers;
+          text-align: right;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+
+    .conclusion {
+      text-align: center;
+      padding: 50px;
+      background-color: #009270;
+      color: #fff;
+      font-size: 26px;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .container {
+    .wraper {
+      .article {
+        height: 40vh;
+
+        .subtitle,
+        .subdescription {
+          width: 100%;
+        }
+
+        .subdescription {
+          display: none;
+        }
+
+        .subtitle {
+          font-size: 48px;
+        }
+
+        .subdescription {
+          font-size: 18px;
+          letter-spacing: 0;
+        }
+      }
+
+      .group {
+        width: 96%;
+        li {
+          display: flex;
+          -webkit-flex-direction: column;
+          flex-direction: column;
+          margin: 40px 0;
+          min-height: 0;
+
+          h3 {
+            font-size: 20px;
+            text-align: center;
+          }
+
+          span {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+          }
+
+          &:nth-child(even) {
+            flex-direction: column;
+            -webkit-flex-direction: column;
+            text-align: left;
+          }
+        }
+      }
+
+      .conclusion {
+        padding: 20px;
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+  }
+}

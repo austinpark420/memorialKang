@@ -1,9 +1,11 @@
 import axios from 'axios';
+import { setAlert } from './alert';
 import {
   LOAD_IMAGES,
   LOAD_IMAGE,
   IMAGE_ERROR,
   ADD_IMAGE,
+  EDIT_IMAGE,
   REMOVE_IMAGE
 } from './types';
 
@@ -57,6 +59,8 @@ export const addImage = (path, formData) => async dispatch => {
       type: ADD_IMAGE,
       payload: res.data
     });
+
+    dispatch(setAlert('이미지가 등록되었습니다'));
   } catch (error) {
     const errors = error.response.data.errors;
 
@@ -68,52 +72,42 @@ export const addImage = (path, formData) => async dispatch => {
 };
 
 // Edit image
-// export const editPost = ({
-//   path,
-//   _id,
-//   title,
-//   category,
-//   content
-// }) => async dispatch => {
-//   const config = {
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   };
+export const editImage = (path, formData) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  };
 
-//   const body = JSON.stringify({ _id, title, category, content });
+  try {
+    const res = await axios.put(`/api/${path}`, formData, config);
+    dispatch({
+      type: EDIT_IMAGE,
+      payload: res.data
+    });
 
-//   try {
-//     const res = await axios.put(`/api/${path}`, body, config);
-//     dispatch({
-//       type: EDIT_IMAGE,
-//       payload: res.data
-//     });
-//   } catch (error) {
-//     const errors = error.response.data.errors;
+    dispatch(setAlert('이미지가 수정되었습니다'));
+  } catch (error) {
+    const errors = error.response.data.errors;
 
-//     dispatch({
-//       type: IMAGE_ERROR,
-//       payload: errors
-//     });
-//   }
-// };
-
-// redirect image
-// export const redirectToPost = () => dispatch => {
-//   dispatch({
-//     type: REDIRECT_IMAGE
-//   });
-// };
+    dispatch({
+      type: IMAGE_ERROR,
+      payload: errors
+    });
+  }
+};
 
 // Remove image
 export const removeImage = path => async dispatch => {
   try {
-    await axios.delete(`/api/${path}`);
+    const res = await axios.delete(`/api/${path}`);
 
     dispatch({
-      type: REMOVE_IMAGE
+      type: REMOVE_IMAGE,
+      payload: res.data
     });
+
+    dispatch(setAlert('이미지가 삭제되었습니다'));
   } catch (error) {
     const errors = error.response.data.errors;
 

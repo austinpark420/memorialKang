@@ -1,14 +1,13 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
-import { Icon } from 'antd';
 import Modal from 'react-modal';
 
 import $ from 'jquery';
 
 import { loadImages, addImage } from '../actions/images';
 
-import 'css/images.scss';
+import styles from 'css/images.module.scss';
 
 Modal.setAppElement('#root');
 
@@ -34,15 +33,15 @@ const Images = ({
 
   // menu tab
   useEffect(() => {
-    $('.tab').on('click', function() {
-      $('.tab').removeClass('active');
-      $(this).addClass('active');
+    $(`.${styles.tab}`).on('click', function() {
+      $(`.${styles.tab}`).removeClass(`${styles.active}`);
+      $(this).addClass(`${styles.active}`);
 
-      $('.image-list').removeClass('active-image');
+      $('.imageList').removeClass(`${styles.activeImage}`);
       var activeTabList = $(this).attr('rel');
-      $('.' + activeTabList).addClass('active-image');
+      $('.' + activeTabList).addClass(`${styles.activeImage}`);
     });
-  }, []);
+  });
 
   // react-modal
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -72,7 +71,7 @@ const Images = ({
   const handleSubmit = event => {
     event.preventDefault();
 
-    let imageForm = document.getElementById('image_form');
+    let imageForm = document.getElementById(`${styles.imageForm}`);
     let formData = new FormData(imageForm);
 
     addImage(path, formData);
@@ -80,161 +79,149 @@ const Images = ({
   };
 
   return (
-    <div className='images-wrap'>
-      <ul className='heading'>
-        <li className='tab active' rel='alive' tabIndex='0'>
-          <h2>강경대 생전사진</h2>
-        </li>
-        <li className='tab' rel='moment' tabIndex='1'>
-          <h2>91년도 당시사진</h2>
-        </li>
-        <li className='tab' rel='activity' tabIndex='2'>
-          <h2>추모사업회 활동사진</h2>
-        </li>
-      </ul>
+    <div className={styles.container}>
+      <div className={styles.wraper}>
+        <ul className={styles.heading}>
+          <li
+            className={`${styles.tab} ${styles.active}`}
+            rel='alive'
+            tabIndex='0'
+          >
+            <h2>강경대 생전사진</h2>
+          </li>
+          <li className={styles.tab} rel='moment' tabIndex='1'>
+            <h2>91년도 당시사진</h2>
+          </li>
+          <li className={styles.tab} rel='activity' tabIndex='2'>
+            <h2>추모사업회 활동사진</h2>
+          </li>
+        </ul>
 
-      {isAuthenticated && (
-        <button className='add' onClick={openModal}>
-          <Icon className='plus' type='plus-circle' />
-        </button>
-      )}
+        {isAuthenticated && (
+          <button className={styles.add} onClick={openModal}>
+            이미지 업로드
+          </button>
+        )}
 
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className='modal'>
-        <button className='close' onClick={closeModal}>
-          <Icon type='close' />
-        </button>
-        <form
-          id='image_form'
-          onSubmit={handleSubmit}
-          encType='multipart/form-data'
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          className={styles.modal}
         >
-          <div className='radio'>
-            <label htmlFor='category'>
-              강경대열사
-              <input
-                name='category'
-                value='alive'
-                onChange={handleChange}
-                type='radio'
-              />
-            </label>
-            <label htmlFor='category'>
-              91년도 5월투쟁
-              <input
-                name='category'
-                value='moment'
-                onChange={handleChange}
-                type='radio'
-              />
-            </label>
-            <label htmlFor='category'>
-              추모사업회 활동
-              <input
-                name='category'
-                value='activity'
-                onChange={handleChange}
-                type='radio'
-              />
-            </label>
-          </div>
-          <label htmlFor='title'>제목</label>
-          <input
-            type='text'
-            className='title'
-            name='title'
-            id='title'
-            onChange={handleChange}
-          />
+          <button className={styles.close} onClick={closeModal}>
+            x
+          </button>
+          <form
+            id={styles.imageForm}
+            onSubmit={handleSubmit}
+            encType='multipart/form-data'
+          >
+            <div className={styles.radio}>
+              <label htmlFor='category'>
+                <span>강경대열사</span>
+                <input
+                  name='category'
+                  value='alive'
+                  onChange={handleChange}
+                  type='radio'
+                  required
+                />
+              </label>
+              <label htmlFor='category'>
+                <span>91년도 5월투쟁</span>
+                <input
+                  name='category'
+                  value='moment'
+                  onChange={handleChange}
+                  type='radio'
+                  required
+                />
+              </label>
+              <label htmlFor='category'>
+                <span>추모사업회 활동</span>
+                <input
+                  name='category'
+                  value='activity'
+                  onChange={handleChange}
+                  type='radio'
+                />
+              </label>
+            </div>
+            <label htmlFor='title'>제목</label>
+            <input
+              type='text'
+              className={styles.title}
+              name='title'
+              id='title'
+              onChange={handleChange}
+            />
 
-          <label htmlFor='images'>이미지</label>
-          <input
-            type='file'
-            className='images'
-            name='images'
-            id='images'
-            onChange={handleChange}
-            multiple
-          />
-          <input type='submit' value='이미지 업로드' />
-        </form>
-      </Modal>
+            <label htmlFor='images'>이미지</label>
+            <input
+              type='file'
+              className={styles.images}
+              name='images'
+              id='images'
+              onChange={handleChange}
+              multiple
+            />
+            <input type='submit' value='등록' />
+          </form>
+        </Modal>
 
-      <section>
-        <ul className='image-list alive active-image'>
-          {allImages &&
-            aliveImages.map(image => (
-              <Fragment>
-                <Link to={`${url}/${image._id}`}>
-                  <li>
-                    <div className='img-wraper'>
-                      <div className='img-center'>
-                        <img src={image.images[0]} alt='' />
+        <section>
+          <ul className={`imageList alive ${styles.activeImage}`}>
+            {allImages &&
+              aliveImages.map(image => (
+                <Fragment>
+                  <Link to={`${url}/${image._id}`}>
+                    <li>
+                      <div className={styles.imgWraper}>
+                        <div className={styles.imgCenter}>
+                          <img src={image.images[0]} alt='' />
+                        </div>
                       </div>
-                    </div>
-                    <span>
-                      <b>글쓴이</b>
-                      {image.writer}
-                    </span>
-                    <span>
-                      <b>날짜</b>
-                      {image.date}
-                    </span>
-                  </li>
-                </Link>
-              </Fragment>
-            ))}
-        </ul>
-        <ul className='image-list moment'>
-          {allImages &&
-            momentImages.map(image => (
-              <Fragment>
-                <Link to={`${url}/${image._id}`}>
-                  <li>
-                    <div className='img-wraper'>
-                      <div className='img-center'>
-                        <img src={image.images[0]} alt='' />
+                    </li>
+                  </Link>
+                </Fragment>
+              ))}
+          </ul>
+          <ul className={`imageList moment`}>
+            {allImages &&
+              momentImages.map(image => (
+                <Fragment>
+                  <Link to={`${url}/${image._id}`}>
+                    <li>
+                      <div className={styles.imgWraper}>
+                        <div className={styles.imgCenter}>
+                          <img src={image.images[0]} alt='' />
+                        </div>
                       </div>
-                    </div>
-                    <span>
-                      <b>글쓴이</b>
-                      {image.writer}
-                    </span>
-                    <span>
-                      <b>날짜</b>
-                      {image.date}
-                    </span>
-                  </li>
-                </Link>
-              </Fragment>
-            ))}
-        </ul>
-        <ul className='image-list activity'>
-          {allImages &&
-            activityImages.map(image => (
-              <Fragment>
-                <Link to={`${url}/${image._id}`}>
-                  <li>
-                    <div className='img-wraper'>
-                      <div className='img-center'>
-                        <img src={image.images[0]} alt='' />
+                    </li>
+                  </Link>
+                </Fragment>
+              ))}
+          </ul>
+          <ul className={`imageList activity`}>
+            {allImages &&
+              activityImages.map(image => (
+                <Fragment>
+                  <Link to={`${url}/${image._id}`}>
+                    <li>
+                      <div className={styles.imgWraper}>
+                        <div className={styles.imgCenter}>
+                          <img src={image.images[0]} alt='' />
+                        </div>
                       </div>
-                    </div>
-                    <span>
-                      <b>글쓴이</b>
-                      {image.writer}
-                    </span>
-                    <span>
-                      <b>날짜</b>
-                      {image.date}
-                    </span>
-                  </li>
-                </Link>
-              </Fragment>
-            ))}
-        </ul>
-      </section>
+                    </li>
+                  </Link>
+                </Fragment>
+              ))}
+          </ul>
+        </section>
 
-      <Route path={`${url}/:id`} component={Image} />
+        <Route path={`${url}/:id`} component={Image} />
+      </div>
     </div>
   );
 };

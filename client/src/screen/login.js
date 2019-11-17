@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { login } from '../actions/auth';
-
 import { connect } from 'react-redux';
-import 'css/common.scss';
-import 'css/login.scss';
+import PropTypes from 'prop-types';
 
-const Login = ({ login, auth: { isAuthenticated, errors } }) => {
+import { login } from 'actions/auth';
+
+import styles from 'css/login.module.scss';
+
+const Login = ({ login, auth: { isAuthenticated, errors }, setAlert }) => {
   const [formData, setFormData] = useState({
     name: '',
     password: ''
@@ -30,20 +31,21 @@ const Login = ({ login, auth: { isAuthenticated, errors } }) => {
   }
 
   return (
-    <div className='login-wrap'>
-      <form className='form' onSubmit={handleSubmit}>
-        <label htmlFor='name'>ID</label>
-        <input id='name' name='name' type='text' onChange={handleChange} />
-        <label htmlFor='password'>Password</label>
-        <input
-          id='password'
-          name='password'
-          type='password'
-          onChange={handleChange}
-        />
-        {errors && <span>{errors[0].message}</span>}
-        <input type='submit' value='로그인' />
-      </form>
+    <div className={styles.container}>
+      <div className={styles.wraper}>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <label htmlFor='name'>ID</label>
+          <input id='name' name='name' type='text' onChange={handleChange} />
+          <label htmlFor='password'>Password</label>
+          <input
+            id='password'
+            name='password'
+            type='password'
+            onChange={handleChange}
+          />
+          <input type='submit' value='로그인' />
+        </form>
+      </div>
     </div>
   );
 };
@@ -51,6 +53,10 @@ const Login = ({ login, auth: { isAuthenticated, errors } }) => {
 const mapStateToProps = state => ({
   auth: state.auth
 });
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired
+};
 
 export default connect(
   mapStateToProps,

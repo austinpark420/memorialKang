@@ -1,0 +1,49 @@
+.container {
+  .wraper {
+    .coverImage {
+      height: 70vh;
+      overflow: hidden;
+      background-image: url('../images/memorialHall.jpg');
+      background-size: cover;
+      background-position: 50% 50%;
+    }
+    h3 {
+      padding: 20px;
+      font-size: 32px;
+      font-weight: 400;
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 0 auto;
+      width: 80%;
+      max-width: 1080px;
+      height: 700px;
+    }
+    .memorialApplication {
+      display: block;
+      background-color: #222d5a;
+      margin: 30px auto;
+      padding: 15px 32px;
+      a {
+        color: white;
+        text-align: center;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    .wraper {
+      .imageCover {
+        height: 40vh;
+      }
+      iframe {
+        width: 100%;
+        height: 400px;
+      }
+    }
+  }
+}

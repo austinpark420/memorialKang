@@ -1,0 +1,231 @@
+.container {
+  .wraper {
+    .slick-slider {
+      div {
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .articleGroup {
+      margin: 50px 0;
+
+      section {
+        width: 50%;
+        text-align: center;
+        display: inline-block;
+        h2 {
+          margin: 20px 0;
+          font-weight: 400;
+        }
+
+        a,
+        ul {
+          width: 80%;
+          margin: 0 auto;
+        }
+
+        a {
+          text-align: right;
+          color: #999;
+          margin-bottom: 2px;
+        }
+
+        ul {
+          border: 1px solid #ddd;
+          border-radius: 3px;
+          height: 300px;
+
+          a {
+            width: 98%;
+            li {
+              padding: 16px;
+              span {
+                &:first-child {
+                  float: left;
+                }
+
+                &:last-child {
+                  float: right;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .introduceWraper {
+      overflow: hidden;
+      .introduce {
+        &:before {
+          content: '';
+          position: absolute;
+          background-color: #000;
+          width: 100%;
+          height: 100%;
+          opacity: 0.5;
+        }
+
+        position: relative;
+        height: 80vh;
+        background-image: url('../images/historyCover.jpg');
+        background-size: cover;
+        background-position: 50% 50%;
+
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        transition: 0.3s ease-in-out;
+        -webkit-transition: 0.3s ease-in-out;
+
+        p {
+          position: absolute;
+          top: 25%;
+          left: 25%;
+          width: 50%;
+          color: #fff;
+          font-size: 18px;
+          font-weight: 200;
+          line-height: 40px;
+        }
+
+        &:hover {
+          transform: scale(1.05);
+          -webkit-transform: scale(1.05);
+
+          > a {
+            color: #fff;
+            padding: 10px 20px;
+            border: 1px solid #fff;
+            border-radius: 3px;
+          }
+        }
+
+        a {
+          position: absolute;
+          color: transparent;
+          right: 6%;
+          bottom: 10%;
+
+          &:hover {
+            background-color: #fff;
+            color: #222d5a;
+            transition: 0.3s;
+          }
+        }
+      }
+    }
+
+    .resolution {
+      margin: 70px 0 0;
+      text-align: center;
+      font-size: 32px;
+      font-weight: 300;
+    }
+
+    .meorial {
+      overflow: hidden;
+      text-align: center;
+      margin-bottom: 30px;
+
+      .organization,
+      .introduce {
+        min-height: 30vh;
+        display: inline-block;
+        margin: 6% 5%;
+        width: 40%;
+        max-width: 500px;
+        border-top: 2px solid #009270;
+
+        img {
+          width: 24%;
+          margin: 40px 0 0;
+        }
+
+        p {
+          font-size: 24px;
+          margin: 10px 0 20px;
+        }
+
+        span {
+          display: inline-block;
+          line-height: 2;
+        }
+      }
+    }
+
+    .supportGroup {
+      text-align: center;
+      h2 {
+        background-color: #009270;
+        height: 100px;
+        line-height: 100px;
+        color: #fff;
+        font-weight: 350;
+        font-size: 32px;
+      }
+      img {
+        width: 20%;
+        margin: 60px 0;
+      }
+      button {
+        display: block;
+        margin: 30px auto;
+        padding: 15px 32px;
+        border: 2px solid #009270;
+        border-radius: 3px;
+        a {
+          color: #009270;
+          text-align: center;
+          font-size: 18px;
+        }
+        &:hover {
+          background-color: #009270;
+          transition: 0.3s;
+
+          > a {
+            color: #fff;
+            transition: 0.3s;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    .wraper {
+      .articleGroup {
+        margin: 0;
+
+        section {
+          width: 100%;
+          margin: 20px 0;
+        }
+      }
+
+      .resolution {
+        margin: 30px 0;
+      }
+
+      .meorial {
+        .organization,
+        .introduce {
+          width: 96%;
+          margin: 0 auto;
+          border-top: 2px solid transparent;
+        }
+      }
+
+      .supportGroup {
+        h2 {
+          font-size: 24px;
+        }
+        img {
+          width: 60%;
+        }
+      }
+    }
+  }
+}

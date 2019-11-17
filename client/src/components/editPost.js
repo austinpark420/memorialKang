@@ -1,85 +1,83 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { editPost } from 'actions/posts';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
-import $ from 'jquery';
 import { connect } from 'react-redux';
 
-import 'css/common.scss';
-import 'css/editPost.scss';
+import styles from 'css/editPost.module.scss';
 
-const EditPost = ({ match: { url }, editPost, posts: { post, loading } }) => {
+const EditPost = ({
+  match: { url },
+  editPost,
+  posts: { post, error, loading }
+}) => {
   const path = url.split('/')[1];
+  const [redirectToPost, setRedirectToPost] = useState(false);
 
-  const { _id, title, category, content } = post;
-
-  const [formData, setFormData] = useState({
-    path,
-    _id,
-    title,
-    category,
-    content
-  });
-
-  useEffect(() => {
-    $('#category').on('change', function() {
-      let selectedCategory = $(this)
-        .children('option:selected')
-        .val();
-
-      setFormData({
-        ...formData,
-        category: selectedCategory
-      });
-    });
-  });
-
-  const handleChange = event => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value
-    });
-  };
+  const { _id, title, content } = post;
 
   const handleSubmit = event => {
     event.preventDefault();
-    editPost(formData);
+
+    let editPostForm = document.getElementById(`${styles.editPostForm}`);
+    let formData = new FormData(editPostForm);
+
+    editPost(path, formData);
+    setRedirectToPost(true);
   };
 
-  if (loading) {
+  if (redirectToPost) {
     return <Redirect to={`/${path}/${post._id}`}></Redirect>;
   }
 
   return (
-    <div className='editPost-wrap'>
-      <form id='post_form' onSubmit={handleSubmit}>
-        <label htmlFor='title'>제목</label>
-        <input
-          id='title'
-          name='title'
-          type='text'
-          defaultValue={title}
-          onChange={handleChange}
-        />
-        <label htmlFor='category'>분류</label>
-        <select id='category' name='category'>
-          <option value=''>카테고리 설정</option>
-          <option value='행사일정'>행사일정</option>
-          <option value='예결산보고'>예결산보고</option>
-          <option value='활동보고'>활동보고</option>
-        </select>
-        <label htmlFor='content'>내용</label>
-        <textarea
-          form='post_form'
-          className='content'
-          name='content'
-          id='content'
-          onChange={handleChange}
-          defaultValue={content}
-        />
-        <input type='submit' value='등록하기' />
-      </form>
-      <button className='list'>취소</button>
+    <div className={styles.container}>
+      <div className={styles.wraper}>
+        <form
+          id={styles.editPostForm}
+          onSubmit={handleSubmit}
+          encType='multipart/form-data'
+        >
+          <label htmlFor='_id'>고유번호</label>
+          <input id='_id' name='_id' type='text' defaultValue={_id} />
+          <label htmlFor='title'>제목</label>
+          <input
+            id='title'
+            name='title'
+            type='text'
+            defaultValue={title}
+            required
+          />
+          <label htmlFor='category'>분류</label>
+          <select id='category' name='category' required>
+            <option value=''>카테고리 설정</option>
+            <option value='행사일정'>행사일정</option>
+            <option value='예결산보고'>예결산보고</option>
+            <option value='활동보고'>활동보고</option>
+          </select>
+          <label htmlFor='files'>파일</label>
+          <input
+            type='file'
+            className={styles.files}
+            name='files'
+            id='files'
+            defaultValue=''
+            multiple
+          />
+          <label htmlFor='content'>내용</label>
+          <textarea
+            form={styles.editPostForm}
+            className={styles.content}
+            name='content'
+            id='content'
+            defaultValue={content}
+          />
+          <input type='submit' value='수정하기' />
+        </form>
+        <button className={styles.exit}>
+          <Link to={`/${path}`}> 취소</Link>
+        </button>
+      </div>
     </div>
   );
 };

@@ -1,15 +1,14 @@
 import React from 'react';
-import 'css/common.scss';
-import 'css/footer.scss';
+import stylse from 'css/footer.module.scss';
 
 const Footer = () => {
   return (
-    <div className='footer-wrap'>
-      <div className='container'>
-        <div className='logo'>
+    <div className={stylse.container}>
+      <div className={stylse.wraper}>
+        <div className={stylse.logo}>
           <img src={require('images/fullLogo.png')} alt='' />
         </div>
-        <ul className='memorial-address'>
+        <ul className={stylse.memorialAddress}>
           <li>
             추모사업회: 서울 서대문구 거북골로 34 명지대학교 학생회관 5층 2503호
             추모사업회실

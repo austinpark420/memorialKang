@@ -1,28 +1,31 @@
 import React, { useEffect, useState, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import Modal from 'react-modal';
 
 import { connect } from 'react-redux';
 import Slider from 'react-slick';
 
-import { loadImage, removeImage } from 'actions/images';
+import { loadImage, editImage, removeImage } from 'actions/images';
 
-import 'css/common.scss';
-import 'css/image.scss';
+import styles from 'css/image.module.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const Image = ({
   match: { url },
   isAuthenticated,
+  detailImages: { _id, title, category, images },
   loadImage,
-  detailImages,
-  removeImage
+  removeImage,
+  editImage
 }) => {
   useEffect(() => {
     loadImage(url);
   }, [loadImage, url]);
 
   const path = url.split('/')[1];
+
+  const [redirectToImages, setRedirectToImages] = useState(false);
 
   const [settings] = useState({
     dots: true,
@@ -32,31 +35,138 @@ const Image = ({
     slidesToScroll: 1
   });
 
-  const handleClickRemove = () => {
-    removeImage(url);
+  const handleClickRemove = async () => {
+    if (window.confirm('선택한 이미지를 삭제하시겠습니까?')) {
+      removeImage(url);
+      setRedirectToImages(true);
+    } else {
+      return;
+    }
   };
 
+  // react-modal
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  // react-modal form
+  // const handleChange = event => {
+  //   setFormData({
+  //     ...formData,
+  //     [event.target.name]: event.target.value
+  //   });
+  //   console.log(formData);
+  // };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    let imageForm = document.getElementById(`${styles.imageForm}`);
+    let formData = new FormData(imageForm);
+
+    editImage(path, formData);
+    closeModal();
+  };
+
+  if (redirectToImages) {
+    return <Redirect to={`/${path}`}></Redirect>;
+  }
+
   return (
-    <div className='image-wrap'>
+    <div className={styles.wraper}>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        className={styles.modal}
+      >
+        <button className={styles.close} onClick={closeModal}>
+          x
+        </button>
+        <form
+          id={styles.imageForm}
+          onSubmit={handleSubmit}
+          encType='multipart/form-data'
+        >
+          <label htmlFor='_id'>고유번호</label>
+          <input id='_id' name='_id' type='text' defaultValue={_id} />
+          <div className={styles.radio}>
+            <label htmlFor='category'>
+              <span>강경대열사</span>
+              <input
+                name='category'
+                value='alive'
+                type='radio'
+                required
+                defaultChecked={category === 'alive' ? 'checked' : ''}
+              />
+            </label>
+            <label htmlFor='category'>
+              <span>91년도 5월투쟁</span>
+              <input
+                name='category'
+                value='moment'
+                type='radio'
+                required
+                defaultChecked={category === 'moment' ? 'checked' : ''}
+              />
+            </label>
+            <label htmlFor='category'>
+              <span>추모사업회 활동</span>
+              <input
+                name='category'
+                value='activity'
+                type='radio'
+                required
+                defaultChecked={category === 'activity' ? 'checked' : ''}
+              />
+            </label>
+          </div>
+          <label htmlFor='title'>제목</label>
+          <input
+            type='text'
+            className={styles.title}
+            name='title'
+            id='title'
+            defaultValue={title}
+          />
+
+          <label htmlFor='images'>이미지</label>
+          <input
+            type='file'
+            className={styles.images}
+            name='images'
+            id='images'
+            multiple
+          />
+          <input type='submit' value='등록' />
+        </form>
+      </Modal>
+
       <Slider {...settings}>
-        {detailImages &&
-          detailImages.map(detailImage => (
+        {images &&
+          images.map(image => (
             <li>
-              <img src={detailImage} alt='' />
+              <img src={image} alt='' />
             </li>
           ))}
       </Slider>
 
-      <button className='list'>
+      <button className={styles.list}>
         <Link to={`/${path}`}>목록</Link>
       </button>
 
       {isAuthenticated && (
         <Fragment>
-          {/* <button onClick={handleClickEdit} className='edit'>
-            <Link to={`/${path}/reWrite`}>수정</Link>
-          </button> */}
-          <button onClick={handleClickRemove} className='remove'>
+          <button onClick={openModal} className={styles.edit}>
+            수정
+          </button>
+          <button onClick={handleClickRemove} className={styles.remove}>
             삭제
           </button>
         </Fragment>
@@ -66,11 +176,11 @@ const Image = ({
 };
 
 let mapStateToProps = state => ({
-  detailImages: state.images.detailImages.images,
+  detailImages: state.images.detailImages,
   isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(
   mapStateToProps,
-  { loadImage, removeImage }
+  { loadImage, removeImage, editImage }
 )(Image);

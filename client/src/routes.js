@@ -1,16 +1,15 @@
 import {
   Main,
-  ElevenHero,
+  Heros,
   Organization,
   History,
   Parents,
   Login,
-  EmergencyMeasure,
   Videos,
-  Document,
   Struggle,
   Introduce,
-  MemorialHistory
+  MemorialHistory,
+  MemorialHall
 } from 'screen';
 
 export const routes = [
@@ -19,8 +18,8 @@ export const routes = [
     component: Main
   },
   {
-    path: '/elevenHero',
-    component: ElevenHero
+    path: '/heros',
+    component: Heros
   },
   {
     path: '/organization',
@@ -39,16 +38,8 @@ export const routes = [
     component: Login
   },
   {
-    path: '/emergencyMeasure',
-    component: EmergencyMeasure
-  },
-  {
     path: '/videos',
     component: Videos
-  },
-  {
-    path: '/document',
-    component: Document
   },
   {
     path: '/struggle',
@@ -61,5 +52,9 @@ export const routes = [
   {
     path: '/memorialHistory',
     component: MemorialHistory
+  },
+  {
+    path: '/memorialHall',
+    component: MemorialHall
   }
 ];

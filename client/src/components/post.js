@@ -1,17 +1,17 @@
-import React, { useEffect, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, Fragment } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loadPost, redirectToPost, removePost } from 'actions/posts';
+import { loadPost, removePost } from 'actions/posts';
 
 import dateFormat from 'dateformat';
 
-import 'css/common.scss';
-import 'css/post.scss';
+import Spinner from 'components/spinner';
+
+import styles from 'css/post.module.scss';
 
 const Post = ({
-  posts: { post },
+  posts,
   loadPost,
-  redirectToPost,
   removePost,
   match: { url },
   isAuthenticated
@@ -21,46 +21,62 @@ const Post = ({
   }, [loadPost, url]);
 
   const path = url.split('/')[1];
+  const [redirectToPosts, setRedirectToPosts] = useState(false);
 
-  const handleClickEdit = () => {
-    redirectToPost();
+  const handleClickRemove = async () => {
+    if (window.confirm('선택한 게시물을 삭제하시겠습니까?')) {
+      try {
+        await removePost(url);
+        setRedirectToPosts(true);
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
-  const handleClickRemove = () => {
-    removePost(url);
-  };
+  if (redirectToPosts) {
+    return <Redirect to={`/${path}`}></Redirect>;
+  }
 
-  return (
-    <div>
-      {post && (
-        <div className='post-wrap'>
-          <h2>{post.title}</h2>
+  return posts.loading === false ? (
+    <Spinner />
+  ) : (
+    <div className={styles.container}>
+      {posts.post && (
+        <div className={styles.wraper}>
+          <h2>{posts.post.title}</h2>
           <section>
-            <div className='info'>
+            <div className={styles.info}>
               <span>
-                <span className='title'>분류</span>
-                {post.category}
+                <span className={styles.title}>분류</span>
+                {posts.post.category}
               </span>
               <span>
-                <span className='title'>작성자</span>
-                {post.writer}
+                <span className={styles.title}>파일</span>
+                {/* {post.files.map(file => (
+                  <a href={file.location}>{file.originalname}</a>
+                ))} */}
               </span>
               <span>
-                <span className='title'>날짜</span>
-                {dateFormat(post.date, 'yyyy-mm-dd')}
+                <span className={styles.title}>작성자</span>
+                {posts.post.writer}
+              </span>
+              <span>
+                <span className={styles.title}>날짜</span>
+                {dateFormat(posts.post.date, 'yyyy-mm-dd')}
               </span>
             </div>
-            <p className='content'>{post.content}</p>
+            <p className={styles.content}>{posts.post.content}</p>
           </section>
-          <button className='list'>
+          <button className={styles.list}>
             <Link to={`/${path}`}>목록</Link>
           </button>
           {isAuthenticated && (
             <Fragment>
-              <button onClick={handleClickEdit} className='edit'>
+              <button className={styles.edit}>
                 <Link to={`/${path}/reWrite`}>수정</Link>
               </button>
-              <button onClick={handleClickRemove} className='remove'>
+              <button onClick={handleClickRemove} className={styles.remove}>
                 삭제
               </button>
             </Fragment>
@@ -78,5 +94,5 @@ let mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loadPost, redirectToPost, removePost }
+  { loadPost, removePost }
 )(Post);

@@ -1,40 +1,48 @@
 import React from 'react';
-import 'css/common.scss';
-import 'css/history.scss';
+import styles from 'css/history.module.scss';
 
 const History = () => {
   return (
-    <div className='history-wrap'>
-      <h2>강경대 열사</h2>
-      <div className='introduce'>
-        <img src={require('images/elevenHeroKim.png')} alt='' />
-        <section>
-          <b>1971년</b>
-          <span>11월 4월 서울출생</span>
-          <b>1987년</b>
-          <span>서울 대원고등학교 입학</span>
-          <b>1989년</b>
-          <span>3월 안동대학교 민속학과 입학</span>
-          <span>
-            민속학과 학생회 산하 '민속문확연구회'를 결성, 초대회장 역임
-          </span>
-          <span>8월 조국통일범빈족대회 통일선봉대로 참가</span>
-          <span>
-            여름농촌활동 참가, 우루과이라운드 반대 경북농민대회에서 마당극
-            '새벽을 밟으며' 공연
-          </span>
-          <b>1991년</b>
-          <span>4월 민속학과 부학생회장</span>
-          <span>솔뫼 교지편집위원회 대외사업부장</span>
-          <span>
-            5월 1일 '고 강경대열사 추모 및 공안통치 분쇄를 위한 범안대인
-            경의대회' 동중 '공안통치 분쇄, 노태우 정권 타토'를 외치며 분신
-          </span>
-          <span>
-            5월 2일 오후 8시 13분 경북대 의대 부속병원 화상병동 301호에서 운영
-            안동대 교내에 가묘
-          </span>
-        </section>
+    <div className={styles.container}>
+      <div className={styles.wraper}>
+        <h2 className='blind'>강경대 열사</h2>
+        <div className={styles.coverImage}></div>
+        <div className={styles.introduce}>
+          <div className={styles.imageWraper}>
+            <img src={require('images/kang01.png')} alt='kang' />
+          </div>
+          <section>
+            <h3>열사 소개</h3>
+            <b>1972년 2월 4일</b>
+            <span>
+              서울 출생
+              <br />
+              강민조씨와 이덕순 여사 사이의 1남 1녀중 막내
+            </span>
+            <b>1990년 3월</b>
+            <span>서울 휘문고등학교 졸업</span>
+            <b>1991년 3월</b>
+            <span>명지대학교 경제학과 입학 민중노래패 "땅의 사람들"가입</span>
+            <b>1991년 3월 22일</b>
+            <span>
+              총학생회 진군식 시위 도중 학내 진입한
+              <br />
+              전투경찰의 직격 최루탄에 의해 안면 부상
+            </span>
+            <b>1991년 4월 26일</b>
+            <span>
+              학원자주화 완전 승리와 총학생회장 구출 투쟁 및
+              <br />
+              노태우 군사정권 타도 시위중 백골단의 쇠파이프 난타로 인해 심장막
+              내출혈로
+              <br />
+              병원으로 옮기던 도중 사망 1991년 5월 14일 장례식이 경찰에 의해
+              저지됨 1991년 5월 20일 광주 망월동
+              <br />
+              민주화 묘역에 안장 2014년 4월 26일 이천 민주공원으로 묘역 이장
+            </span>
+          </section>
+        </div>
       </div>
     </div>
   );

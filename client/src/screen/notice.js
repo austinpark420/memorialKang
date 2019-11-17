@@ -6,10 +6,16 @@ import { Post, NewPost } from 'components';
 import { loadPosts } from '../actions/posts';
 import dateFormat from 'dateformat';
 
-import 'css/common.scss';
-import 'css/notice.scss';
+import Spinner from 'components/spinner';
 
-const Notice = ({ match: { url }, posts, isAuthenticated, loadPosts }) => {
+import styles from 'css/notice.module.scss';
+
+const Notice = ({
+  match: { url },
+  posts: { posts, loading },
+  isAuthenticated,
+  loadPosts
+}) => {
   useEffect(() => {
     loadPosts('notices');
   }, [loadPosts]);
@@ -31,66 +37,70 @@ const Notice = ({ match: { url }, posts, isAuthenticated, loadPosts }) => {
     setCurrentPage(number);
   };
 
-  return (
-    <div className='notice-wrap'>
-      <h2>공지사항</h2>
+  return loading === false || currentPosts === null ? (
+    <Spinner />
+  ) : (
+    <div className={styles.container}>
+      <div className={styles.wraper}>
+        <h2>공지사항</h2>
 
-      <div className='group'>
-        <div className='subtitle'>
-          <span>번호</span>
-          <span>분류</span>
-          <span>제목</span>
-          <span>글쓴이</span>
-          <span>등록일</span>
-        </div>
-        <ul className='postList'>
-          {posts &&
-            currentPosts.map((post, index) => (
-              <Link to={`${url}/${post._id}`}>
-                <li key={index}>
-                  <div>
-                    <span>{index}</span>
-                    <span>{post.category}</span>
-                    <span>{post.title}</span>
-                    <span>{post.writer}</span>
-                    <span>{dateFormat(post.date, 'yyyy-mm-dd')}</span>
-                  </div>
+        <div className={styles.group}>
+          <div className={styles.subtitle}>
+            <span>번호</span>
+            <span>분류</span>
+            <span>제목</span>
+            <span>글쓴이</span>
+            <span>등록일</span>
+          </div>
+          <ul className={styles.postList}>
+            {posts &&
+              currentPosts.map(post => (
+                <Link to={`${url}/${post._id}`}>
+                  <li key={post._id}>
+                    <div>
+                      <span>{post.number}</span>
+                      <span>{post.category}</span>
+                      <span>{post.title}</span>
+                      <span>{post.writer}</span>
+                      <span>{dateFormat(post.date, 'yyyy-mm-dd')}</span>
+                    </div>
+                  </li>
+                </Link>
+              ))}
+          </ul>
+          <ul className={styles.pagination}>
+            {pageNumbers.map(number =>
+              currentPage === number ? (
+                <li
+                  className={styles.active}
+                  key={number}
+                  onClick={() => handleClick(number)}
+                >
+                  {number}
                 </li>
-              </Link>
-            ))}
-        </ul>
-        <ul className='pagination'>
-          {pageNumbers.map((number, index) =>
-            currentPage === number ? (
-              <li
-                className='active'
-                key={index}
-                onClick={() => handleClick(number)}
-              >
-                {number}
-              </li>
-            ) : (
-              <li key={index} onClick={() => handleClick(number)}>
-                {number}
-              </li>
-            )
+              ) : (
+                <li key={number} onClick={() => handleClick(number)}>
+                  {number}
+                </li>
+              )
+            )}
+          </ul>
+          {isAuthenticated && (
+            <button className={styles.newPost}>
+              <Link to={`${url}/write`}>글쓰기</Link>
+            </button>
           )}
-        </ul>
-        {isAuthenticated && (
-          <button className='new-post'>
-            <Link to={`${url}/write`}>글쓰기</Link>
-          </button>
-        )}
-      </div>
+        </div>
 
-      <Route path={`${url}/:id`} component={Post} />
-      <Route path={`${url}/write`} component={NewPost} />
+        <Route path={`${url}/:id`} component={Post} />
+        <Route path={`${url}/write`} component={NewPost} />
+      </div>
     </div>
   );
 };
 
 const mapStateToProps = state => ({
-  posts: state.posts.posts,
+  posts: state.posts,
   isAuthenticated: state.auth.isAuthenticated
 });
 

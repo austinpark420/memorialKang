@@ -6,9 +6,16 @@ import { routes } from 'routes';
 import store from './store';
 import { loadUser } from './actions/auth';
 
-import { Notice, Images } from 'screen';
-import { Header, Footer, Post, NewPost, EditPost, Image } from 'components';
-import './App.css';
+import { Notice, Emergency, Images, Document } from 'screen';
+import {
+  Header,
+  Footer,
+  Post,
+  NewPost,
+  EditPost,
+  Image,
+  Alert
+} from 'components';
 
 const App = () => {
   useEffect(() => {
@@ -18,6 +25,7 @@ const App = () => {
   return (
     <Router>
       <Header />
+      <Alert />
       {routes.map(route => (
         <Route
           exact
@@ -31,6 +39,18 @@ const App = () => {
         <Route path='/notices/write' component={NewPost} />
         <Route path='/notices/:id' component={Post} />
         <Route path='/notices' component={Notice} />
+      </Switch>
+      <Switch>
+        <Route path='/emergencies/reWrite' component={EditPost} />
+        <Route path='/emergencies/write' component={NewPost} />
+        <Route path='/emergencies/:id' component={Post} />
+        <Route path='/emergencies' component={Emergency} />
+      </Switch>
+      <Switch>
+        <Route path='/documents/reWrite' component={EditPost} />
+        <Route path='/documents/write' component={NewPost} />
+        <Route path='/documents/:id' component={Post} />
+        <Route path='/documents' component={Document} />
       </Switch>
       <Switch>
         <Route path='/images/:id' component={Image} />

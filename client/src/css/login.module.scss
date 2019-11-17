@@ -1,0 +1,56 @@
+.container {
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 60px;
+    background-color: #222d5a;
+  }
+
+  min-height: 75vh;
+  .wraper {
+    padding-top: 60px;
+
+    .form {
+      width: 50%;
+      max-width: 560px;
+      margin: 150px auto;
+
+      input[type='text'],
+      input[type='password'] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: block;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      input[type='submit'] {
+        width: 100%;
+        background-color: #222d5a;
+        color: white;
+        padding: 14px 20px;
+        font-size: 16px;
+        margin: 20px 0;
+        border: none;
+        cursor: pointer;
+      }
+
+      input[type='submit']:hover {
+        background-color: #221d5a;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .container {
+    .wraper {
+      .form {
+        width: 90%;
+        margin: 60px auto;
+      }
+    }
+  }
+}

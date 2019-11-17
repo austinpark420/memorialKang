@@ -6,40 +6,43 @@ import $ from 'jquery';
 import { logout } from 'actions/auth';
 
 import 'css/common.scss';
-import 'css/header.scss';
+import styles from 'css/header.module.scss';
 
 const Header = ({ isAuthenticated, logout }) => {
-  // header
   useEffect(() => {
     $(window).on('scroll', () => {
       if ($(window).scrollTop()) {
-        $('.header-wrap').addClass('active');
+        $(`.${styles.wraper}`).addClass(`${styles.active}`);
       } else {
-        $('.header-wrap').removeClass('active');
+        $(`.${styles.wraper}`).removeClass(`${styles.active}`);
       }
     });
   });
 
-  const handleClick = () => {
+  $(`.${styles.subMenu} li`).on('click', () => {
+    $('input[type=checkbox').prop('checked', false);
+  });
+
+  const handleClickLogout = () => {
     logout();
   };
 
   return (
-    <div className='header-wrap'>
-      <div className='logo'>
+    <div className={styles.wraper}>
+      <div className={styles.logo}>
         <Link to='/' children='추모사업회 로고'>
-          <img src={require('images/fullLogo.png')} alt='' />
+          <img src={require('images/logo.png')} alt='logo' />
         </Link>
       </div>
-      <nav className='nav'>
+      <nav className={styles.nav}>
         <input type='checkbox' />
         <span></span>
         <span></span>
         <span></span>
-        <ul className='menu'>
-          <li className='menu-list'>
-            <p className='sub-title'>강경대열사</p>
-            <ul className='sub-menu'>
+        <ul className={styles.menu}>
+          <li className={styles.menuList}>
+            <p className={styles.subTitle}>강경대열사</p>
+            <ul className={styles.subMenu}>
               <li>
                 <Link to='/history' children='열사 연혁' />
               </li>
@@ -47,13 +50,13 @@ const Header = ({ isAuthenticated, logout }) => {
                 <Link to='/struggle' children='91년도 투쟁' />
               </li>
               <li>
-                <Link to='/elevenHero' children='11인의 열사' />
+                <Link to='/heros' children='11인의 열사' />
               </li>
             </ul>
           </li>
-          <li className='menu-list'>
-            <p className='sub-title'>추모사업회</p>
-            <ul className='sub-menu'>
+          <li className={styles.menuList}>
+            <p className={styles.subTitle}>추모사업회</p>
+            <ul className={styles.subMenu}>
               <li>
                 <Link to='/parents' children='유가족인사말' />
               </li>
@@ -64,14 +67,16 @@ const Header = ({ isAuthenticated, logout }) => {
                 <Link to='/notices' children='공지사항' />
               </li>
               <li>
-                <Link to='/emergencyMeasure' children='동판사수 대책위원회' />
+                <Link to='/emergencies' children='동판사수 대책위원회' />
               </li>
-              <li>강경대 기념관</li>
+              <li>
+                <Link to='/memorialHall' children='강경대 기념관' />
+              </li>
             </ul>
           </li>
-          <li className='menu-list'>
-            <p className='sub-title'>추모제</p>
-            <ul className='sub-menu'>
+          <li className={styles.menuList}>
+            <p className={styles.subTitle}>추모제</p>
+            <ul className={styles.subMenu}>
               <li>
                 <Link to='/introduce' children='추모제 소개' />
               </li>
@@ -80,9 +85,9 @@ const Header = ({ isAuthenticated, logout }) => {
               </li>
             </ul>
           </li>
-          <li className='menu-list'>
-            <p className='sub-title'>자료 복원실</p>
-            <ul className='sub-menu'>
+          <li className={styles.menuList}>
+            <p className={styles.subTitle}>자료 복원실</p>
+            <ul className={styles.subMenu}>
               <li>
                 <Link to='/images' children='사진자료' />
               </li>
@@ -90,13 +95,13 @@ const Header = ({ isAuthenticated, logout }) => {
                 <Link to='/videos' children='영상자료' />
               </li>
               <li>
-                <Link to='/document' children='문서자료' />
+                <Link to='/documents' children='문서자료' />
               </li>
             </ul>
           </li>
           {isAuthenticated && (
-            <li className='menu-list' onClick={handleClick}>
-              <p className='sub-title'>Logout</p>
+            <li className={styles.menuList} onClick={handleClickLogout}>
+              <p className={styles.subTitle}>Logout</p>
             </li>
           )}
         </ul>

@@ -4,6 +4,7 @@ import {
   ADD_IMAGE,
   REMOVE_IMAGE
 } from 'actions/types';
+import { EDIT_IMAGE } from '../actions/types';
 
 const initialState = {
   allImages: [],
@@ -21,7 +22,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        allImages: payload
+        allImages: payload,
+        detailImages: []
+      };
+    case EDIT_IMAGE:
+      return {
+        ...state,
+        detailImages: payload
       };
     case LOAD_IMAGE:
       return {
@@ -33,6 +40,7 @@ export default (state = initialState, action) => {
     case REMOVE_IMAGE:
       return {
         ...state,
+        allImages: payload,
         detailImages: []
       };
     default:

@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { setAlert } from './alert';
+
 import {
   LOAD_POSTS,
   LOAD_POST,
@@ -8,8 +10,6 @@ import {
   REDIRECT_POST,
   REMOVE_POST
 } from './types';
-
-let postNumber = 1;
 
 // Load posts
 export const loadPosts = posts => async dispatch => {
@@ -48,27 +48,21 @@ export const loadPost = path => async dispatch => {
 };
 
 // Add post
-export const addPost = ({
-  path,
-  title,
-  category,
-  content
-}) => async dispatch => {
+export const addPost = (path, formData) => async dispatch => {
   const config = {
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'multipart/form-data'
     }
   };
 
-  const body = JSON.stringify({ title, category, content, postNumber });
-  postNumber++;
-
   try {
-    const res = await axios.post(`/api/${path}`, body, config);
+    const res = await axios.post(`/api/${path}`, formData, config);
     dispatch({
       type: ADD_POST,
       payload: res.data
     });
+
+    dispatch(setAlert('게시물이 등록되었습니다'));
   } catch (error) {
     const errors = error.response.data.errors;
 
@@ -80,27 +74,21 @@ export const addPost = ({
 };
 
 // Edit post
-export const editPost = ({
-  path,
-  _id,
-  title,
-  category,
-  content
-}) => async dispatch => {
+export const editPost = (path, formData) => async dispatch => {
   const config = {
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'multipart/form-data'
     }
   };
 
-  const body = JSON.stringify({ _id, title, category, content });
-
   try {
-    const res = await axios.put(`/api/${path}`, body, config);
+    const res = await axios.put(`/api/${path}`, formData, config);
     dispatch({
       type: EDIT_POST,
       payload: res.data
     });
+
+    dispatch(setAlert('게시물이 수정되었습니다'));
   } catch (error) {
     const errors = error.response.data.errors;
 
@@ -118,7 +106,7 @@ export const redirectToPost = () => dispatch => {
   });
 };
 
-// Remove post
+// delete post
 export const removePost = path => async dispatch => {
   try {
     await axios.delete(`/api/${path}`);
@@ -126,6 +114,8 @@ export const removePost = path => async dispatch => {
     dispatch({
       type: REMOVE_POST
     });
+
+    dispatch(setAlert('게시물이 삭제되었습니다'));
   } catch (error) {
     const errors = error.response.data.errors;
 

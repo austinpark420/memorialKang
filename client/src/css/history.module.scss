@@ -1,0 +1,86 @@
+.container {
+  .wraper {
+    .coverImage {
+      height: 70vh;
+      overflow: hidden;
+      background-image: url('../images/historyCover.jpg');
+      background-size: cover;
+      background-position: 50% 50%;
+    }
+
+    .introduce {
+      width: 80%;
+      max-width: 1080px;
+      margin: 30px auto;
+      display: flex;
+      align-items: center;
+      .imageWraper {
+        overflow: hidden;
+        margin-right: 8%;
+        img {
+          width: 100%;
+          transform: scale(1);
+          -webkit-transform: scale(1);
+          transition: 0.3s ease-in-out;
+          -webkit-transition: 0.3s ease-in-out;
+
+          &:hover {
+            transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+          }
+        }
+      }
+
+      section {
+        width: 80%;
+        align-items: center;
+
+        h3 {
+          font-size: 3.5em;
+          font-weight: 200;
+          line-height: 1.2;
+          color: #222d5a;
+          margin: 5% 0;
+        }
+
+        b,
+        span {
+          display: block;
+          font-size: 1.1rem;
+        }
+        span {
+          margin-bottom: 1%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    .wraper {
+      .imageCover {
+        height: 40vh;
+      }
+      .introduce {
+        width: 96%;
+        flex-direction: column;
+        -webkit-flex-direction: column;
+
+        .imageWraper {
+          margin-right: 0;
+
+          img {
+            width: 200px;
+            margin: 0;
+          }
+        }
+        section {
+          h3 {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}

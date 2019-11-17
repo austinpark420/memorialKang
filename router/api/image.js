@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const s3 = require('../../config/s3');
-const multer = require('multer');
-const multerS3 = require('multer-s3');
-const path = require('path');
 const { check, validationResult } = require('express-validator');
 
 const auth = require('../../middleware/auth');
+const uploadFile = require('../../middleware/uploadFile');
+
 const User = require('../../models/User');
 const Image = require('../../models/Image');
 
@@ -24,26 +23,14 @@ router.get('/', async (req, res) => {
   }
 });
 
-const uploadImage = multer({
-  storage: multerS3({
-    s3,
-    bucket: 'memorialkang',
-    acl: 'public-read',
-    key: function(req, file, cb) {
-      cb(null, 'images/' + Date.now() + '-' + path.basename(file.originalname));
-    }
-  }),
-  limits: { fileSize: 2000000 } // In bytes: 2000000 bytes = 2 MB
-});
-
 // @route   Post api/images
-// @desc    Add notice
+// @desc    Add image
 // @access  Private
 
 router.post(
   '/',
   [
-    uploadImage.array('images'),
+    uploadFile.array('images'),
     auth,
     [
       check('title', '제목을 입력해 주세요')
@@ -68,16 +55,17 @@ router.post(
 
       let fileArray = req.files;
 
-      let fileLocation;
-      let fileKey;
-      const keys = [];
+      let imageLocation;
       const images = [];
 
+      let imageKeys;
+      const keys = [];
+
       for (let i = 0; i < fileArray.length; i++) {
-        fileKey = fileArray[i].key;
-        keys.push(fileKey);
-        fileLocation = fileArray[i].location;
-        images.push(fileLocation);
+        imageKeys = fileArray[i].key;
+        keys.push(imageKeys);
+        imageLocation = fileArray[i].location;
+        images.push(imageLocation);
       }
 
       const newImage = new Image({
@@ -107,19 +95,109 @@ router.post(
 router.get('/:id', async (req, res) => {
   try {
     const detailImages = await Image.findById(req.params.id);
-
     res.json(detailImages);
   } catch (error) {
     console.error(error.message);
 
     if (error.kind === 'ObjectId') {
-      return res.status(404).json({ msg: 'Notice not Found' });
+      return res.status(404).json({ msg: '이미지를 찾을 수 없습니다' });
     }
     res.status(500).send('Server Error');
   }
 });
 
-// @route    DELETE api/notices/:id
+// @route   Put api/images
+// @desc    Edit images
+// @access  Private
+
+router.put(
+  '/',
+  [
+    uploadFile.array('images'),
+    auth,
+    [
+      check('title', '제목을 입력해 주세요')
+        .not()
+        .isEmpty(),
+      check('category', '카테고리를 선택해 주세요')
+        .not()
+        .isEmpty()
+    ]
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    let detailImages = await Image.findById(req.body._id);
+
+    if (!detailImages) {
+      return res.status(404).json({ msg: '이미지가 존재하지 않습니다' });
+    }
+
+    try {
+      let fileArray = req.files;
+
+      if (fileArray.length && fileArray !== null) {
+        if (detailImages.images.length && detailImages.keys !== null) {
+          let deleteImageKey = [];
+
+          for (let i = 0; i < detailImages.keys.length; i++) {
+            deleteImageKey.push({ Key: detailImages.keys[i] });
+          }
+
+          let params = {
+            Bucket: 'memorialkang',
+            Delete: {
+              Objects: deleteImageKey
+            }
+          };
+
+          s3.deleteObjects(params, function(err, data) {
+            if (err) console.log('deleteObjects error: ', err, err.stack);
+            else console.log('successful response: ', data);
+          });
+        }
+
+        let imageKeys;
+        const keys = [];
+
+        let imageLocation;
+        const images = [];
+
+        for (let i = 0; i < fileArray.length; i++) {
+          imageKeys = fileArray[i].key;
+          keys.push(imageKeys);
+          imageLocation = fileArray[i].location;
+          images.push(imageLocation);
+        }
+
+        const { title, category } = req.body;
+
+        detailImages.title = title;
+        detailImages.category = category;
+        detailImages.images = images;
+        detailImages.keys = keys;
+
+        detailImages = await detailImages.save();
+      } else {
+        const { title, category } = req.body;
+
+        detailImages.title = title;
+        detailImages.category = category;
+
+        detailImages = await detailImages.save();
+      }
+      res.json(detailImages);
+    } catch (error) {
+      console.log('**Image errors**', error.message);
+      res.status(500).send('서버 에러');
+    }
+  }
+);
+
+// @route    DELETE api/images/:id
 // @desc     Delete a post
 // @access   Private
 router.delete('/:id', auth, async (req, res) => {
@@ -150,7 +228,9 @@ router.delete('/:id', auth, async (req, res) => {
 
     await selectedImages.remove();
 
-    res.json({ msg: '이미지를 삭제했습니다.' });
+    const allImages = await Image.find().sort({ date: -1 });
+
+    res.json(allImages);
   } catch (err) {
     console.error(err.message);
     if (err.kind === 'ObjectId') {

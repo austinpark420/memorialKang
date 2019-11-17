@@ -1,0 +1,181 @@
+.container {
+  .wraper {
+    .coverImage {
+      height: 70vh;
+      overflow: hidden;
+      background-image: url('../images/organizationCover.JPG');
+      background-size: cover;
+      background-position: 50% 50%;
+    }
+
+    .heading,
+    section {
+      width: 80%;
+      max-width: 1080px;
+      min-width: 768px;
+      margin: 30px auto;
+    }
+
+    .heading {
+      display: flex;
+      border-bottom: 1px solid #ccc;
+      .tab {
+        position: relative;
+        display: inline-block;
+        padding: 15px 15px 25px;
+        border: 1px solid transparent;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 600;
+
+        h2 {
+          font-weight: 400;
+          font-size: 1rem;
+        }
+      }
+
+      .active {
+        border-color: #ccc;
+        border-bottom: 1px solid #fff;
+        margin-bottom: -1px;
+        background-color: #fff;
+      }
+    }
+
+    section {
+      > div {
+        display: none;
+        min-height: 40vh;
+
+        .subtitle {
+          display: flex;
+          border-top: solid 1px #181818;
+          border-bottom: solid 1px #181818;
+          padding: 10px 0;
+          span {
+            &:first-child {
+              flex-basis: 10%;
+              text-align: center;
+            }
+            &:nth-child(2) {
+              flex-basis: 15%;
+              text-align: center;
+            }
+            &:nth-child(3) {
+              flex-basis: 50%;
+              text-align: center;
+            }
+            &:nth-child(4) {
+              flex-basis: 10%;
+              text-align: center;
+            }
+            &:last-child {
+              flex-basis: 15%;
+              text-align: center;
+            }
+          }
+        }
+
+        .postList {
+          a {
+            > li {
+              &:hover {
+                background-color: #f9f9f9;
+              }
+
+              div {
+                display: flex;
+                padding: 15px 0;
+                border-bottom: solid 1px #eee;
+
+                span {
+                  &:first-child {
+                    flex-basis: 10%;
+                    text-align: center;
+                  }
+                  &:nth-child(2) {
+                    flex-basis: 15%;
+                    text-align: center;
+                  }
+                  &:nth-child(3) {
+                    flex-basis: 50%;
+                    text-align: center;
+                  }
+                  &:nth-child(4) {
+                    flex-basis: 10%;
+                    text-align: center;
+                  }
+                  &:last-child {
+                    flex-basis: 15%;
+                    text-align: center;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .pagination {
+          display: flex;
+          justify-content: center;
+          margin-top: 40px;
+          li {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+          }
+          .active {
+            color: #ffffff;
+            border: 1px solid #222d5a;
+            background-color: #222d5a;
+          }
+        }
+        .subtitle,
+        .postList {
+          font-size: 0.8rem;
+        }
+
+        .newPost {
+          a {
+            background-color: #222d5a;
+            color: white;
+            margin: 20px 0;
+            padding: 15px 32px;
+            text-align: center;
+            font-size: 18px;
+          }
+        }
+      }
+      .activeDocument {
+        display: block;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    .wraper {
+      .imageCover {
+        height: 40vh;
+      }
+
+      .heading,
+      section {
+        width: 96%;
+        max-width: none;
+        min-width: 0;
+      }
+
+      section {
+        > div {
+          .newPost {
+            a {
+              padding: 10px 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

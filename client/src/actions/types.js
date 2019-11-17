@@ -30,3 +30,13 @@ export const ADD_IMAGE = 'ADD_IMAGE';
 export const EDIT_IMAGE = 'EDIT_IMAGE';
 export const REDIRECT_IMAGE = 'REDIRECT_IMAGE';
 export const REMOVE_IMAGE = 'REMOVE_IMAGE';
+
+// alert
+export const SET_ALERT = 'SET_ALERT';
+export const REMOVE_ALERT = 'REMOVE_ALERT';
+
+// mainNotice
+export const LOAD_NOTICES = 'LOAD_NOTICES';
+export const LOAD_EMERGENCIES = 'LOAD_EMERGENCIES';
+export const NOTICES_ERROR = 'NOTICES_ERROR';
+export const EMERGENCIES_ERROR = 'EMERGENCIES_ERROR';

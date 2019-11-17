@@ -78,7 +78,7 @@ button {
   outline: none;
 }
 
-input[type="text"] {
+input[type='text'] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -104,8 +104,8 @@ body {
   overflow-x: hidden;
   background-color: #fff;
   color: #3a3a3a;
-  font-family: "Montserrat", sans-serif, "Noto Sans KR", sans-serif, Helvetica,
-    "Apple SD Gothic Neo";
+  font-family: 'Montserrat', sans-serif, 'Noto Sans KR', sans-serif, Helvetica,
+    'Apple SD Gothic Neo';
   letter-spacing: -0.02em;
 }
 
@@ -156,7 +156,7 @@ body {
 }
 
 .clearfix::after {
-  content: "";
+  content: ' ';
   display: block;
   height: 0;
   clear: both;

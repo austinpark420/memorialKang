@@ -7,6 +7,7 @@ import {
   LOGOUT
 } from './types';
 
+import { setAlert } from './alert';
 import setAuthToken from '../utils/setAuthToken';
 
 // Load User
@@ -46,9 +47,16 @@ export const login = ({ name, password }) => async dispatch => {
       payload: res.data
     });
 
+    dispatch(setAlert('로그인이 되었습니다'));
+
     dispatch(loadUser());
   } catch (error) {
     const errors = error.response.data.errors;
+    console.log(errors);
+
+    if (errors) {
+      errors.map(error => dispatch(setAlert(error.message)));
+    }
 
     dispatch({
       type: LOGIN_FAIL,
@@ -60,4 +68,6 @@ export const login = ({ name, password }) => async dispatch => {
 // Logout / Clear Profile
 export const logout = () => dispatch => {
   dispatch({ type: LOGOUT });
+
+  dispatch(setAlert('로그아웃이 되었습니다'));
 };

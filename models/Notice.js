@@ -24,8 +24,12 @@ const NoticeSchema = new mongoose.Schema({
   content: {
     type: String
   },
-  file: {
-    type: Buffer
+  files: {
+    type: {
+      location: [{ type: String }],
+      keys: [{ type: String }],
+      originalname: [{ type: String }]
+    }
   },
   date: {
     type: Date,

@@ -1,0 +1,77 @@
+.container {
+  .wraper {
+    .coverImage {
+      height: 70vh;
+      overflow: hidden;
+      background-image: url('../images/organizationCover.JPG');
+      background-size: cover;
+      background-position: 50% 50%;
+    }
+
+    .heading,
+    section {
+      width: 80%;
+      max-width: 1080px;
+      margin: 30px auto;
+    }
+
+    .heading {
+      display: flex;
+      border-bottom: 1px solid #ccc;
+      .tab {
+        position: relative;
+        display: inline-block;
+        padding: 15px 15px 25px;
+        border: 1px solid transparent;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 600;
+
+        h2 {
+          font-weight: 400;
+          font-size: 1rem;
+        }
+      }
+
+      .active {
+        border-color: #ccc;
+        border-bottom: 1px solid #fff;
+        margin-bottom: -1px;
+        background-color: #fff;
+      }
+    }
+
+    section {
+      ul {
+        display: none;
+        li {
+          display: inline-flex;
+          flex-direction: column;
+          padding: 10px 40px 10px 0;
+          line-height: 200%;
+          font-size: 16px;
+        }
+      }
+      .activeWord {
+        display: block;
+      }
+    }
+
+    .organizationMap {
+      background-color: skyblue;
+      height: 600px;
+      line-height: 600px;
+      text-align: center;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    .wraper {
+      .imageCover {
+        height: 40vh;
+      }
+    }
+  }
+}

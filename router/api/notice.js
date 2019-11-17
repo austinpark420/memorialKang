@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const s3 = require('../../config/s3');
 const { check, validationResult } = require('express-validator');
 
 const auth = require('../../middleware/auth');
+const uploadFile = require('../../middleware/uploadFile');
 const User = require('../../models/User');
 const Notice = require('../../models/Notice');
 
@@ -13,6 +15,22 @@ const Notice = require('../../models/Notice');
 router.get('/', async (req, res) => {
   try {
     const notices = await Notice.find().sort({ date: -1 });
+    res.json(notices);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Sever Error');
+  }
+});
+
+// @route   GET api/notices/mainPosts
+// @desc    Get notice list
+// @access  Public
+
+router.get('/mainPosts', async (req, res) => {
+  try {
+    const notices = await Notice.find()
+      .sort({ date: -1 })
+      .limit(10);
     res.json(notices);
   } catch (error) {
     console.error(error.message);
@@ -46,6 +64,7 @@ router.get('/:id', async (req, res) => {
 router.post(
   '/',
   [
+    uploadFile.array('files'),
     auth,
     [
       check('title', '제목을 입력해 주세요')
@@ -58,6 +77,7 @@ router.post(
   ],
   async (req, res) => {
     const errors = validationResult(req);
+
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
@@ -65,17 +85,44 @@ router.post(
     try {
       const user = await User.findById(req.user.id).select('name');
 
-      const { title, category, content, file, postNumber } = req.body;
+      const { title, category, content } = req.body;
+
+      let fileArray = req.files;
+
+      let fileName;
+      const originalnames = [];
+
+      let fileLocation;
+      const locations = [];
+
+      let fileKey;
+      const keys = [];
+
+      for (let i = 0; i < fileArray.length; i++) {
+        fileName = fileArray[i].originalname;
+        originalnames.push(fileName);
+        fileKey = fileArray[i].key;
+        keys.push(fileKey);
+        fileLocation = fileArray[i].location;
+        locations.push(fileLocation);
+      }
+
+      // post number
+      const notices = await Notice.find();
+      const noticeNumber = notices.length ? notices.length + 1 : 1;
 
       const newNotice = new Notice({
         title: title,
+        number: noticeNumber,
         writer: user.name,
         category: category,
         content: content,
-        file: file,
-        number: postNumber
+        files: {
+          locations,
+          keys,
+          originalnames
+        }
       });
-      console.log('newNotice', newNotice);
 
       const notice = await newNotice.save();
 
@@ -94,6 +141,7 @@ router.post(
 router.put(
   '/',
   [
+    uploadFile.array('files'),
     auth,
     [
       check('title', '제목을 입력해 주세요')
@@ -110,18 +158,74 @@ router.put(
       return res.status(400).json({ errors: errors.array() });
     }
 
+    let notice = await Notice.findById(req.body._id);
+    if (!notice) {
+      return res.status(404).json({ msg: '게시물이 존재하지 않습니다' });
+    }
+
     try {
-      let notice = await Notice.findById(req.body._id);
+      let fileArray = req.files;
 
-      const { title, category, content, file } = req.body;
+      if (fileArray.length && fileArray !== null) {
+        if (notice.files.keys.length && notice.keys.files.length !== null) {
+          let deleteNoticeKey = [];
 
-      notice.title = title;
-      notice.category = category;
-      notice.content = content;
-      notice.file = file;
+          for (let i = 0; i < notice.files.keys.length; i++) {
+            deleteNoticeKey.push({ Key: notice.files.keys[i] });
+          }
 
-      notice = await notice.save();
+          let params = {
+            Bucket: 'memorialkang',
+            Delete: {
+              Objects: deleteNoticeKey
+            }
+          };
 
+          s3.deleteObjects(params, function(err, data) {
+            if (err) console.log('deleteObjects error: ', err, err.stack);
+            else console.log('successful response: ', data);
+          });
+        }
+
+        let fileName;
+        const originalnames = [];
+
+        let fileKey;
+        const keys = [];
+
+        let fileLocation;
+        const locations = [];
+
+        for (let i = 0; i < fileArray.length; i++) {
+          fileName = fileArray[i].originalname;
+          originalnames.push(fileName);
+          fileKey = fileArray[i].key;
+          keys.push(fileKey);
+          fileLocation = fileArray[i].location;
+          locations.push(fileLocation);
+        }
+
+        const { title, category, content } = req.body;
+
+        notice.title = title;
+        notice.category = category;
+        notice.content = content;
+        notice.files = {
+          locations,
+          keys,
+          originalnames
+        };
+
+        notice = await notice.save();
+      } else {
+        const { title, category, content } = req.body;
+
+        notice.title = title;
+        notice.category = category;
+        notice.content = content;
+
+        notice = await notice.save();
+      }
       res.json(notice);
     } catch (error) {
       console.log('**Notice errors**', error.message);
@@ -137,8 +241,28 @@ router.delete('/:id', auth, async (req, res) => {
   try {
     const notice = await Notice.findById(req.params.id);
 
-    if (!notice) {
-      return res.status(404).json({ msg: '게시물이 존재하지 않습니다.' });
+    if (notice.files.keys.length && notice.files.keys.length !== null) {
+      let deleteNoticeKey = [];
+
+      for (let i = 0; i < notice.files.keys.length; i++) {
+        deleteNoticeKey.push({ Key: notice.files.keys[i] });
+      }
+
+      if (!notice) {
+        return res.status(404).json({ msg: '게시물이 존재하지 않습니다.' });
+      }
+
+      let params = {
+        Bucket: 'memorialkang',
+        Delete: {
+          Objects: deleteNoticeKey
+        }
+      };
+
+      s3.deleteObjects(params, function(err, data) {
+        if (err) console.log('deleteObjects error: ', err, err.stack);
+        else console.log('successful response: ', data);
+      });
     }
 
     await notice.remove();

@@ -1,0 +1,214 @@
+.container {
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 60px;
+    background-color: #222d5a;
+  }
+  min-height: 75vh;
+
+  .wraper {
+    padding-top: 60px;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .heading {
+      display: flex;
+
+      .tab {
+        position: relative;
+        display: inline-block;
+        padding: 15px 15px 25px;
+        border: 1px solid transparent;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 600;
+
+        h2 {
+          font-weight: 400;
+          font-size: 1rem;
+        }
+      }
+
+      .active {
+        border-color: #ccc;
+        border-bottom: 1px solid #fff;
+        margin-bottom: -1px;
+        background-color: #fff;
+      }
+    }
+
+    .add {
+      float: right;
+      background-color: #222d5a;
+      color: white;
+      margin: 20px 0;
+      padding: 15px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    section {
+      margin-top: 90px;
+
+      ul {
+        display: none;
+
+        a {
+          display: inline;
+
+          li {
+            display: inline-flex;
+            width: 48%;
+            flex-direction: column;
+            margin: 1%;
+            overflow: hidden;
+
+            .imgWraper {
+              position: relative;
+              padding-top: 56.25%;
+              overflow: hidden;
+
+              .imgCenter {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                -webkit-transform: translate(50%, 50%);
+                -ms-transform: translate(50%, 50%);
+                transform: translate(50%, 50%);
+
+                img {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  max-width: 100%;
+                  height: auto;
+                  -webkit-transform: translate(-50%, -50%);
+                  -ms-transform: translate(-50%, -50%);
+                  transform: translate(-50%, -50%);
+                }
+              }
+            }
+          }
+        }
+      }
+      .activeImage {
+        display: block;
+      }
+    }
+  }
+}
+
+.modal {
+  position: absolute;
+  top: 300px;
+  left: 30%;
+  right: 30%;
+  bottom: 280px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  .close {
+    float: right;
+    font-size: 26px;
+    font-weight: 100;
+  }
+
+  #imageForm {
+    margin-top: 40px;
+
+    .radio {
+      width: 80%;
+      display: block;
+      margin: 0 auto 20px;
+
+      label[for='category'] {
+        box-sizing: border-box;
+        display: inline-block;
+        text-align: center;
+        border: 1px solid #ccc;
+        padding: 2%;
+        width: 33.333%;
+        border-radius: 2px;
+      }
+    }
+
+    label[for='title'],
+    label[for='images'] {
+      display: block;
+      width: 80%;
+      margin: 0 auto;
+
+      &:after {
+        content: '*';
+        color: red;
+        margin-left: 2px;
+      }
+    }
+
+    input[type='text'],
+    input[type='file'] {
+      display: block;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border-radius: 0;
+      box-sizing: border-box;
+      font-size: 1rem;
+      width: 80%;
+      border: solid 1px #ccc;
+      border-radius: 2px;
+      padding: 5px 0 5px 5px;
+      margin: 0 auto 15px;
+    }
+
+    input[type='submit'] {
+      float: right;
+      background-color: #222d5a;
+      color: white;
+      margin: 30px 20px 20px 20px;
+      padding: 8px 16px;
+      text-align: center;
+      font-size: 18px;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+      margin-left: 5px;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    .wraper {
+      section {
+        ul {
+          display: none;
+          a {
+            li {
+              display: inline-flex;
+              width: 99%;
+              flex-direction: column;
+              margin: 1%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .modal {
+    top: 25%;
+    left: 10px;
+    right: 10px;
+    bottom: 20%;
+    padding: 10px;
+    max-height: 48vh;
+  }
+}
