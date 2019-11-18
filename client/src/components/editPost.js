@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { editPost } from 'actions/posts';
 import { Link, Redirect } from 'react-router-dom';
-
 import { connect } from 'react-redux';
 
-import styles from 'css/editPost.module.scss';
+import { editPost } from '../actions/posts';
+import styles from '../css/editPost.module.scss';
 
 const EditPost = ({
   match: { url },

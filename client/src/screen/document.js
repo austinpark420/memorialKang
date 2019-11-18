@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
-import { Post, NewPost } from 'components';
 
 import $ from 'jquery';
-
-import { loadPosts } from '../actions/posts';
 import dateFormat from 'dateformat';
 
-import styles from 'css/document.module.scss';
+import { Post, NewPost } from '../components';
+import { loadPosts } from '../actions/posts';
+import styles from '../css/document.module.scss';
 
 const Documentary = ({ match: { url }, posts, isAuthenticated, loadPosts }) => {
   const [currentPage, setCurrentPage] = useState(1);

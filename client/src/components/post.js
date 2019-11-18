@@ -1,13 +1,12 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loadPost, removePost } from 'actions/posts';
 
 import dateFormat from 'dateformat';
 
-import Spinner from 'components/spinner';
-
-import styles from 'css/post.module.scss';
+import Spinner from './spinner';
+import { loadPost, removePost } from '../actions/posts';
+import styles from '../css/post.module.scss';
 
 const Post = ({
   posts,

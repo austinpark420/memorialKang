@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import styles from 'css/organization.module.scss';
 import $ from 'jquery';
+import styles from '../css/organization.module.scss';
 
 const Organization = () => {
   useEffect(() => {

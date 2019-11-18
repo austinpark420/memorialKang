@@ -5,7 +5,7 @@ import {
   ADD_POST,
   EDIT_POST,
   REMOVE_POST
-} from 'actions/types';
+} from '../actions/types';
 
 const initialState = {
   posts: [],

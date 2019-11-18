@@ -7,7 +7,7 @@ import $ from 'jquery';
 
 import { loadImages, addImage } from '../actions/images';
 
-import styles from 'css/images.module.scss';
+import styles from '../css/images.module.scss';
 
 Modal.setAppElement('#root');
 

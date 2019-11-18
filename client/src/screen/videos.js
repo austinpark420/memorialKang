@@ -4,8 +4,7 @@ import Modal from 'react-modal';
 import $ from 'jquery';
 
 import { loadVideos, addVideo, removeVideo } from '../actions/videos';
-
-import styles from 'css/videos.module.scss';
+import styles from '../css/videos.module.scss';
 
 Modal.setAppElement('#root');
 

@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
-import { Post, NewPost } from 'components';
 
-import { loadPosts } from '../actions/posts';
 import dateFormat from 'dateformat';
 
-import Spinner from 'components/spinner';
-
-import styles from 'css/notice.module.scss';
+import { loadPosts } from '../actions/posts';
+import { Post, NewPost, Spinner } from '../components';
+import styles from '../css/notice.module.scss';
 
 const Notice = ({
   match: { url },

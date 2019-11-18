@@ -3,7 +3,7 @@ import {
   ADD_VIDEO,
   REMOVE_VIDEO,
   VIDEO_ERROR
-} from 'actions/types';
+} from '../actions/types';
 
 const initialState = {
   videos: [],

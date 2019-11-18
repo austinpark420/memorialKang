@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from 'css/memorialHall.module.scss';
+import styles from '../css/memorialHall.module.scss';
 
 const memorialHall = () => {
   return (

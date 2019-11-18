@@ -1,5 +1,5 @@
 import uuid from 'uuid';
-import { SET_ALERT, REMOVE_ALERT } from 'actions/types';
+import { SET_ALERT, REMOVE_ALERT } from '../actions/types';
 
 export const setAlert = (message, timeout = 3000) => dispatch => {
   const id = uuid.v4();

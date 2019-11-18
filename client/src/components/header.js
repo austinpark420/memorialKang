@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 
-import { logout } from 'actions/auth';
+import { logout } from '../actions/auth';
 
-import 'css/common.scss';
-import styles from 'css/header.module.scss';
+import '../css/common.scss';
+import styles from '../css/header.module.scss';
 
 const Header = ({ isAuthenticated, logout }) => {
   useEffect(() => {
@@ -31,7 +31,7 @@ const Header = ({ isAuthenticated, logout }) => {
     <div className={styles.wraper}>
       <div className={styles.logo}>
         <Link to='/' children='추모사업회 로고'>
-          <img src={require('images/logo.png')} alt='logo' />
+          <img src={require('../images/logo.png')} alt='logo' />
         </Link>
       </div>
       <nav className={styles.nav}>

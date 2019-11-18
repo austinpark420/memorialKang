@@ -5,9 +5,9 @@ import Modal from 'react-modal';
 import { connect } from 'react-redux';
 import Slider from 'react-slick';
 
-import { loadImage, editImage, removeImage } from 'actions/images';
+import { loadImage, editImage, removeImage } from '../actions/images';
 
-import styles from 'css/image.module.scss';
+import styles from '../css/image.module.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 

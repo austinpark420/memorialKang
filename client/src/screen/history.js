@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from 'css/history.module.scss';
+import styles from '../css/history.module.scss';
 
 const History = () => {
   return (
@@ -9,7 +9,7 @@ const History = () => {
         <div className={styles.coverImage}></div>
         <div className={styles.introduce}>
           <div className={styles.imageWraper}>
-            <img src={require('images/kang01.png')} alt='kang' />
+            <img src={require('../images/kang01.png')} alt='kang' />
           </div>
           <section>
             <h3>열사 소개</h3>

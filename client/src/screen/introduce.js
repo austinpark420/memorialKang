@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from 'css/introduce.module.scss';
+import styles from '../css/introduce.module.scss';
 
 const Introduce = () => {
   return (

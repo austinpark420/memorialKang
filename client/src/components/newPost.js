@@ -1,10 +1,9 @@
 import React from 'react';
-import { addPost } from 'actions/posts';
 import { Link, Redirect } from 'react-router-dom';
-
 import { connect } from 'react-redux';
 
-import styles from 'css/newPost.module.scss';
+import { addPost } from '../actions/posts';
+import styles from '../css/newPost.module.scss';
 
 const NewPost = ({
   match: { url },

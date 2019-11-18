@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { loadNotices, loadEmergencies } from 'actions/mainPosts';
 import dateFormat from 'dateformat';
 
 import Slider from 'react-slick';
-import styles from 'css/main.module.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+
+import { loadNotices, loadEmergencies } from '../actions/mainPosts';
+import styles from '../css/main.module.scss';
 
 const MainSlider = () => {
   const [settings] = useState({

@@ -3,9 +3,9 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { login } from 'actions/auth';
+import { login } from '../actions/auth';
 
-import styles from 'css/login.module.scss';
+import styles from '../css/login.module.scss';
 
 const Login = ({ login, auth: { isAuthenticated, errors }, setAlert }) => {
   const [formData, setFormData] = useState({

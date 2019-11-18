@@ -2,9 +2,9 @@ import {
   LOAD_IMAGES,
   LOAD_IMAGE,
   ADD_IMAGE,
+  EDIT_IMAGE,
   REMOVE_IMAGE
-} from 'actions/types';
-import { EDIT_IMAGE } from '../actions/types';
+} from '../actions/types';
 
 const initialState = {
   allImages: [],

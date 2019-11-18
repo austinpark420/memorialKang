@@ -3,7 +3,7 @@ import {
   LOAD_EMERGENCIES,
   NOTICES_ERROR,
   EMERGENCIES_ERROR
-} from 'actions/types';
+} from '../actions/types';
 
 const initialState = {
   notices: [],

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from 'css/parents.module.scss';
+import styles from '../css/parents.module.scss';
 
 const Parents = () => {
   return (

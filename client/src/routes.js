@@ -10,7 +10,7 @@ import {
   Introduce,
   MemorialHistory,
   MemorialHall
-} from 'screen';
+} from './screen';
 
 export const routes = [
   {

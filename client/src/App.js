@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom';
-import { routes } from 'routes';
 
+import { routes } from './routes';
 import store from './store';
 import { loadUser } from './actions/auth';
 
-import { Notice, Emergency, Images, Document } from 'screen';
+import { Notice, Emergency, Images, Document } from './screen';
 import {
   Header,
   Footer,
@@ -15,7 +15,7 @@ import {
   EditPost,
   Image,
   Alert
-} from 'components';
+} from './components';
 
 const App = () => {
   useEffect(() => {

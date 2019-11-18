@@ -1,5 +1,5 @@
 import React from 'react';
-import 'css/memorialHistory.scss';
+import '../css/memorialHistory.scss';
 
 const MemorialHistory = () => {
   return (

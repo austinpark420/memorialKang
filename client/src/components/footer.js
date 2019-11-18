@@ -1,12 +1,12 @@
 import React from 'react';
-import stylse from 'css/footer.module.scss';
+import stylse from '../css/footer.module.scss';
 
 const Footer = () => {
   return (
     <div className={stylse.container}>
       <div className={stylse.wraper}>
         <div className={stylse.logo}>
-          <img src={require('images/fullLogo.png')} alt='' />
+          <img src={require('../images/fullLogo.png')} alt='' />
         </div>
         <ul className={stylse.memorialAddress}>
           <li>

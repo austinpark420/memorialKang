@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from 'css/struggle.module.scss';
+import styles from '../css/struggle.module.scss';
 
 const Struggle = () => {
   return (
