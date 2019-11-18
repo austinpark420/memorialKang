@@ -1,6 +1,0 @@
-{
-  "mongoURI": "mongodb+srv://austin:04qlqjs20@memorial-test1-bbb88.mongodb.net/test?retryWrites=true&w=majority",
-  "jsonwebtokenSecret": "jsonwebtokenSecret",
-  "accessKeyId": "AKIASLLU7QUTZ4HS7I4I",
-  "secretAccessKey": "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"
-}
