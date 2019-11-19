@@ -108,7 +108,10 @@ const Main = ({
             </span>
           </div>
           <div className={styles.introduce}>
-            <img src={require('../images/planting.png')} alt='추모제 아이콘' />
+            <img
+              src={require('../images/planting.png')}
+              alt='추모제 관련 아이콘'
+            />
             <p>추모제</p>
             <span>
               '강경대 열사 추모사업회'에서는 매년 4월 강경대 열사 추모제를
@@ -122,7 +125,7 @@ const Main = ({
 
         <div className={styles.supportGroup}>
           <h2>추모사업회 후원회가 되어 주세요</h2>
-          <img src={require('../images/support.png')} alt='support' />
+          <img src={require('../images/support.png')} alt='후원회 아이콘' />
           <button className={styles.memorialApplication}>
             <a
               href='https://docs.google.com/forms/d/e/1FAIpQLSd4pGaslQL7KMlscX0ZKEHAZ7Fms16httf6urjuYJ6Lw5XZsw/viewform?usp=sf_link'

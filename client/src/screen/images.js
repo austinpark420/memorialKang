@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
 import Modal from 'react-modal';
@@ -173,49 +173,43 @@ const Images = ({
           <ul className={`imageList alive ${styles.activeImage}`}>
             {allImages &&
               aliveImages.map(image => (
-                <Fragment>
-                  <Link to={`${url}/${image._id}`}>
-                    <li>
-                      <div className={styles.imgWraper}>
-                        <div className={styles.imgCenter}>
-                          <img src={image.images[0]} alt='' />
-                        </div>
+                <Link to={`${url}/${image._id}`}>
+                  <li>
+                    <div className={styles.imgWraper}>
+                      <div className={styles.imgCenter}>
+                        <img src={image.images[0]} alt='' />
                       </div>
-                    </li>
-                  </Link>
-                </Fragment>
+                    </div>
+                  </li>
+                </Link>
               ))}
           </ul>
           <ul className={`imageList moment`}>
             {allImages &&
               momentImages.map(image => (
-                <Fragment>
-                  <Link to={`${url}/${image._id}`}>
-                    <li>
-                      <div className={styles.imgWraper}>
-                        <div className={styles.imgCenter}>
-                          <img src={image.images[0]} alt='' />
-                        </div>
+                <Link to={`${url}/${image._id}`}>
+                  <li>
+                    <div className={styles.imgWraper}>
+                      <div className={styles.imgCenter}>
+                        <img src={image.images[0]} alt='' />
                       </div>
-                    </li>
-                  </Link>
-                </Fragment>
+                    </div>
+                  </li>
+                </Link>
               ))}
           </ul>
           <ul className={`imageList activity`}>
             {allImages &&
               activityImages.map(image => (
-                <Fragment>
-                  <Link to={`${url}/${image._id}`}>
-                    <li>
-                      <div className={styles.imgWraper}>
-                        <div className={styles.imgCenter}>
-                          <img src={image.images[0]} alt='' />
-                        </div>
+                <Link to={`${url}/${image._id}`}>
+                  <li>
+                    <div className={styles.imgWraper}>
+                      <div className={styles.imgCenter}>
+                        <img src={image.images[0]} alt='' />
                       </div>
-                    </li>
-                  </Link>
-                </Fragment>
+                    </div>
+                  </li>
+                </Link>
               ))}
           </ul>
         </section>

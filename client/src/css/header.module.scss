@@ -30,6 +30,10 @@
         display: inline-block;
         line-height: 60px;
 
+        .mobileHomeLink {
+          display: none;
+        }
+
         .subTitle {
           color: #fff;
           padding: 0 20px;
@@ -176,6 +180,10 @@
         .menuList {
           width: 100%;
           line-height: 48px;
+
+          .mobileHomeLink {
+            display: block;
+          }
 
           .subTitle {
             padding: 0;

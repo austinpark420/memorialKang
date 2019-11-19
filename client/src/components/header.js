@@ -23,6 +23,10 @@ const Header = ({ isAuthenticated, logout }) => {
     $('input[type=checkbox').prop('checked', false);
   });
 
+  $(`.${styles.mobileHomeLink}`).on('click', () => {
+    $('input[type=checkbox').prop('checked', false);
+  });
+
   const handleClickLogout = () => {
     logout();
   };
@@ -41,6 +45,9 @@ const Header = ({ isAuthenticated, logout }) => {
         <span></span>
         <ul className={styles.menu}>
           <li className={styles.menuList}>
+            <p className={styles.mobileHomeLink}>
+              <Link to='/' children='메인' />
+            </p>
             <p className={styles.subTitle}>강경대열사</p>
             <ul className={styles.subMenu}>
               <li>
