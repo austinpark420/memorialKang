@@ -17,6 +17,7 @@ app.use('/api/emergencies', require('./router/api/emergency'));
 app.use('/api/documents', require('./router/api/document'));
 app.use('/api/videos', require('./router/api/video'));
 app.use('/api/images', require('./router/api/image'));
+app.use('/api/awards', require('./router/api/award'));
 
 //set static folder
 app.use(express.static('client/build'));

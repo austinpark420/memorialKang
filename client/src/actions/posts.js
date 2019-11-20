@@ -7,7 +7,6 @@ import {
   POST_ERROR,
   ADD_POST,
   EDIT_POST,
-  REDIRECT_POST,
   REMOVE_POST
 } from './types';
 
@@ -97,13 +96,6 @@ export const editPost = (path, formData) => async dispatch => {
       payload: errors
     });
   }
-};
-
-// redirect post
-export const redirectToPost = () => dispatch => {
-  dispatch({
-    type: REDIRECT_POST
-  });
 };
 
 // delete post

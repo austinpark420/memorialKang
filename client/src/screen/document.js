@@ -1,21 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
+import Modal from 'react-modal';
 
 import $ from 'jquery';
 import dateFormat from 'dateformat';
 
 import { Post, NewPost } from '../components';
 import { loadPosts } from '../actions/posts';
+import {
+  loadAwards,
+  addAward,
+  removeAward,
+  editAward
+} from '../actions/awards';
 import styles from '../css/document.module.scss';
 
-const Documentary = ({ match: { url }, posts, isAuthenticated, loadPosts }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(5);
-
+const Documentary = ({
+  match: { url },
+  posts,
+  isAuthenticated,
+  loadPosts,
+  awards,
+  loadAwards,
+  addAward,
+  editAward,
+  removeAward
+}) => {
   useEffect(() => {
     loadPosts('documents');
-
+    loadAwards('awards');
     // Tab Toggle
     $(`.${styles.tab}`).on('click', function() {
       $(`.${styles.tab}`).removeClass(`${styles.active}`);
@@ -25,9 +39,63 @@ const Documentary = ({ match: { url }, posts, isAuthenticated, loadPosts }) => {
       var activeTabList = $(this).attr('rel');
       $('.' + activeTabList).addClass(`${styles.activeDocument}`);
     });
-  }, [loadPosts]);
+  }, [loadPosts, loadAwards]);
+
+  // react-modal
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  const [editModalIsOpen, setEditModalIsOpen] = useState(false);
+
+  // react-modal form
+  const [formData, setFormData] = useState({
+    year: '',
+    scholarshipFirst: '',
+    scholarshipFirstPrice: '',
+    scholarshipSecond: '',
+    scholarshipSecondPrice: '',
+    scholarshipThird: '',
+    scholarshipThirdPrice: '',
+    literaryFirst: '',
+    literaryFirstAward: '',
+    literarySecond: '',
+    literarySecondAward: '',
+    literaryThird: '',
+    literaryThirdAward: ''
+  });
+
+  const handleClickRemove = id => {
+    if (window.confirm('선택한 영상을 삭제하시겠습니까?')) {
+      removeAward(id);
+    } else {
+      return;
+    }
+  };
+
+  const handleChange = event => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value
+    });
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    addAward(formData);
+    closeModal();
+  };
 
   // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
+
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
@@ -58,32 +126,187 @@ const Documentary = ({ match: { url }, posts, isAuthenticated, loadPosts }) => {
             <h2>문학상</h2>
           </li>
         </ul>
+
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          className={styles.modal}
+        >
+          <button className={styles.close} onClick={closeModal}>
+            x
+          </button>
+          <form id={styles.awardForm} onSubmit={handleSubmit}>
+            <label htmlFor='year'>연도</label>
+            <input
+              type='text'
+              className={styles.year}
+              name='year'
+              id='year'
+              onChange={handleChange}
+            />
+            <label htmlFor='scholarshipFirst'>1등 장학생</label>
+            <input
+              type='text'
+              className={styles.scholarship}
+              name='scholarshipFirst'
+              id='scholarshipFirst'
+              onChange={handleChange}
+            />
+            <label htmlFor='scholarshipFirstPrice'>1등 장학생 장학금</label>
+            <input
+              type='text'
+              className={styles.scholarshipPrice}
+              name='scholarshipFirstPrice'
+              id='scholarshipFirstPrice'
+              onChange={handleChange}
+            />
+            <label htmlFor='scholarshipSecond'>2등 장학생</label>
+            <input
+              type='text'
+              className={styles.scholarship}
+              name='scholarshipSecond'
+              id='scholarshipSecond'
+              onChange={handleChange}
+            />
+            <label htmlFor='scholarshipSecondPrice'>2등 장학생 장학금</label>
+            <input
+              type='text'
+              className={styles.scholarshipPrice}
+              name='scholarshipSecondPrice'
+              id='scholarshipSecondPrice'
+              onChange={handleChange}
+            />
+            <label htmlFor='scholarshipThird'>3등 장학생</label>
+            <input
+              type='text'
+              className={styles.scholarship}
+              name='scholarshipThird'
+              id='scholarshipThird'
+              onChange={handleChange}
+            />
+            <label htmlFor='scholarshipThirdPrice'>3등 장학생 장학금</label>
+            <input
+              type='text'
+              className={styles.scholarshipPrice}
+              name='scholarshipThirdPrice'
+              id='scholarshipThirdPrice'
+              onChange={handleChange}
+            />
+            <label htmlFor='literaryFirst'>1등 문학상</label>
+            <input
+              type='text'
+              className={styles.literary}
+              name='literaryFirst'
+              id='literaryFirst'
+              onChange={handleChange}
+            />
+            <label htmlFor='literaryFirstAward'>1등 문학상 작품 URL</label>
+            <input
+              type='text'
+              className={styles.literaryAward}
+              name='literaryFirstAward'
+              id='literaryFirstAward'
+              onChange={handleChange}
+            />
+            <label htmlFor='literarySecond'>2등 문학상</label>
+            <input
+              type='text'
+              className={styles.literary}
+              name='literarySecond'
+              id='literarySecond'
+            />
+            <label htmlFor='literarySecondAward'>2등 문학상 작품 URL</label>
+            <input
+              type='text'
+              className={styles.literaryAward}
+              name='literarySecondAward'
+              id='literarySecondAward'
+              onChange={handleChange}
+            />
+            <label htmlFor='literaryThird'>3등 문학상</label>
+            <input
+              type='text'
+              className={styles.literary}
+              name='literaryThird'
+              id='literaryThird'
+              onChange={handleChange}
+            />
+            <label htmlFor='literaryThirdAward'>3등 문학상 작품 URL</label>
+            <input
+              type='text'
+              className={styles.literaryAward}
+              name='literaryThirdAward'
+              id='literaryThirdAward'
+              onChange={handleChange}
+            />
+            <input type='submit' value='등록' />
+          </form>
+          <button className={styles.exit}></button>
+        </Modal>
+
         <section>
           <div className={`documentList literary ${styles.activeDocument}`}>
-            <strong>
-              "새내기 대학생, 경찰의 쇠파이프에 맞고 군화발에 밟혀 숨지다" 남의
-              나라 이야기일까요? 소설 이야기일까요?
-            </strong>
-            남의 나라 이야기도, 소설에 나오는 이야기도 아닙니다. 우리나라에서
-            실제로 일어났던 일입니다. <br />
-            1991년 4월 26일에 말입니다. 도저히 상상할 수 없는 이 이야기가
-            사실이라니 커다란 몽둥이로 머리를 맞은 듯 광하는 충격이 옵니다.
-            <br /> 온 몸의 피가 거꾸로 솟는 이런 끔찍한 일이 또 다시 이땅에서
-            일어날까요? "예, 다시 일어납니다. 정신차리지 않으면" "아니오, 다시는
-            일어나지 않습니다. <br /> 정신을 차리고 있으면" 어두운 시대에 피우지
-            못한 열아홉 청춘의 꽃으로 쓰러져 세상을 밝히는 불꽃으로 다시 피어난
-            조국의 아들, 우리는 그를 강경대열사라고 부릅니다. <br /> 억압 앞에
-            굴복하는 것은 억압 그 자체보다도 더 부도덕하며, 부정(不正)을 보고
-            눈감는 것은 그 부정보다 더 부도덕합니다. <br /> 억압 앞에 굴복하지
-            않았던, 부정을 보고 눈감지 않았던 강경대열사의 숨결을 이 곳에
-            간직합니다. <br /> 세상이 어둡다고 느껴지는 날, 누구의 말이 옳은지
-            혼란스러운 날, 어디로 가야할지 앞이 보이지 않는 날, 이곳으로
-            오십시오. <br />
-            강경대열사가 남기고 간 새 날을 여는 불꽃 새 길을 여는 불꽃 한 송이
-            받아 가십시오.
+            {isAuthenticated && (
+              <button className={styles.add} onClick={openModal}>
+                장학생 업로드
+              </button>
+            )}
+            <ul className={styles.scholarship}>
+              {awards &&
+                awards.map(award => (
+                  <li key={award._id}>
+                    {isAuthenticated && (
+                      <button
+                        className={styles.removeAward}
+                        children='X'
+                        onClick={() => handleClickRemove(award._id)}
+                      />
+                    )}
+                    <b>{award.year}{' '}년</b>
+                    <div>
+                      <p>작학생</p>
+                      <span>
+                        {award.scholarshipFirst} [{award.scholarshipFirstPrice}
+                        만원]
+                      </span>
+                      {award.scholarshipSecond && (
+                        <span>
+                          {award.scholarshipSecond} [
+                          {award.scholarshipSecondPrice} 만원]
+                        </span>
+                      )}
+                      {award.scholarshipThird && (
+                        <span>
+                          {award.scholarshipThird}[{award.scholarshipThirdPrice}
+                          만원]
+                        </span>
+                      )}
+                    </div>
+                    <div>
+                      <p>문학상</p>
+                      <span>
+                        1등: {award.literaryFirst}[
+                        <Link to={award.literaryFirstAward}>작품보기</Link>]
+                      </span>
+                      {award.literarySecond && (
+                        <span>
+                          2등: {award.literarySecond}[
+                          <Link to={award.literarySecondAward}>작품보기</Link>]
+                        </span>
+                      )}
+                      {award.literaryThird && (
+                        <span>
+                          3등: {award.literaryThird}[
+                          <Link to={award.literaryThirdAward}>작품보기</Link>]
+                        </span>
+                      )}
+                    </div>
+                  </li>
+                ))}
+            </ul>
           </div>
           <div className={`documentList scholarship ${styles.group}`}>
-            <div className={styles.subtitle}>
+            <div className={styles.postTitle}>
               <span>번호</span>
               <span>분류</span>
               <span>제목</span>
@@ -139,10 +362,11 @@ const Documentary = ({ match: { url }, posts, isAuthenticated, loadPosts }) => {
 
 const mapStateToProps = state => ({
   posts: state.posts.posts,
+  awards: state.awards.awards,
   isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(
   mapStateToProps,
-  { loadPosts }
+  { loadPosts, loadAwards, addAward, removeAward, editAward }
 )(Documentary);

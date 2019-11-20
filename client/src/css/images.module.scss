@@ -50,10 +50,10 @@
       font-size: 14px;
     }
 
-    section {
+    > section {
       margin-top: 90px;
 
-      ul {
+      > ul {
         display: none;
 
         a {
@@ -96,6 +96,36 @@
           }
         }
       }
+
+      .activity {
+        li {
+          position: relative;
+          display: inline-block;
+          padding: 15px 15px 25px;
+          border: 1px solid transparent;
+          border-bottom: 0;
+          cursor: pointer;
+          font-weight: 600;
+        }
+
+        .activityTab {
+          position: relative;
+          display: inline-block;
+          padding: 15px 15px 25px;
+          border: 1px solid transparent;
+          border-bottom: 0;
+          cursor: pointer;
+          font-weight: 600;
+        }
+
+        .activityActive {
+          border-color: #ccc;
+          border-bottom: 1px solid #fff;
+          margin-bottom: -1px;
+          background-color: #fff;
+        }
+      }
+
       .activeImage {
         display: block;
       }
@@ -190,13 +220,9 @@
     .wraper {
       section {
         ul {
-          display: none;
           a {
             li {
-              display: inline-flex;
               width: 99%;
-              flex-direction: column;
-              margin: 1%;
             }
           }
         }

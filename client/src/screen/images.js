@@ -55,18 +55,6 @@ const Images = ({
   };
 
   // react-modal form
-  const [formData, setFormData] = useState({
-    title: '',
-    category: '',
-    images: []
-  });
-
-  const handleChange = event => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value
-    });
-  };
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -119,32 +107,15 @@ const Images = ({
             <div className={styles.radio}>
               <label htmlFor='category'>
                 <span>강경대열사</span>
-                <input
-                  name='category'
-                  value='alive'
-                  onChange={handleChange}
-                  type='radio'
-                  required
-                />
+                <input name='category' value='alive' type='radio' required />
               </label>
               <label htmlFor='category'>
                 <span>91년도 5월투쟁</span>
-                <input
-                  name='category'
-                  value='moment'
-                  onChange={handleChange}
-                  type='radio'
-                  required
-                />
+                <input name='category' value='moment' type='radio' required />
               </label>
               <label htmlFor='category'>
                 <span>추모사업회 활동</span>
-                <input
-                  name='category'
-                  value='activity'
-                  onChange={handleChange}
-                  type='radio'
-                />
+                <input name='category' value='activity' type='radio' />
               </label>
             </div>
             <label htmlFor='title'>제목</label>
@@ -153,7 +124,6 @@ const Images = ({
               className={styles.title}
               name='title'
               id='title'
-              onChange={handleChange}
             />
 
             <label htmlFor='images'>이미지</label>
@@ -162,7 +132,6 @@ const Images = ({
               className={styles.images}
               name='images'
               id='images'
-              onChange={handleChange}
               multiple
             />
             <input type='submit' value='등록' />

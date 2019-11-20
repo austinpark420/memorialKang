@@ -13,7 +13,7 @@
       width: 80%;
       max-width: 1080px;
       min-width: 768px;
-      margin: 30px auto;
+      margin: 20px auto 0;
     }
 
     .heading {
@@ -46,8 +46,52 @@
       > div {
         display: none;
         min-height: 40vh;
+        overflow: hidden;
+        margin: 10px 0;
 
-        .subtitle {
+        .add {
+          float: right;
+          background-color: #222d5a;
+          color: white;
+          padding: 15px;
+          font-size: 14px;
+        }
+
+        .scholarship {
+          li {
+            .removeAward {
+              float: right;
+              cursor: pointer;
+              font-size: 16px;
+              font-weight: 100;
+              margin-right: 5px;
+            }
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #eee;
+            > b {
+              display: block;
+              padding: 5px 0;
+            }
+            div {
+              width: 50%;
+              display: inline-block;
+              span {
+                padding-right: 5px;
+
+                a {
+                  display: inline-block;
+                }
+              }
+            }
+
+            &:first-child {
+              margin-top: 50px;
+            }
+          }
+        }
+
+        .postTitle {
           display: flex;
           border-top: solid 1px #181818;
           border-bottom: solid 1px #181818;
@@ -130,7 +174,7 @@
             background-color: #222d5a;
           }
         }
-        .subtitle,
+        .postTitle,
         .postList {
           font-size: 0.8rem;
         }
@@ -140,7 +184,7 @@
             background-color: #222d5a;
             color: white;
             margin: 20px 0;
-            padding: 15px 32px;
+            padding: 10px 20px;
             text-align: center;
             font-size: 18px;
           }
@@ -149,6 +193,77 @@
       .activeDocument {
         display: block;
       }
+    }
+  }
+}
+
+.modal {
+  position: absolute;
+  top: 300px;
+  left: 28%;
+  right: 28%;
+  bottom: 40%;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow-y: scroll;
+  .close {
+    float: right;
+    font-size: 26px;
+    font-weight: 100;
+  }
+
+  #awardForm {
+    margin-top: 40px;
+
+    label {
+      display: block;
+      width: 80%;
+      margin: 5px auto 0;
+    }
+
+    label[for='year'],
+    label[for='scholarshipFirst'],
+    label[for='scholarshipFirstPrice'],
+    label[for='literaryFirst'],
+    label[for='literaryFirstAward'] {
+      &:after {
+        content: '*';
+        color: red;
+        margin-left: 2px;
+      }
+    }
+
+    input[type='text'] {
+      display: block;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border-radius: 0;
+      box-sizing: border-box;
+      font-size: 1rem;
+      width: 80%;
+      border: solid 1px #ccc;
+      border-radius: 2px;
+      padding: 5px 0 5px 5px;
+      margin: 0 auto 10px;
+    }
+
+    input[type='submit'] {
+      float: right;
+      background-color: #222d5a;
+      color: white;
+      margin: 20px;
+      padding: 8px 16px;
+      text-align: center;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+      margin-left: 5px;
     }
   }
 }
@@ -177,5 +292,13 @@
         }
       }
     }
+  }
+  .modal {
+    top: 25%;
+    left: 10px;
+    right: 10px;
+    bottom: 30%;
+    padding: 10px;
+    max-height: 36vh;
   }
 }

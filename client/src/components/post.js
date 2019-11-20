@@ -33,6 +33,8 @@ const Post = ({
     }
   };
 
+  console.log(posts.post);
+
   if (redirectToPosts) {
     return <Redirect to={`/${path}`}></Redirect>;
   }
