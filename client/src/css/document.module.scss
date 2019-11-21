@@ -174,10 +174,6 @@
             background-color: #222d5a;
           }
         }
-        .postTitle,
-        .postList {
-          font-size: 0.8rem;
-        }
 
         .newPost {
           a {
@@ -281,13 +277,17 @@
         max-width: none;
         min-width: 0;
       }
-
       section {
         > div {
           .newPost {
             a {
               padding: 10px 20px;
             }
+          }
+
+          .postTitle,
+          .postList {
+            font-size: 0.8rem;
           }
         }
       }

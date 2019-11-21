@@ -37,10 +37,3 @@ export const LOAD_NOTICES = 'LOAD_NOTICES';
 export const LOAD_EMERGENCIES = 'LOAD_EMERGENCIES';
 export const NOTICES_ERROR = 'NOTICES_ERROR';
 export const EMERGENCIES_ERROR = 'EMERGENCIES_ERROR';
-
-// award
-export const LOAD_AWARDS = 'LOAD_AWARDS';
-export const ADD_AWARD = 'ADD_AWARD';
-export const EDIT_AWARD = 'EDIT_AWARD';
-export const REMOVE_AWARD = 'REMOVE_AWARD';
-export const AWARD_ERROR = 'AWARD_ERROR';
