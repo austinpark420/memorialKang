@@ -45,7 +45,6 @@ const Emergency = ({
         <div className={styles.group}>
           <div className={styles.subtitle}>
             <span>번호</span>
-            <span>분류</span>
             <span>제목</span>
             <span>글쓴이</span>
             <span>등록일</span>
@@ -57,7 +56,6 @@ const Emergency = ({
                   <li key={index}>
                     <div>
                       <span>{post.number}</span>
-                      <span>{post.category}</span>
                       <span>{post.title}</span>
                       <span>{post.writer}</span>
                       <span>{dateFormat(post.date, 'yyyy-mm-dd')}</span>
@@ -102,7 +100,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(
-  mapStateToProps,
-  { loadPosts }
-)(Emergency);
+export default connect(mapStateToProps, { loadPosts })(Emergency);

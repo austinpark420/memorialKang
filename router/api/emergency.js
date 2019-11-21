@@ -69,9 +69,6 @@ router.post(
     [
       check('title', '제목을 입력해 주세요')
         .not()
-        .isEmpty(),
-      check('category', '카테고리를 선택해 주세요')
-        .not()
         .isEmpty()
     ]
   ],
@@ -85,7 +82,7 @@ router.post(
     try {
       const user = await User.findById(req.user.id).select('name');
 
-      const { title, category, content } = req.body;
+      const { title, content } = req.body;
 
       let fileArray = req.files;
 
@@ -115,7 +112,6 @@ router.post(
         title: title,
         number: emergencyNumber,
         writer: user.name,
-        category: category,
         content: content,
         files: {
           locations,
@@ -145,9 +141,6 @@ router.put(
     auth,
     [
       check('title', '제목을 입력해 주세요')
-        .not()
-        .isEmpty(),
-      check('category', '카테고리를 선택해 주세요')
         .not()
         .isEmpty()
     ]
@@ -208,10 +201,9 @@ router.put(
           locations.push(fileLocation);
         }
 
-        const { title, category, content } = req.body;
+        const { title, content } = req.body;
 
         emergency.title = title;
-        emergency.category = category;
         emergency.content = content;
         emergency.files = {
           locations,
@@ -221,10 +213,9 @@ router.put(
 
         emergency = await emergency.save();
       } else {
-        const { title, category, content } = req.body;
+        const { title, content } = req.body;
 
         emergency.title = title;
-        emergency.category = category;
         emergency.content = content;
 
         emergency = await emergency.save();

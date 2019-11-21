@@ -1,15 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { addPost } from '../actions/posts';
 import styles from '../css/newPost.module.scss';
 
-const NewPost = ({
-  match: { url },
-  addPost,
-  posts: { post, error, loading }
-}) => {
+const NewPost = ({ match: { url }, addPost, posts: { post } }) => {
   const path = url.split('/')[1];
 
   const handleSubmit = event => {
@@ -35,13 +31,17 @@ const NewPost = ({
         <label htmlFor='title'>제목</label>
         <input id='title' name='title' type='text' required />
 
-        <label htmlFor='category'>카테고리</label>
-        <select id='category' name='category' required>
-          <option value=''>카테고리 설정</option>
-          <option value='행사일정'>행사일정</option>
-          <option value='예결산보고'>예결산보고</option>
-          <option value='활동보고'>활동보고</option>
-        </select>
+        {path === 'notices' && (
+          <Fragment>
+            <label htmlFor='category'>카테고리</label>
+            <select id='category' name='category' required>
+              <option value=''>카테고리 설정</option>
+              <option value='행사일정'>행사일정</option>
+              <option value='예결산보고'>예결산보고</option>
+              <option value='활동보고'>활동보고</option>
+            </select>
+          </Fragment>
+        )}
 
         <label htmlFor='files'>파일</label>
         <input type='file' name='files' id='files' multiple />
@@ -58,7 +58,4 @@ const NewPost = ({
 
 let mapStateToProps = state => ({ posts: state.posts });
 
-export default connect(
-  mapStateToProps,
-  { addPost }
-)(NewPost);
+export default connect(mapStateToProps, { addPost })(NewPost);
