@@ -26,9 +26,9 @@ const NoticeSchema = new mongoose.Schema({
   },
   files: {
     type: {
-      location: [{ type: String }],
+      locations: [{ type: String }],
       keys: [{ type: String }],
-      originalname: [{ type: String }]
+      originalnames: [{ type: String }]
     }
   },
   date: {

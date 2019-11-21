@@ -167,7 +167,7 @@ router.put(
       let fileArray = req.files;
 
       if (fileArray.length && fileArray !== null) {
-        if (notice.files.keys.length && notice.keys.files.length !== null) {
+        if (notice.files.keys.length && notice.files.keys.length !== null) {
           let deleteNoticeKey = [];
 
           for (let i = 0; i < notice.files.keys.length; i++) {

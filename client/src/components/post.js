@@ -54,9 +54,19 @@ const Post = ({
               </span>
               <span>
                 <span className={styles.title}>파일</span>
-                {/* {post.files.map(file => (
-                  <a href={file.location}>{file.originalname}</a>
-                ))} */}
+                {posts.post.files &&
+                  posts.post.files.locations.map(function(location) {
+                    return (
+                      <p>
+                        <a href={location}>
+                          {location
+                            .split('/images/')
+                            .splice(1, 1)
+                            .toString('utf-8')}
+                        </a>
+                      </p>
+                    );
+                  })}
               </span>
               <span>
                 <span className={styles.title}>작성자</span>

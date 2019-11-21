@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 import Modal from 'react-modal';
@@ -8,12 +8,7 @@ import dateFormat from 'dateformat';
 
 import { Post, NewPost } from '../components';
 import { loadPosts } from '../actions/posts';
-import {
-  loadAwards,
-  addAward,
-  removeAward,
-  editAward
-} from '../actions/awards';
+import { loadAwards, addAward, removeAward } from '../actions/awards';
 import styles from '../css/document.module.scss';
 
 const Documentary = ({
@@ -24,7 +19,6 @@ const Documentary = ({
   awards,
   loadAwards,
   addAward,
-  editAward,
   removeAward
 }) => {
   useEffect(() => {
@@ -51,8 +45,6 @@ const Documentary = ({
   const closeModal = () => {
     setModalIsOpen(false);
   };
-
-  const [editModalIsOpen, setEditModalIsOpen] = useState(false);
 
   // react-modal form
   const [formData, setFormData] = useState({
@@ -262,7 +254,7 @@ const Documentary = ({
                         onClick={() => handleClickRemove(award._id)}
                       />
                     )}
-                    <b>{award.year}{' '}년</b>
+                    <b>{award.year} 년</b>
                     <div>
                       <p>작학생</p>
                       <span>
@@ -368,5 +360,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loadPosts, loadAwards, addAward, removeAward, editAward }
+  { loadPosts, loadAwards, addAward, removeAward }
 )(Documentary);

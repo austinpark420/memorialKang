@@ -169,7 +169,7 @@ router.put(
       if (fileArray.length && fileArray !== null) {
         if (
           emergency.files.keys.length &&
-          emergency.keys.files.length !== null
+          emergency.files.keys.length !== null
         ) {
           let deleteEmergencyKey = [];
 

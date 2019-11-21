@@ -46,7 +46,7 @@ const Header = ({ isAuthenticated, logout }) => {
         <ul className={styles.menu}>
           <li className={styles.menuList}>
             <p className={styles.mobileHomeLink}>
-              <Link to='/' children='메인' />
+              <Link to='/'>메인</Link>
             </p>
             <p className={styles.subTitle}>강경대열사</p>
             <ul className={styles.subMenu}>
