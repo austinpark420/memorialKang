@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const DocumentSchema = new mongoose.Schema({
+const ScholarshipSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
@@ -14,10 +14,6 @@ const DocumentSchema = new mongoose.Schema({
     required: true
   },
   writer: {
-    type: String,
-    required: true
-  },
-  category: {
     type: String,
     required: true
   },
@@ -38,4 +34,4 @@ const DocumentSchema = new mongoose.Schema({
   }
 });
 
-module.exports = Document = mongoose.model('document', DocumentSchema);
+module.exports = Scholarship = mongoose.model('scholarship', ScholarshipSchema);

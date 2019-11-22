@@ -6,43 +6,43 @@ const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
 const uploadFile = require('../../middleware/uploadFile');
 const User = require('../../models/User');
-const Document = require('../../models/Document');
+const Award = require('../../models/Award');
 
-// @route   GET api/documents
-// @desc    Get document list
+// @route   GET api/awards
+// @desc    Get award list
 // @access  Public
 
 router.get('/', async (req, res) => {
   try {
-    const documents = await Document.find().sort({ date: -1 });
-    res.json(documents);
+    const awards = await Award.find().sort({ date: -1 });
+    res.json(awards);
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Sever Error');
   }
 });
 
-// @route   GET api/documents/:id
-// @desc    Get document by ID
+// @route   GET api/awards/:id
+// @desc    Get award by ID
 // @access  Pubulic
 
 router.get('/:id', async (req, res) => {
   try {
-    const document = await Document.findById(req.params.id);
+    const award = await Award.findById(req.params.id);
 
-    res.json(document);
+    res.json(award);
   } catch (error) {
     console.error(error.message);
 
     if (error.kind === 'ObjectId') {
-      return res.status(404).json({ msg: 'Document not Found' });
+      return res.status(404).json({ msg: 'Award not Found' });
     }
     res.status(500).send('Server Error');
   }
 });
 
-// @route   Post api/documents
-// @desc    Add document
+// @route   Post api/awards
+// @desc    Add award
 // @access  Private
 
 router.post(
@@ -54,7 +54,7 @@ router.post(
       check('title', '제목을 입력해 주세요')
         .not()
         .isEmpty(),
-      check('category', '카테고리를 선택해 주세요')
+      check('winner', '수상자를 입력해 주세요')
         .not()
         .isEmpty()
     ]
@@ -69,7 +69,7 @@ router.post(
     try {
       const user = await User.findById(req.user.id).select('name');
 
-      const { title, category, content } = req.body;
+      const { title, winner, content } = req.body;
 
       let fileArray = req.files;
 
@@ -92,14 +92,14 @@ router.post(
       }
 
       // post number
-      const documents = await Document.find();
-      const documentNumber = documents.length ? documents.length + 1 : 1;
+      const awards = await Award.find();
+      const awardNumber = awards.length ? awards.length + 1 : 1;
 
-      const newDocument = new Document({
+      const newAward = new Award({
         title: title,
-        number: documentNumber,
+        winner: winner,
+        number: awardNumber,
         writer: user.name,
-        category: category,
         content: content,
         files: {
           locations,
@@ -108,18 +108,18 @@ router.post(
         }
       });
 
-      const document = await newDocument.save();
+      const award = await newAward.save();
 
-      res.json(document);
+      res.json(award);
     } catch (error) {
-      console.log('**Document errors**', error.message);
+      console.log('**Award errors**', error.message);
       res.status(500).send('서버 에러');
     }
   }
 );
 
-// @route   Put api/documents
-// @desc    Edit document
+// @route   Put api/awards
+// @desc    Edit award
 // @access  Private
 
 router.put(
@@ -131,7 +131,7 @@ router.put(
       check('title', '제목을 입력해 주세요')
         .not()
         .isEmpty(),
-      check('category', '카테고리를 선택해 주세요')
+      check('winner', '수상자를 입력해 주세요')
         .not()
         .isEmpty()
     ]
@@ -142,8 +142,8 @@ router.put(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    let document = await Document.findById(req.body._id);
-    if (!document) {
+    let award = await Award.findById(req.body._id);
+    if (!award) {
       return res.status(404).json({ msg: '게시물이 존재하지 않습니다' });
     }
 
@@ -151,17 +151,17 @@ router.put(
       let fileArray = req.files;
 
       if (fileArray.length && fileArray !== null) {
-        if (document.files.keys.length && document.files.keys.length !== null) {
-          let deleteDocumentKey = [];
+        if (award.files.keys.length && award.files.keys.length !== null) {
+          let deleteAwardKey = [];
 
-          for (let i = 0; i < document.files.keys.length; i++) {
-            deleteDocumentKey.push({ Key: document.files.keys[i] });
+          for (let i = 0; i < award.files.keys.length; i++) {
+            deleteAwardKey.push({ Key: award.files.keys[i] });
           }
 
           let params = {
             Bucket: 'memorialkang',
             Delete: {
-              Objects: deleteDocumentKey
+              Objects: deleteAwardKey
             }
           };
 
@@ -189,57 +189,57 @@ router.put(
           locations.push(fileLocation);
         }
 
-        const { title, category, content } = req.body;
+        const { title, winner, content } = req.body;
 
-        document.title = title;
-        document.category = category;
-        document.content = content;
-        document.files = {
+        award.title = title;
+        award.winner = winner;
+        award.content = content;
+        award.files = {
           locations,
           keys,
           originalnames
         };
 
-        document = await document.save();
+        award = await award.save();
       } else {
-        const { title, category, content } = req.body;
+        const { title, winner, content } = req.body;
 
-        document.title = title;
-        document.category = category;
-        document.content = content;
+        award.title = title;
+        award.winner = winner;
+        award.content = content;
 
-        document = await document.save();
+        award = await award.save();
       }
-      res.json(document);
+      res.json(award);
     } catch (error) {
-      console.log('**Document errors**', error.message);
+      console.log('**Award errors**', error.message);
       res.status(500).send('서버 에러');
     }
   }
 );
 
-// @route    DELETE api/documents/:id
+// @route    DELETE api/awards/:id
 // @desc     Delete a post
 // @access   Private
 router.delete('/:id', auth, async (req, res) => {
   try {
-    const document = await Document.findById(req.params.id);
+    const award = await Award.findById(req.params.id);
 
-    if (document.files.keys.length && document.files.keys.length !== null) {
-      let deleteDocumentKey = [];
+    if (award.files.keys.length && award.files.keys.length !== null) {
+      let deleteAwardKey = [];
 
-      for (let i = 0; i < document.files.keys.length; i++) {
-        deleteDocumentKey.push({ Key: document.files.keys[i] });
+      for (let i = 0; i < award.files.keys.length; i++) {
+        deleteAwardKey.push({ Key: award.files.keys[i] });
       }
 
-      if (!document) {
+      if (!award) {
         return res.status(404).json({ msg: '게시물이 존재하지 않습니다.' });
       }
 
       let params = {
         Bucket: 'memorialkang',
         Delete: {
-          Objects: deleteDocumentKey
+          Objects: deleteAwardKey
         }
       };
 
@@ -249,7 +249,7 @@ router.delete('/:id', auth, async (req, res) => {
       });
     }
 
-    await document.remove();
+    await award.remove();
 
     res.json({ msg: 'Post removed' });
   } catch (err) {

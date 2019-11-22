@@ -6,7 +6,7 @@ import { routes } from './routes';
 import store from './store';
 import { loadUser } from './actions/auth';
 
-import { Notice, Emergency, Images, Document } from './screen';
+import { Notice, Emergency, Images, Award, Scholarship } from './screen';
 import {
   Header,
   Footer,
@@ -47,10 +47,16 @@ const App = () => {
         <Route path='/emergencies' component={Emergency} />
       </Switch>
       <Switch>
-        <Route path='/documents/reWrite' component={EditPost} />
-        <Route path='/documents/write' component={NewPost} />
-        <Route path='/documents/:id' component={Post} />
-        <Route path='/documents' component={Document} />
+        <Route path='/awards/reWrite' component={EditPost} />
+        <Route path='/awards/write' component={NewPost} />
+        <Route path='/awards/:id' component={Post} />
+        <Route path='/awards' component={Award} />
+      </Switch>
+      <Switch>
+        <Route path='/scholarships/reWrite' component={EditPost} />
+        <Route path='/scholarships/write' component={NewPost} />
+        <Route path='/scholarships/:id' component={Post} />
+        <Route path='/scholarships' component={Scholarship} />
       </Switch>
       <Switch>
         <Route path='/images/:id' component={Image} />

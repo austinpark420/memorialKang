@@ -6,7 +6,11 @@ import { addPost } from '../actions/posts';
 import styles from '../css/newPost.module.scss';
 
 const NewPost = ({ match: { url }, addPost, posts: { post } }) => {
-  const path = url.split('/')[1];
+  let path = url.split('/')[1];
+
+  if (path === 'documents') {
+    path = url.split('/')[2];
+  }
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -40,6 +44,13 @@ const NewPost = ({ match: { url }, addPost, posts: { post } }) => {
               <option value='예결산보고'>예결산보고</option>
               <option value='활동보고'>활동보고</option>
             </select>
+          </Fragment>
+        )}
+
+        {path === 'awards' && (
+          <Fragment>
+            <label htmlFor='winner'>수상자</label>
+            <input id='winnter' name='winner' type='text' required />
           </Fragment>
         )}
 

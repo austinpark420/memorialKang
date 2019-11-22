@@ -66,10 +66,17 @@ const Post = ({
                     );
                   })}
               </span>
-              <span>
-                <span className={styles.title}>작성자</span>
-                {posts.post.writer}
-              </span>
+              {path === 'awards' ? (
+                <span>
+                  <span className={styles.title}>수상자</span>
+                  {posts.post.winner}
+                </span>
+              ) : (
+                <span>
+                  <span className={styles.title}>작성자</span>
+                  {posts.post.writer}
+                </span>
+              )}
               <span>
                 <span className={styles.title}>날짜</span>
                 {dateFormat(posts.post.date, 'yyyy-mm-dd')}
@@ -101,7 +108,4 @@ let mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(
-  mapStateToProps,
-  { loadPost, removePost }
-)(Post);
+export default connect(mapStateToProps, { loadPost, removePost })(Post);

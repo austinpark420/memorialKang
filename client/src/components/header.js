@@ -102,7 +102,10 @@ const Header = ({ isAuthenticated, logout }) => {
                 <Link to='/videos' children='영상자료' />
               </li>
               <li>
-                <Link to='/documents' children='문서자료' />
+                <Link to='/awards' children='문학상' />
+              </li>
+              <li>
+                <Link to='/scholarships' children='장학생' />
               </li>
             </ul>
           </li>
@@ -121,7 +124,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(
-  mapStateToProps,
-  { logout }
-)(Header);
+export default connect(mapStateToProps, { logout })(Header);
