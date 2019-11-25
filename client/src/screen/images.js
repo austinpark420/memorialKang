@@ -9,8 +9,6 @@ import { loadImages, addImage } from '../actions/images';
 
 import styles from '../css/images.module.scss';
 
-Modal.setAppElement('#root');
-
 const Images = ({
   match: { url },
   allImages,
@@ -19,6 +17,8 @@ const Images = ({
   addImage
 }) => {
   const path = url.split('/')[1];
+
+  console.log(allImages);
 
   // filter image
   const aliveImages = allImages.filter(image => image.category === 'alive');
@@ -194,10 +194,7 @@ let mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(
-  mapStateToProps,
-  {
-    loadImages,
-    addImage
-  }
-)(Images);
+export default connect(mapStateToProps, {
+  loadImages,
+  addImage
+})(Images);

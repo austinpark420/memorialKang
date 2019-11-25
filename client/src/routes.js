@@ -8,7 +8,6 @@ import {
   Videos,
   Struggle,
   Introduce,
-  MemorialHistory,
   MemorialHall
 } from './screen';
 
@@ -48,10 +47,6 @@ export const routes = [
   {
     path: '/introduce',
     component: Introduce
-  },
-  {
-    path: '/memorialHistory',
-    component: MemorialHistory
   },
   {
     path: '/memorialHall',

@@ -10,7 +10,7 @@ export { default as Images } from './images.js';
 export { default as Videos } from './videos.js';
 export { default as Struggle } from './struggle';
 export { default as Introduce } from './introduce';
-export { default as MemorialHistory } from './memorialHistory';
+export { default as MemorialHistories } from './memorialHistories';
 export { default as MemorialHall } from './memorialHall';
 export { default as Award } from './award';
 export { default as Scholarship } from './scholarship';

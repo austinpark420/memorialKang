@@ -18,6 +18,7 @@ app.use('/api/awards', require('./router/api/award'));
 app.use('/api/scholarships', require('./router/api/scholarship'));
 app.use('/api/videos', require('./router/api/video'));
 app.use('/api/images', require('./router/api/image'));
+app.use('/api/memorialHistories', require('./router/api/memorialHistory'));
 
 //set static folder
 app.use(express.static('client/build'));

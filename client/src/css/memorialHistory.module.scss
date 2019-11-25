@@ -6,6 +6,7 @@
     height: 60px;
     background-color: #222d5a;
   }
+  min-height: 75vh;
   .wraper {
     padding-top: 60px;
     width: 80%;
@@ -66,7 +67,7 @@
     font-weight: 100;
   }
 
-  #imageForm {
+  #memorialHistoryForm {
     margin-top: 40px;
 
     label[for='_id'],
@@ -75,22 +76,6 @@
       padding: 0;
       visibility: hidden;
       height: 0;
-    }
-
-    .radio {
-      width: 80%;
-      display: block;
-      margin: 0 auto 20px;
-
-      label[for='category'] {
-        box-sizing: border-box;
-        display: inline-block;
-        text-align: center;
-        border: 1px solid #ccc;
-        padding: 2%;
-        width: 33.333%;
-        border-radius: 2px;
-      }
     }
 
     label[for='title'],
@@ -156,7 +141,6 @@
       }
     }
   }
-
   .modal {
     top: 25%;
     left: 10px;

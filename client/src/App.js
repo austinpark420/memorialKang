@@ -6,7 +6,14 @@ import { routes } from './routes';
 import store from './store';
 import { loadUser } from './actions/auth';
 
-import { Notice, Emergency, Images, Award, Scholarship } from './screen';
+import {
+  Notice,
+  Emergency,
+  Images,
+  Award,
+  Scholarship,
+  MemorialHistories
+} from './screen';
 import {
   Header,
   Footer,
@@ -14,6 +21,7 @@ import {
   NewPost,
   EditPost,
   Image,
+  MemorialHistory,
   Alert
 } from './components';
 
@@ -61,6 +69,10 @@ const App = () => {
       <Switch>
         <Route path='/images/:id' component={Image} />
         <Route path='/images' component={Images} />
+      </Switch>
+      <Switch>
+        <Route path='/memorialHistories/:id' component={MemorialHistory} />
+        <Route path='/memorialHistories' component={MemorialHistories} />
       </Switch>
       <Footer />
     </Router>

@@ -88,7 +88,7 @@ const Header = ({ isAuthenticated, logout }) => {
                 <Link to='/introduce' children='추모제 소개' />
               </li>
               <li>
-                <Link to='/memorialHistory' children='추모제 연혁' />
+                <Link to='/memorialHistories' children='추모제 연혁' />
               </li>
             </ul>
           </li>

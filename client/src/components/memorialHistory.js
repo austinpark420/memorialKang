@@ -5,23 +5,27 @@ import Modal from 'react-modal';
 import { connect } from 'react-redux';
 import Slider from 'react-slick';
 
-import { loadImage, editImage, removeImage } from '../actions/images';
+import {
+  loadMemorialHistory,
+  editMemorialHistory,
+  removeMemorialHistory
+} from '../actions/memorialHistories';
 
-import styles from '../css/image.module.scss';
+import styles from '../css/memorialHistory.module.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const Image = ({
+const MemorialHistory = ({
   match: { url },
   isAuthenticated,
-  detailImages: { _id, title, category, images },
-  loadImage,
-  removeImage,
-  editImage
+  memorialHistories: { images, _id },
+  loadMemorialHistory,
+  editMemorialHistory,
+  removeMemorialHistory
 }) => {
   useEffect(() => {
-    loadImage(url);
-  }, [loadImage, url]);
+    loadMemorialHistory(url);
+  }, [loadMemorialHistory, url]);
 
   const path = url.split('/')[1];
 
@@ -36,8 +40,8 @@ const Image = ({
   });
 
   const handleClickRemove = async () => {
-    if (window.confirm('선택한 이미지를 삭제하시겠습니까?')) {
-      removeImage(url);
+    if (window.confirm('선택한 기조를 삭제하시겠습니까?')) {
+      await removeMemorialHistory(url);
       setRedirectToImages(true);
     } else {
       return;
@@ -58,10 +62,12 @@ const Image = ({
   const handleSubmit = event => {
     event.preventDefault();
 
-    let imageForm = document.getElementById(`${styles.imageForm}`);
-    let formData = new FormData(imageForm);
+    let memorialHistoryForm = document.getElementById(
+      `${styles.memorialHistoryForm}`
+    );
+    let formData = new FormData(memorialHistoryForm);
 
-    editImage(path, formData);
+    editMemorialHistory(path, formData);
     closeModal();
   };
 
@@ -81,53 +87,20 @@ const Image = ({
             x
           </button>
           <form
-            id={styles.imageForm}
+            id={styles.memorialHistoryForm}
             onSubmit={handleSubmit}
             encType='multipart/form-data'
           >
             <label htmlFor='_id'>고유번호</label>
             <input id='_id' name='_id' type='text' defaultValue={_id} />
-            <div className={styles.radio}>
-              <label htmlFor='category'>
-                <span>강경대열사</span>
-                <input
-                  name='category'
-                  value='alive'
-                  type='radio'
-                  required
-                  defaultChecked={category === 'alive' ? 'checked' : ''}
-                />
-              </label>
-              <label htmlFor='category'>
-                <span>91년도 5월투쟁</span>
-                <input
-                  name='category'
-                  value='moment'
-                  type='radio'
-                  required
-                  defaultChecked={category === 'moment' ? 'checked' : ''}
-                />
-              </label>
-              <label htmlFor='category'>
-                <span>추모사업회 활동</span>
-                <input
-                  name='category'
-                  value='activity'
-                  type='radio'
-                  required
-                  defaultChecked={category === 'activity' ? 'checked' : ''}
-                />
-              </label>
-            </div>
-            <label htmlFor='title'>제목</label>
+            <label htmlFor='title'>기조</label>
             <input
               type='text'
               className={styles.title}
               name='title'
               id='title'
-              defaultValue={title}
+              required
             />
-
             <label htmlFor='images'>이미지</label>
             <input
               type='file'
@@ -135,6 +108,7 @@ const Image = ({
               name='images'
               id='images'
               multiple
+              required
             />
             <input type='submit' value='등록' />
           </form>
@@ -144,7 +118,7 @@ const Image = ({
           {images &&
             images.map(image => (
               <li>
-                <img src={image} alt='' />
+                <img src={image} alt={image} />
               </li>
             ))}
         </Slider>
@@ -169,10 +143,12 @@ const Image = ({
 };
 
 let mapStateToProps = state => ({
-  detailImages: state.images.detailImages,
+  memorialHistories: state.memorialHistories.images,
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { loadImage, removeImage, editImage })(
-  Image
-);
+export default connect(mapStateToProps, {
+  loadMemorialHistory,
+  editMemorialHistory,
+  removeMemorialHistory
+})(MemorialHistory);
