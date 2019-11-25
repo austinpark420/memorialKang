@@ -99,7 +99,7 @@ export const editMemorialHistory = (path, formData) => async dispatch => {
 // Remove historyMemorialHistory
 export const removeMemorialHistory = path => async dispatch => {
   try {
-    const res = await axios.delete(`/api/${path}`);
+    const res = await axios.delete(`/api${path}`);
 
     dispatch({
       type: REMOVE_MEMORIALHISTORY,

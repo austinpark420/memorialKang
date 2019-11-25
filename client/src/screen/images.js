@@ -18,8 +18,6 @@ const Images = ({
 }) => {
   const path = url.split('/')[1];
 
-  console.log(allImages);
-
   // filter image
   const aliveImages = allImages.filter(image => image.category === 'alive');
   const momentImages = allImages.filter(image => image.category === 'moment');

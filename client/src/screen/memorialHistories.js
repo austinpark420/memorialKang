@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
-
-import Spinner from '../components/spinner';
 import Modal from 'react-modal';
 
 import {

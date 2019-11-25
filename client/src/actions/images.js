@@ -100,7 +100,7 @@ export const editImage = (path, formData) => async dispatch => {
 // Remove image
 export const removeImage = path => async dispatch => {
   try {
-    const res = await axios.delete(`/api/${path}`);
+    const res = await axios.delete(`/api${path}`);
 
     dispatch({
       type: REMOVE_IMAGE,
