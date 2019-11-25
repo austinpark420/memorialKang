@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
     case REMOVE_VIDEO:
       return {
         ...state,
-        videos: [...payload]
+        videos: payload
       };
     case VIDEO_ERROR:
       return {

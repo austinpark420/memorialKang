@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        posts: [...payload],
+        posts: payload,
         post: null
       };
     case ADD_POST:

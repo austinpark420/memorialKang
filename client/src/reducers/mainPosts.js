@@ -19,12 +19,12 @@ export default (state = initialState, action) => {
     case LOAD_NOTICES:
       return {
         ...state,
-        notices: [...payload]
+        notices: payload
       };
     case LOAD_EMERGENCIES:
       return {
         ...state,
-        emergencies: [...payload]
+        emergencies: payload
       };
     case NOTICES_ERROR:
       return {

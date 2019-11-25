@@ -92,8 +92,8 @@ router.post(
 
 router.get('/:id', async (req, res) => {
   try {
-    const memorialHistories = await MemorialHistory.findById(req.params.id);
-    res.json(memorialHistories);
+    const detailMemorialHistory = await MemorialHistory.findById(req.params.id);
+    res.json(detailMemorialHistory);
   } catch (error) {
     console.error(error.message);
 

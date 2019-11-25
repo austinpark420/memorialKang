@@ -18,7 +18,7 @@ import 'slick-carousel/slick/slick-theme.css';
 const MemorialHistory = ({
   match: { url },
   isAuthenticated,
-  memorialHistories: { images, _id },
+  detailImages: { images, _id },
   loadMemorialHistory,
   editMemorialHistory,
   removeMemorialHistory
@@ -143,7 +143,7 @@ const MemorialHistory = ({
 };
 
 let mapStateToProps = state => ({
-  memorialHistories: state.memorialHistories.images,
+  detailImages: state.memorialHistories.detailImages,
   isAuthenticated: state.auth.isAuthenticated
 });
 

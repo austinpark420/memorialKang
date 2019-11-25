@@ -1,14 +1,14 @@
 import {
   LOAD_MEMORIALHISTORIES,
   LOAD_MEMORIALHISTORY,
-  // MEMORIALHISTORY_ERROR,
   ADD_MEMORIALHISTORY,
   EDIT_MEMORIALHISTORY,
   REMOVE_MEMORIALHISTORY
 } from '../actions/types';
 
 const initialState = {
-  images: [],
+  allImages: [],
+  detailImages: [],
   loading: false,
   error: null
 };
@@ -22,24 +22,26 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        images: payload
+        allImages: payload,
+        detailImages: []
       };
     case EDIT_MEMORIALHISTORY:
       return {
         ...state,
-        images: payload
+        detailImages: payload
       };
     case LOAD_MEMORIALHISTORY:
       return {
         ...state,
         loading: true,
-        images: payload
+        detailImages: payload
       };
 
     case REMOVE_MEMORIALHISTORY:
       return {
         ...state,
-        images: payload
+        allImages: payload,
+        detailImages: []
       };
     default:
       return state;

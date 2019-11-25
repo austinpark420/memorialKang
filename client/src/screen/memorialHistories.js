@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
+
+import Spinner from '../components/spinner';
 import Modal from 'react-modal';
 
 import {
@@ -13,7 +15,7 @@ import styles from '../css/memorialHistories.module.scss';
 const MemorialHistory = ({
   match: { url },
   isAuthenticated,
-  memorialHistories,
+  allImages,
   loadMemorialHistories,
   addMemorialHistory
 }) => {
@@ -90,15 +92,14 @@ const MemorialHistory = ({
           </form>
         </Modal>
         <ul className={styles.group}>
-          {memorialHistories &&
-            memorialHistories.length &&
-            memorialHistories.map(memorialHistory => (
+          {allImages &&
+            allImages.map(allImage => (
               <li>
-                <Link to={`${url}/${memorialHistory._id}`}>
-                  <img src={memorialHistory.images[0]} alt='memorialHistory' />
+                <Link to={`${url}/${allImage._id}`}>
+                  <img src={allImage.images[0]} alt='memorialHistory' />
                   <section>
                     <h3>기조</h3>
-                    <p>{memorialHistory.title}</p>
+                    <p>{allImage.title}</p>
                   </section>
                 </Link>
               </li>
@@ -111,7 +112,7 @@ const MemorialHistory = ({
 };
 
 let mapStateToProps = state => ({
-  memorialHistories: state.memorialHistories.images,
+  allImages: state.memorialHistories.allImages,
   isAuthenticated: state.auth.isAuthenticated
 });
 
