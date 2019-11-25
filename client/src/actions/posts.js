@@ -101,7 +101,7 @@ export const editPost = (path, formData) => async dispatch => {
 // delete post
 export const removePost = path => async dispatch => {
   try {
-    await axios.delete(`/api/${path}`);
+    await axios.delete(`/api${path}`);
 
     dispatch({
       type: REMOVE_POST
