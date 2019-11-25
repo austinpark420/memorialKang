@@ -26,13 +26,12 @@
     }
 
     .menu {
+      .mobileHomeLink {
+        display: none;
+      }
       .menuList {
         display: inline-block;
         line-height: 60px;
-
-        .mobileHomeLink {
-          display: none;
-        }
 
         .subTitle {
           color: #fff;
@@ -177,13 +176,16 @@
         transform: translate(-110%, 0);
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 
+        .mobileHomeLink {
+          display: block;
+          line-height: 48px;
+          a {
+            color: #222d5a;
+          }
+        }
         .menuList {
           width: 100%;
           line-height: 48px;
-
-          .mobileHomeLink {
-            display: block;
-          }
 
           .subTitle {
             padding: 0;

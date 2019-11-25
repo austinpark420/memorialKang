@@ -44,10 +44,10 @@ const Header = ({ isAuthenticated, logout }) => {
         <span></span>
         <span></span>
         <ul className={styles.menu}>
+          <li className={styles.mobileHomeLink}>
+            <Link to='/'>홈</Link>
+          </li>
           <li className={styles.menuList}>
-            <p className={styles.mobileHomeLink}>
-              <Link to='/'>메인</Link>
-            </p>
             <p className={styles.subTitle}>강경대열사</p>
             <ul className={styles.subMenu}>
               <li>
