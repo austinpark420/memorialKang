@@ -6,7 +6,7 @@ const Footer = () => {
     <div className={stylse.container}>
       <div className={stylse.wraper}>
         <div className={stylse.logo}>
-          <img src={require('../images/fullLogo.png')} alt='' />
+          <img src={require('../images/fullLogo.png')} alt='로고' />
         </div>
         <ul className={stylse.memorialAddress}>
           <li>

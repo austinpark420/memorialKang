@@ -144,7 +144,7 @@ const Image = ({
           {images &&
             images.map(image => (
               <li>
-                <img src={image} alt='' />
+                <img src={image} alt={image} />
               </li>
             ))}
         </Slider>

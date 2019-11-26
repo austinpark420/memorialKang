@@ -144,7 +144,7 @@ const Images = ({
                   <li>
                     <div className={styles.imgWraper}>
                       <div className={styles.imgCenter}>
-                        <img src={image.images[0]} alt='' />
+                        <img src={image.images[0]} alt={image.keys[0]} />
                       </div>
                     </div>
                   </li>
@@ -158,7 +158,7 @@ const Images = ({
                   <li>
                     <div className={styles.imgWraper}>
                       <div className={styles.imgCenter}>
-                        <img src={image.images[0]} alt='' />
+                        <img src={image.images[0]} alt={image.keys[0]} />
                       </div>
                     </div>
                   </li>
@@ -172,7 +172,7 @@ const Images = ({
                   <li>
                     <div className={styles.imgWraper}>
                       <div className={styles.imgCenter}>
-                        <img src={image.images[0]} alt='' />
+                        <img src={image.images[0]} alt={image.keys[0]} />
                       </div>
                     </div>
                   </li>

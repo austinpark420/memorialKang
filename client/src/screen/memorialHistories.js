@@ -94,7 +94,7 @@ const MemorialHistory = ({
             allImages.map(allImage => (
               <li>
                 <Link to={`${url}/${allImage._id}`}>
-                  <img src={allImage.images[0]} alt='memorialHistory' />
+                  <img src={allImage.images[0]} alt={allImage.keys[0]} />
                   <section>
                     <h3>기조</h3>
                     <p>{allImage.title}</p>

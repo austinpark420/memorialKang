@@ -25,7 +25,7 @@ const ElevenHero = () => {
         </article>
         <ul className={styles.group}>
           <li>
-            <img src={require('../images/heros/hero01.png')} alt='' />
+            <img src={require('../images/heros/hero01.png')} alt='hero01' />
             <section>
               <h3>김영균 (5월 2일)</h3>
               <b>1971년</b>
@@ -57,7 +57,7 @@ const ElevenHero = () => {
             </section>
           </li>
           <li>
-            <img src={require('../images/heros/hero02.png')} alt='' />
+            <img src={require('../images/heros/hero02.png')} alt='hero02' />
             <section>
               <h3>천세용 (5월 3일)</h3>
               <b>1971년</b>
@@ -78,7 +78,7 @@ const ElevenHero = () => {
             </section>
           </li>
           <li>
-            <img src={require('../images/heros/hero03.png')} alt='' />
+            <img src={require('../images/heros/hero03.png')} alt='hero03' />
             <section>
               <h3>박창수 (5월 6일)</h3>
               <b>1958년</b>
@@ -100,7 +100,7 @@ const ElevenHero = () => {
             </section>
           </li>
           <li>
-            <img src={require('../images/heros/hero04.png')} alt='' />
+            <img src={require('../images/heros/hero04.png')} alt='hero04' />
             <section>
               <h3>김기설 (5월 8일)</h3>
               <b>1965년</b>
@@ -121,7 +121,7 @@ const ElevenHero = () => {
             </section>
           </li>
           <li>
-            <img src={require('../images/heros/hero05.png')} alt='' />
+            <img src={require('../images/heros/hero05.png')} alt='hero05' />
             <section>
               <h3>윤용하 (5월 12일)</h3>
               <b>1969년 </b>
@@ -140,7 +140,7 @@ const ElevenHero = () => {
             </section>
           </li>
           <li>
-            <img src={require('../images/heros/hero06.png')} alt='' />
+            <img src={require('../images/heros/hero06.png')} alt='hero06' />
             <section>
               <h3>이정순 (5월 18일)</h3>
               <b>1952년</b>
@@ -155,7 +155,7 @@ const ElevenHero = () => {
             </section>
           </li>
           <li>
-            <img src={require('../images/heros/hero07.png')} alt='' />
+            <img src={require('../images/heros/hero07.png')} alt='hero07' />
             <section>
               <h3>박승희 (5월 19일)</h3>
               <b>1971년</b>
@@ -177,7 +177,7 @@ const ElevenHero = () => {
             </section>
           </li>
           <li>
-            <img src={require('../images/heros/hero08.png')} alt='' />
+            <img src={require('../images/heros/hero08.png')} alt='hero08' />
             <section>
               <h3>김귀정 (5월 25일)</h3>
               <b>1966년</b>
@@ -205,7 +205,7 @@ const ElevenHero = () => {
             </section>
           </li>
           <li>
-            <img src={require('../images/heros/hero09.png')} alt='' />
+            <img src={require('../images/heros/hero09.png')} alt='hero09' />
             <section>
               <h3>정상순 (5월 31일)</h3>
               <b>1966년</b>
@@ -221,7 +221,7 @@ const ElevenHero = () => {
             </section>
           </li>
           <li>
-            <img src={require('../images/heros/hero10.png')} alt='' />
+            <img src={require('../images/heros/hero10.png')} alt='hero10' />
             <section>
               <h3>김철수 (6월 2일)</h3>
               <b>1973년</b>
@@ -241,7 +241,7 @@ const ElevenHero = () => {
             </section>
           </li>
           <li>
-            <img src={require('../images/heros/hero11.png')} alt='' />
+            <img src={require('../images/heros/hero11.png')} alt='hero11' />
             <section>
               <h3>손석용 (8월 19일)</h3>
               <b>1970년</b>

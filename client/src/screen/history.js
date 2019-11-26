@@ -9,7 +9,7 @@ const History = () => {
         <div className={styles.coverImage}></div>
         <div className={styles.introduce}>
           <div className={styles.imageWraper}>
-            <img src={require('../images/kang01.png')} alt='kang' />
+            <img src={require('../images/kang01.png')} alt='강경대열사' />
           </div>
           <section>
             <h3>열사 소개</h3>
