@@ -73,6 +73,14 @@
       .coverImage {
         height: 40vh;
       }
+
+      section {
+        ul {
+          li {
+            padding: 0;
+          }
+        }
+      }
     }
   }
 }
