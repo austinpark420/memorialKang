@@ -46,10 +46,12 @@ const Post = ({
           <h2>{posts.post.title}</h2>
           <section>
             <div className={styles.info}>
-              <span>
-                <span className={styles.title}>분류</span>
-                {posts.post.category}
-              </span>
+              {path === 'notices' && (
+                <span>
+                  <span className={styles.title}>분류</span>
+                  {posts.post.category}
+                </span>
+              )}
               <span>
                 <span className={styles.title}>파일</span>
                 {posts.post.files &&
