@@ -22,11 +22,11 @@ const Header = ({ isAuthenticated, logout }) => {
   $(`.${styles.subMenu}`)
     .children()
     .on('click', () => {
-      $('input[type=checkbox').prop('checked', false);
+      $(`.${styles.mobileHamburger}`).prop('checked', false);
     });
 
   $(`.${styles.mobileHomeLink}`).on('click', () => {
-    $('input[type=checkbox').prop('checked', false);
+    $(`.${styles.mobileHamburger}`).prop('checked', false);
   });
 
   const handleClickLogout = () => {
@@ -41,7 +41,7 @@ const Header = ({ isAuthenticated, logout }) => {
         </Link>
       </div>
       <nav className={styles.nav}>
-        <input type='checkbox' />
+        <input type='checkbox' className={styles.mobileHamburger} />
         <span></span>
         <span></span>
         <span></span>

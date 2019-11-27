@@ -96,7 +96,9 @@
       -ms-user-select: none;
       -webkit-user-select: none;
       user-select: none;
-
+      .mobileHamburger {
+        display: block;
+      }
       input {
         display: block;
         width: 40px;
