@@ -19,9 +19,11 @@ const Header = ({ isAuthenticated, logout }) => {
     });
   });
 
-  $(`.${styles.subMenu} li`).on('click', () => {
-    $('input[type=checkbox').prop('checked', false);
-  });
+  $(`.${styles.subMenu}`)
+    .children()
+    .on('click', () => {
+      $('input[type=checkbox').prop('checked', false);
+    });
 
   $(`.${styles.mobileHomeLink}`).on('click', () => {
     $('input[type=checkbox').prop('checked', false);

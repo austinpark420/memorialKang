@@ -83,6 +83,7 @@ const Notice = ({
               )
             )}
           </ul>
+
           {isAuthenticated && (
             <button className={styles.newPost}>
               <Link to={`${url}/write`}>글쓰기</Link>
@@ -102,7 +103,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(
-  mapStateToProps,
-  { loadPosts }
-)(Notice);
+export default connect(mapStateToProps, { loadPosts })(Notice);
