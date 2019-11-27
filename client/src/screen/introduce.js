@@ -6,7 +6,7 @@ const Introduce = () => {
     <div className={styles.container}>
       <div className={styles.wraper}>
         <h2 className='blind'>추모제</h2>
-        <div className={styles.imageCover}></div>
+        <div className={styles.coverImage}></div>
         <div className={styles.introduce}>
           <section>
             <h3>강경대 열사 추모제</h3>

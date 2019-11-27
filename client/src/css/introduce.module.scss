@@ -1,6 +1,6 @@
 .container {
   .wraper {
-    .imageCover {
+    .coverImage {
       height: 70vh;
       overflow: hidden;
       background-image: url('../images/introduceCover.jpg');
@@ -31,6 +31,9 @@
 @media only screen and (max-width: 768px) {
   .container {
     .wraper {
+      .coverImage {
+        height: 40vh;
+      }
       .introduce {
         width: 96%;
         margin: 0 auto;
