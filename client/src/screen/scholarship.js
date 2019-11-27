@@ -40,7 +40,7 @@ const Scholarship = ({
   ) : (
     <div className={styles.container}>
       <div className={styles.wraper}>
-        <h2>동판사수 대책위원회</h2>
+        <h2>장학생</h2>
 
         <div className={styles.group}>
           <div className={styles.subtitle}>

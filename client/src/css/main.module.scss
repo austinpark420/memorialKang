@@ -12,16 +12,20 @@
           font-weight: 400;
         }
 
-        a,
+        > a,
         ul {
           width: 80%;
           margin: 0 auto;
         }
 
-        a {
+        > a {
           text-align: right;
           color: #999;
           margin-bottom: 2px;
+
+          &:hover {
+            font-weight: 600;
+          }
         }
 
         ul {
@@ -33,6 +37,7 @@
             width: 98%;
             li {
               padding: 16px;
+              color: #000;
               span {
                 &:first-child {
                   float: left;
@@ -42,6 +47,10 @@
                   float: right;
                 }
               }
+            }
+
+            &:hover {
+              font-weight: 600;
             }
           }
         }
