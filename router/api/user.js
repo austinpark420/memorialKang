@@ -14,14 +14,13 @@ const User = require('../../models/User');
 router.post(
   '/',
   [
-    check('name', 'Name is required')
+    check('name', '이름을 입력해 주세요')
       .not()
       .isEmpty(),
-    check('email', 'Please include a valid email').isEmail(),
-    check(
-      'password',
-      'Please enter a password with 4 or more characters'
-    ).isLength({ min: 4 })
+    check('email', '이메일을 입력해 주세요').isEmail(),
+    check('password', '4글자 이상의 비밀번호를 입력해 주세요').isLength({
+      min: 4
+    })
   ],
   async (req, res) => {
     // check req
@@ -39,7 +38,7 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json({ errors: [{ message: 'User name already exists' }] });
+          .json({ errors: [{ message: '등록된 ID입니다' }] });
       }
 
       user = new User({
@@ -53,6 +52,7 @@ router.post(
       user.password = await bcrypt.hash(password, salt);
 
       await user.save();
+      console.log('user', user);
 
       // Return jsonwebtoken
 
@@ -63,7 +63,7 @@ router.post(
       jwt.sign(
         payload,
         config.get('jsonwebtokenSecret'),
-        { expiresIn: 3600000 },
+        { expiresIn: 3600 },
         (err, token) => {
           if (err) throw err;
           res.json(token);
