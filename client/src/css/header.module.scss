@@ -26,9 +26,6 @@
     }
 
     .menu {
-      .mobileHomeLink {
-        display: none;
-      }
       .menuList {
         display: inline-block;
         line-height: 60px;
@@ -73,6 +70,9 @@
           display: block;
         }
       }
+    }
+    .mobileLogo {
+      display: none;
     }
   }
 }
@@ -121,13 +121,13 @@
           background: #222d5a;
         }
 
-        &:checked ~ span:nth-last-child(3) {
+        &:checked ~ span:nth-last-child(4) {
           opacity: 0;
           transform: rotate(0deg) scale(0.2, 0.2);
         }
 
-        &:checked ~ span:nth-last-child(2) {
-          transform: rotate(-45deg) translate(0, -1px);
+        &:checked ~ span:nth-last-child(3) {
+          transform: rotate(-45deg) translate(-1px, -3px);
         }
 
         &:checked ~ ul {
@@ -180,13 +180,6 @@
         transform: translate(-110%, 0);
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 
-        .mobileHomeLink {
-          display: block;
-          line-height: 48px;
-          a {
-            color: #222d5a;
-          }
-        }
         .menuList {
           width: 100%;
           line-height: 48px;
@@ -216,6 +209,15 @@
             }
           }
         }
+      }
+
+      .mobileLogo {
+        display: block;
+        position: absolute;
+        top: 8px;
+        width: 32px;
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
   }

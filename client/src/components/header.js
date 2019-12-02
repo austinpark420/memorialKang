@@ -46,9 +46,6 @@ const Header = ({ isAuthenticated, logout }) => {
         <span></span>
         <span></span>
         <ul className={styles.menu}>
-          <li className={styles.mobileHomeLink}>
-            <Link to='/'>홈</Link>
-          </li>
           <li className={styles.menuList}>
             <p className={styles.subTitle}>강경대열사</p>
             <ul className={styles.subMenu}>
@@ -117,6 +114,13 @@ const Header = ({ isAuthenticated, logout }) => {
             </li>
           )}
         </ul>
+        <Link to='/'>
+          <img
+            className={styles.mobileLogo}
+            src={require('../images/logo.png')}
+            alt='로고'
+          />
+        </Link>
       </nav>
     </div>
   );
