@@ -9,7 +9,6 @@ import {
 const initialState = {
   token: localStorage.getItem('token'),
   isAuthenticated: null,
-  loading: true,
   user: null,
   errors: null,
   message: null
@@ -23,7 +22,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: true,
-        loading: false,
         user: payload
       };
     case LOGIN_SUCCESS:
@@ -31,8 +29,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         ...payload,
-        isAuthenticated: true,
-        loading: false
+        isAuthenticated: true
       };
     case AUTH_ERROR:
     case LOGIN_FAIL:
@@ -42,7 +39,6 @@ export default (state = initialState, action) => {
         ...state,
         token: null,
         isAuthenticated: false,
-        loading: false,
         errors: payload
       };
     default:
