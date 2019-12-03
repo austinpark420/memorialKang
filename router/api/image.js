@@ -111,7 +111,7 @@ router.get('/:id', async (req, res) => {
 // @access  Private
 
 router.put(
-  '/',
+  '/:id',
   [
     uploadFile.array('images'),
     auth,
@@ -129,8 +129,7 @@ router.put(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
-    let detailImages = await Image.findById(req.body._id);
+    let detailImages = await Image.findById(req.params.id);
 
     if (!detailImages) {
       return res.status(404).json({ msg: '이미지가 존재하지 않습니다' });

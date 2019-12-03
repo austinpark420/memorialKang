@@ -61,7 +61,7 @@ const Image = ({
     let imageForm = document.getElementById(`${styles.imageForm}`);
     let formData = new FormData(imageForm);
 
-    editImage(path, formData);
+    editImage(url, formData);
     closeModal();
   };
 
@@ -85,8 +85,6 @@ const Image = ({
             onSubmit={handleSubmit}
             encType='multipart/form-data'
           >
-            <label htmlFor='_id'>고유번호</label>
-            <input id='_id' name='_id' type='text' defaultValue={_id} />
             <div className={styles.radio}>
               <label htmlFor='category'>
                 <span>강경대열사</span>
