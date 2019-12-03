@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 
@@ -129,5 +131,10 @@ const Header = ({ isAuthenticated, logout }) => {
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
+
+Header.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps, { logout })(Header);

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { editPost } from '../actions/posts';
 import styles from '../css/editPost.module.scss';
@@ -83,7 +84,9 @@ const EditPost = ({
 
 let mapStateToProps = state => ({ posts: state.posts });
 
-export default connect(
-  mapStateToProps,
-  { editPost }
-)(EditPost);
+EditPost.propTypes = {
+  posts: PropTypes.array.isRequired,
+  editPost: PropTypes.func.isRequired
+};
+
+export default connect(mapStateToProps, { editPost })(EditPost);

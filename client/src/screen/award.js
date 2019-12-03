@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Link, Route } from 'react-router-dom';
 
 import dateFormat from 'dateformat';
@@ -99,5 +100,11 @@ const mapStateToProps = state => ({
   posts: state.posts,
   isAuthenticated: state.auth.isAuthenticated
 });
+
+Award.propTypes = {
+  posts: PropTypes.array.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  loadPosts: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps, { loadPosts })(Award);

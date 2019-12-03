@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Link, Route } from 'react-router-dom';
 import Modal from 'react-modal';
 
@@ -191,6 +192,13 @@ let mapStateToProps = state => ({
   allImages: state.images.allImages,
   isAuthenticated: state.auth.isAuthenticated
 });
+
+Images.propTypes = {
+  allImages: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  loadImages: PropTypes.func.isRequired,
+  addImage: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps, {
   loadImages,

@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
 
   // Check token
   if (!token) {
-    return res.status(401).json({ message: 'No token, authorization denied' });
+    return res.status(401).json({ message: '토큰이 존재하지 않습니다' });
   }
 
   // Verify token
@@ -17,6 +17,6 @@ module.exports = (req, res, next) => {
     req.user = decoded.user;
     next();
   } catch (error) {
-    res.status(401).json({ message: 'Token is not valid' });
+    res.status(401).json({ message: '토큰이 유효하지 않습니다' });
   }
 };

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import $ from 'jquery';
 
@@ -205,7 +206,14 @@ let mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(
-  mapStateToProps,
-  { loadVideos, addVideo, removeVideo }
-)(Video);
+Video.propTypes = {
+  videos: PropTypes.array.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  loadVideos: PropTypes.func.isRequired,
+  addVideo: PropTypes.func.isRequired,
+  removeVideo: PropTypes.func.isRequired
+};
+
+export default connect(mapStateToProps, { loadVideos, addVideo, removeVideo })(
+  Video
+);

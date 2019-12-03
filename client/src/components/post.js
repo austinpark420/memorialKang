@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import dateFormat from 'dateformat';
 
@@ -109,5 +110,12 @@ let mapStateToProps = state => ({
   posts: state.posts,
   isAuthenticated: state.auth.isAuthenticated
 });
+
+Post.propTypes = {
+  posts: PropTypes.array.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  loadPost: PropTypes.func.isRequired,
+  removePost: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps, { loadPost, removePost })(Post);

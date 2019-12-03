@@ -1,8 +1,9 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import Modal from 'react-modal';
-
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import Modal from 'react-modal';
 import Slider from 'react-slick';
 
 import { loadImage, editImage, removeImage } from '../actions/images';
@@ -171,6 +172,14 @@ let mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { loadImage, removeImage, editImage })(
+Image.propTypes = {
+  detailImages: PropTypes.array.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  loadImage: PropTypes.func.isRequired,
+  editImage: PropTypes.func.isRequired,
+  removeImage: PropTypes.func.isRequired
+};
+
+export default connect(mapStateToProps, { loadImage, editImage, removeImage })(
   Image
 );

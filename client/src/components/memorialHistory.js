@@ -1,8 +1,9 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import Modal from 'react-modal';
-
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import Modal from 'react-modal';
 import Slider from 'react-slick';
 
 import {
@@ -146,6 +147,14 @@ let mapStateToProps = state => ({
   detailImages: state.memorialHistories.detailImages,
   isAuthenticated: state.auth.isAuthenticated
 });
+
+MemorialHistory.propTypes = {
+  detailImages: PropTypes.array.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  loadMemorialHistory: PropTypes.func.isRequired,
+  editMemorialHistory: PropTypes.func.isRequired,
+  removeMemorialHistory: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps, {
   loadMemorialHistory,

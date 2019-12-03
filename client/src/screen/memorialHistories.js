@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Link, Route } from 'react-router-dom';
 import Modal from 'react-modal';
 
@@ -113,6 +114,13 @@ let mapStateToProps = state => ({
   allImages: state.memorialHistories.allImages,
   isAuthenticated: state.auth.isAuthenticated
 });
+
+MemorialHistory.propTypes = {
+  allImages: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  loadMemorialHistories: PropTypes.func.isRequired,
+  addMemorialHistory: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps, {
   loadMemorialHistories,

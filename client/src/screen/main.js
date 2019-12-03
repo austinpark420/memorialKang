@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import dateFormat from 'dateformat';
@@ -144,7 +145,10 @@ const mapStateToProps = state => ({
   mainPosts: state.mainPosts
 });
 
-export default connect(
-  mapStateToProps,
-  { loadNotices, loadEmergencies }
-)(Main);
+Main.propTypes = {
+  mainPosts: PropTypes.object.isRequired,
+  loadEmergencies: PropTypes.func.isRequired,
+  loadNotices: PropTypes.func.isRequired
+};
+
+export default connect(mapStateToProps, { loadNotices, loadEmergencies })(Main);
