@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, Route } from 'react-router-dom';
 
+import ReactPaginate from 'react-paginate';
 import dateFormat from 'dateformat';
 
 import { loadPosts } from '../actions/posts';
@@ -21,7 +22,7 @@ const Notice = ({
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(15);
+  const [postsPerPage] = useState(10);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -32,8 +33,8 @@ const Notice = ({
     pageNumbers.push(i);
   }
 
-  const handleClick = number => {
-    setCurrentPage(number);
+  const handleClick = selected => {
+    setCurrentPage(selected + 1);
   };
 
   return loading === false || currentPosts === null ? (
@@ -67,23 +68,18 @@ const Notice = ({
                 </Link>
               ))}
           </ul>
-          <ul className={styles.pagination}>
-            {pageNumbers.map(number =>
-              currentPage === number ? (
-                <li
-                  className={styles.active}
-                  key={number}
-                  onClick={() => handleClick(number)}
-                >
-                  {number}
-                </li>
-              ) : (
-                <li key={number} onClick={() => handleClick(number)}>
-                  {number}
-                </li>
-              )
-            )}
-          </ul>
+
+          <ReactPaginate
+            previousLabel={'이전'}
+            nextLabel={'다음'}
+            breakLabel={'...'}
+            breakClassName={'break-me'}
+            pageCount={pageNumbers}
+            marginPagesDisplayed={10}
+            onPageChange={({ selected }) => handleClick(selected)}
+            containerClassName={`${styles.pagination}`}
+            activeClassName={`${styles.active}`}
+          />
 
           {isAuthenticated && (
             <button className={styles.newPost}>

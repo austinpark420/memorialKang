@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, Route } from 'react-router-dom';
 
+import ReactPaginate from 'react-paginate';
 import dateFormat from 'dateformat';
 
 import { Post, NewPost, Spinner } from '../components';
@@ -65,23 +66,19 @@ const Emergency = ({
                 </Link>
               ))}
           </ul>
-          <ul className={styles.pagination}>
-            {pageNumbers.map((number, index) =>
-              currentPage === number ? (
-                <li
-                  className={styles.active}
-                  key={index}
-                  onClick={() => handleClick(number)}
-                >
-                  {number}
-                </li>
-              ) : (
-                <li key={index} onClick={() => handleClick(number)}>
-                  {number}
-                </li>
-              )
-            )}
-          </ul>
+
+          <ReactPaginate
+            previousLabel={'이전'}
+            nextLabel={'다음'}
+            breakLabel={'...'}
+            breakClassName={'break-me'}
+            pageCount={pageNumbers}
+            marginPagesDisplayed={10}
+            onPageChange={({ selected }) => handleClick(selected)}
+            containerClassName={`${styles.pagination}`}
+            activeClassName={`${styles.active}`}
+          />
+
           {isAuthenticated && (
             <button className={styles.newPost}>
               <Link to={`${url}/write`}>글쓰기</Link>
