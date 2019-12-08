@@ -13,7 +13,7 @@ import {
 // Load posts
 export const loadPosts = posts => async dispatch => {
   try {
-    const res = await axios.get(`/api${posts}`);
+    const res = await axios.get(`/api/${posts}`);
 
     dispatch({
       type: LOAD_POSTS,

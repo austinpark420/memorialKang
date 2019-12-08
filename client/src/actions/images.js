@@ -12,7 +12,7 @@ import {
 // Load images
 export const loadImages = images => async dispatch => {
   try {
-    const res = await axios.get(`/api${images}`);
+    const res = await axios.get(`/api/${images}`);
 
     dispatch({
       type: LOAD_IMAGES,

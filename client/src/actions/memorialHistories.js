@@ -12,7 +12,7 @@ import {
 // Load memorialHistories
 export const loadMemorialHistories = path => async dispatch => {
   try {
-    const res = await axios.get(`/api${path}`);
+    const res = await axios.get(`/api/${path}`);
 
     dispatch({
       type: LOAD_MEMORIALHISTORIES,
