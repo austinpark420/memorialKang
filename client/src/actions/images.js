@@ -12,7 +12,7 @@ import {
 // Load images
 export const loadImages = images => async dispatch => {
   try {
-    const res = await axios.get(`/api/${images}`);
+    const res = await axios.get(`/api${images}`);
 
     dispatch({
       type: LOAD_IMAGES,
@@ -54,7 +54,7 @@ export const addImage = (path, formData) => async dispatch => {
   };
 
   try {
-    const res = await axios.post(`/api/${path}`, formData, config);
+    const res = await axios.post(`/api${path}`, formData, config);
     dispatch({
       type: ADD_IMAGE,
       payload: res.data
@@ -68,6 +68,8 @@ export const addImage = (path, formData) => async dispatch => {
       type: IMAGE_ERROR,
       payload: errors
     });
+
+    dispatch(setAlert(errors));
   }
 };
 
@@ -80,20 +82,22 @@ export const editImage = (path, formData) => async dispatch => {
   };
 
   try {
-    const res = await axios.put(`/api/${path}`, formData, config);
+    const res = await axios.put(`/api${path}`, formData, config);
     dispatch({
       type: EDIT_IMAGE,
       payload: res.data
     });
 
     dispatch(setAlert('이미지가 수정되었습니다'));
-  } catch (error) {
-    const errors = error.response.data.errors;
+  } catch (err) {
+    const errors = err.response.data.errors;
 
     dispatch({
       type: IMAGE_ERROR,
       payload: errors
     });
+
+    dispatch(setAlert(errors));
   }
 };
 

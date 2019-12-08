@@ -13,7 +13,7 @@ import {
 // Load posts
 export const loadPosts = posts => async dispatch => {
   try {
-    const res = await axios.get(`/api/${posts}`);
+    const res = await axios.get(`/api${posts}`);
 
     dispatch({
       type: LOAD_POSTS,
@@ -55,7 +55,7 @@ export const addPost = (path, formData) => async dispatch => {
   };
 
   try {
-    const res = await axios.post(`/api/${path}`, formData, config);
+    const res = await axios.post(`/api${path}`, formData, config);
     dispatch({
       type: ADD_POST,
       payload: res.data
@@ -69,6 +69,8 @@ export const addPost = (path, formData) => async dispatch => {
       type: POST_ERROR,
       payload: errors
     });
+
+    dispatch(setAlert(errors));
   }
 };
 
@@ -81,7 +83,7 @@ export const editPost = (path, formData) => async dispatch => {
   };
 
   try {
-    const res = await axios.put(`/api/${path}`, formData, config);
+    const res = await axios.put(`/api${path}`, formData, config);
     dispatch({
       type: EDIT_POST,
       payload: res.data
@@ -95,6 +97,8 @@ export const editPost = (path, formData) => async dispatch => {
       type: POST_ERROR,
       payload: errors
     });
+
+    dispatch(setAlert(errors));
   }
 };
 

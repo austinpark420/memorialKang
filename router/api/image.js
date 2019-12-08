@@ -4,7 +4,7 @@ const s3 = require('../../config/s3');
 const { check, validationResult } = require('express-validator');
 
 const auth = require('../../middleware/auth');
-const uploadFile = require('../../middleware/uploadFile');
+const uploadImage = require('../../middleware/uploadImage');
 
 const User = require('../../models/User');
 const Image = require('../../models/Image');
@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
 router.post(
   '/',
   [
-    uploadFile.array('images'),
+    uploadImage,
     auth,
     [
       check('title', '제목을 입력해 주세요')
@@ -113,7 +113,7 @@ router.get('/:id', async (req, res) => {
 router.put(
   '/:id',
   [
-    uploadFile.array('images'),
+    uploadImage,
     auth,
     [
       check('title', '제목을 입력해 주세요')

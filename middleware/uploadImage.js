@@ -12,12 +12,12 @@ module.exports = (req, res, next) => {
       key: function(req, file, cb) {
         cb(
           null,
-          'board/' + Date.now() + '-' + path.basename(file.originalname)
+          'images/' + Date.now() + '-' + path.basename(file.originalname)
         );
       }
     }),
     limits: { fileSize: 2000000 } // In bytes: 2000000 bytes = 2 MB
-  }).array('files');
+  }).array('images');
 
   upload(req, res, err => {
     if (err) {

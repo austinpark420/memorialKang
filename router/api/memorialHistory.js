@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
 router.post(
   '/',
   [
-    uploadHistory.array('images'),
+    uploadHistory,
     auth,
     [
       check('title', '제목을 입력해 주세요')
@@ -111,7 +111,7 @@ router.get('/:id', async (req, res) => {
 router.put(
   '/',
   [
-    uploadHistory.array('images'),
+    uploadHistory,
     auth,
     [
       check('title', '제목을 입력해 주세요')

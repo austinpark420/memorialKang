@@ -12,7 +12,7 @@ import {
 // Load memorialHistories
 export const loadMemorialHistories = path => async dispatch => {
   try {
-    const res = await axios.get(`/api/${path}`);
+    const res = await axios.get(`/api${path}`);
 
     dispatch({
       type: LOAD_MEMORIALHISTORIES,
@@ -53,7 +53,7 @@ export const addMemorialHistory = (path, formData) => async dispatch => {
     }
   };
   try {
-    const res = await axios.post(`/api/${path}`, formData, config);
+    const res = await axios.post(`/api${path}`, formData, config);
     dispatch({
       type: ADD_MEMORIALHISTORY,
       payload: res.data
@@ -67,6 +67,8 @@ export const addMemorialHistory = (path, formData) => async dispatch => {
       type: MEMORIALHISTORY_ERROR,
       payload: errors
     });
+
+    dispatch(setAlert(errors));
   }
 };
 
@@ -79,7 +81,7 @@ export const editMemorialHistory = (path, formData) => async dispatch => {
   };
 
   try {
-    const res = await axios.put(`/api/${path}`, formData, config);
+    const res = await axios.put(`/api${path}`, formData, config);
     dispatch({
       type: EDIT_MEMORIALHISTORY,
       payload: res.data
@@ -93,6 +95,8 @@ export const editMemorialHistory = (path, formData) => async dispatch => {
       type: MEMORIALHISTORY_ERROR,
       payload: errors
     });
+
+    dispatch(setAlert(errors));
   }
 };
 

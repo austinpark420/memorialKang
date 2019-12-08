@@ -29,7 +29,7 @@ export const addVideo = ({ path, category, content }) => async dispatch => {
   const body = JSON.stringify({ category, content });
 
   try {
-    const res = await axios.post(`/api/${path}`, body, config);
+    const res = await axios.post(`/api${path}`, body, config);
     dispatch({
       type: ADD_VIDEO,
       payload: res.data

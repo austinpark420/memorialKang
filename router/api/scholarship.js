@@ -48,7 +48,7 @@ router.get('/:id', async (req, res) => {
 router.post(
   '/',
   [
-    uploadFile.array('files'),
+    uploadFile,
     auth,
     [
       check('title', '제목을 입력해 주세요')
@@ -123,7 +123,7 @@ router.post(
 router.put(
   '/',
   [
-    uploadFile.array('files'),
+    uploadFile,
     auth,
     [
       check('title', '제목을 입력해 주세요')
