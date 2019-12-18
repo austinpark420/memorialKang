@@ -27,7 +27,7 @@ module.exports = (req, res, next) => {
       if (err.message === 'File too large') {
         var errors = '2MB 이하의 파일까지 업로드가 가능합니다.';
       }
-      res.status(400).json({ errors });
+      res.status(400).json({ errors: errors });
     } else {
       next();
     }

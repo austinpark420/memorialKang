@@ -96,7 +96,6 @@ export const editImage = (path, formData) => async dispatch => {
       type: IMAGE_ERROR,
       payload: errors
     });
-
     dispatch(setAlert(errors));
   }
 };
