@@ -8,9 +8,9 @@ import Slider from 'react-slick';
 
 import { loadImage, editImage, removeImage } from '../actions/images';
 
-import styles from '../css/image.module.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import styles from '../css/image.module.scss';
 
 const Image = ({
   match: { url },
@@ -33,7 +33,10 @@ const Image = ({
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    adaptiveHeight: false,
+    variableWidth: false,
+    centerPadding: 0
   });
 
   const handleClickRemove = async () => {

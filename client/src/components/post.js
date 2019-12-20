@@ -55,19 +55,15 @@ const Post = ({
               )}
               <span>
                 <span className={styles.title}>파일</span>
-                {posts.post.files &&
-                  posts.post.files.locations.map(function(location) {
-                    return (
-                      <p>
-                        <a href={location}>
-                          {location
-                            .split('/images/')
-                            .splice(1, 1)
-                            .toString('utf-8')}
-                        </a>
-                      </p>
-                    );
-                  })}
+                {posts.post.files.locations.map(function(location) {
+                  return (
+                    <p>
+                      <a href={location}>
+                        {decodeURI(location.split('/board/').splice(1, 1))}
+                      </a>
+                    </p>
+                  );
+                })}
               </span>
               {path === 'awards' ? (
                 <span>

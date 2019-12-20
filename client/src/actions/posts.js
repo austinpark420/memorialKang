@@ -55,7 +55,7 @@ export const addPost = (path, formData) => async dispatch => {
   };
 
   try {
-    const res = await axios.post(`/api${path}`, formData, config);
+    const res = await axios.post(`/api/${path}`, formData, config);
     dispatch({
       type: ADD_POST,
       payload: res.data
@@ -83,7 +83,7 @@ export const editPost = (path, formData) => async dispatch => {
   };
 
   try {
-    const res = await axios.put(`/api${path}`, formData, config);
+    const res = await axios.put(`/api/${path}`, formData, config);
     dispatch({
       type: EDIT_POST,
       payload: res.data

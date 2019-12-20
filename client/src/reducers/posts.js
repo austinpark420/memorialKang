@@ -40,6 +40,7 @@ export default (state = initialState, action) => {
       };
     case POST_ERROR:
       return {
+        ...state,
         error: payload
       };
     default:
