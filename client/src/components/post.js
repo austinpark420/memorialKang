@@ -59,7 +59,7 @@ const Post = ({
                   return (
                     <p>
                       <a href={location}>
-                        {decodeURI(location.split('/board/').splice(1, 1))}
+                        {decodeURI(location.split('-').splice(-1, 1))}
                       </a>
                     </p>
                   );
