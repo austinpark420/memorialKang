@@ -33,8 +33,8 @@ const Emergency = ({
     pageNumbers.push(i);
   }
 
-  const handleClick = number => {
-    setCurrentPage(number);
+  const handleClick = selected => {
+    setCurrentPage(selected + 1);
   };
 
   return loading === false || currentPosts === null ? (
