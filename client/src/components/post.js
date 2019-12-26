@@ -81,7 +81,7 @@ const Post = ({
                 {dateFormat(posts.post.date, 'yyyy-mm-dd')}
               </span>
             </div>
-            <p className={styles.content}>{posts.post.content}</p>
+            <pre className={styles.content}>{posts.post.content}</pre>
           </section>
           <button className={styles.list}>
             <Link to={`/${path}`}>목록</Link>
