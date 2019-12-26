@@ -204,18 +204,21 @@
           margin: 20px 0;
 
           ul {
+            height: 390px;
             a {
               li {
                 overflow-x: auto;
                 padding: 10px;
 
-                // -ms-overflow-style: none;
-                // &::-webkit-scrollbar {
-                //   display: none;
-                // }
+                -ms-overflow-style: none;
+                &::-webkit-scrollbar {
+                  display: none;
+                }
                 span {
                   &:first-child {
                     display: block;
+                    text-align: left;
+                    white-space: nowrap;
                   }
 
                   &:last-child {
