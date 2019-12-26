@@ -21,7 +21,7 @@
 
     section {
       border-top: 1px solid #181818;
-      border-bottom: 2px solid #181818;
+      border-bottom: 1px solid #181818;
 
       .info {
         > span {
@@ -35,7 +35,11 @@
           }
           > p {
             a {
-              overflow-x: scroll;
+              overflow-x: auto;
+              -ms-overflow-style: none;
+              &::-webkit-scrollbar {
+                display: none;
+              }
             }
           }
         }

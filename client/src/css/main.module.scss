@@ -38,6 +38,7 @@
             li {
               padding: 16px;
               color: #000;
+
               span {
                 &:first-child {
                   float: left;
@@ -201,6 +202,33 @@
         section {
           width: 100%;
           margin: 20px 0;
+
+          ul {
+            a {
+              li {
+                overflow-x: auto;
+                padding: 10px;
+
+                -ms-overflow-style: none;
+                &::-webkit-scrollbar {
+                  display: none;
+                }
+                span {
+                  &:first-child {
+                    display: block;
+                  }
+
+                  &:last-child {
+                    display: none;
+                  }
+                }
+              }
+
+              &:hover {
+                font-weight: 600;
+              }
+            }
+          }
         }
       }
 
