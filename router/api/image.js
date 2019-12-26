@@ -51,7 +51,7 @@ router.post(
     try {
       const user = await User.findById(req.user.id).select('name');
 
-      const { title, category } = req.body;
+      const { title, category, date } = req.body;
 
       let fileArray = req.files;
 
@@ -73,6 +73,7 @@ router.post(
         category,
         writer: user.name,
         images,
+        date,
         keys
       });
 

@@ -69,7 +69,7 @@ router.post(
     try {
       const user = await User.findById(req.user.id).select('name');
 
-      const { title, winner, content } = req.body;
+      const { title, winner, content, date } = req.body;
 
       let fileArray = req.files;
 
@@ -101,6 +101,7 @@ router.post(
         number: awardNumber,
         writer: user.name,
         content: content,
+        date: date,
         files: {
           locations,
           keys,
