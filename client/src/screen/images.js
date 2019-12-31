@@ -105,15 +105,15 @@ const Images = ({
           >
             <div className={styles.radio}>
               <label htmlFor='category'>
-                <span>강경대열사</span>
+                <span>강경대 생전사진</span>
                 <input name='category' value='alive' type='radio' required />
               </label>
               <label htmlFor='category'>
-                <span>91년도 5월투쟁</span>
+                <span>91년도 당시사진</span>
                 <input name='category' value='moment' type='radio' required />
               </label>
               <label htmlFor='category'>
-                <span>추모사업회 활동</span>
+                <span>추모사업회 활동사진</span>
                 <input name='category' value='activity' type='radio' />
               </label>
             </div>
