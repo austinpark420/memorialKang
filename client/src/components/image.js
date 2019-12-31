@@ -34,9 +34,9 @@ const Image = ({
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    adaptiveHeight: false,
-    variableWidth: false,
-    centerPadding: 0
+    adaptiveHeight: true,
+    centerPadding: 0,
+    centerMode: true
   });
 
   const handleClickRemove = async () => {
