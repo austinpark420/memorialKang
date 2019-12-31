@@ -15,18 +15,6 @@ module.exports = (req, res, next) => {
           'images/' + Date.now() + '-' + path.basename(file.originalname)
         );
       }
-    }),
-    limits: { fileSize: 2000000 } // In bytes: 2000000 bytes = 2 MB
+    })
   }).array('images');
-
-  upload(req, res, err => {
-    if (err) {
-      if (err.message === 'File too large') {
-        var errors = '2MB 이하의 파일까지 업로드가 가능합니다.';
-      }
-      res.status(400).json({ errors: errors });
-    } else {
-      next();
-    }
-  });
 };
