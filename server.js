@@ -2,12 +2,14 @@ const express = require('express');
 const path = require('path');
 const connectDB = require('./config/db');
 const app = express();
+const bodyParser = require('body-parser');
 
 // Connect Database
 connectDB();
 
 // Init Middleware
-app.use(express.json({ extended: false }));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 // Define Routes
 app.use('/api/auth', require('./router/api/auth'));
