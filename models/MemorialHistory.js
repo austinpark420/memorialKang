@@ -17,6 +17,7 @@ const MemorialHistorySchema = new mongoose.Schema({
   keys: [{ type: String }],
   date: {
     type: Date,
+    default: Date.now,
     required: true
   }
 });
