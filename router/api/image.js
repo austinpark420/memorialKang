@@ -51,7 +51,7 @@ router.post(
     try {
       const user = await User.findById(req.user.id).select('name');
 
-      const { title, category, date } = req.body;
+      const { title, category } = req.body;
 
       let fileArray = req.files;
 
@@ -73,7 +73,6 @@ router.post(
         category,
         writer: user.name,
         images,
-        date,
         keys
       });
 
@@ -83,7 +82,7 @@ router.post(
 
       res.json(allImages);
     } catch (error) {
-      console.log('**Video errors**', error.message);
+      console.log('**Image errors**', error.message);
       res.status(500).send('서버 에러');
     }
   }
