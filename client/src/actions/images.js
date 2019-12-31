@@ -54,7 +54,7 @@ export const addImage = (path, formData) => async dispatch => {
   };
 
   try {
-    const res = await axios.post(`/api${path}`, formData, config);
+    const res = await axios.post(`/api/${path}`, formData, config);
     dispatch({
       type: ADD_IMAGE,
       payload: res.data
@@ -82,7 +82,7 @@ export const editImage = (path, formData) => async dispatch => {
   };
 
   try {
-    const res = await axios.put(`/api${path}`, formData, config);
+    const res = await axios.put(`/api/${path}`, formData, config);
     dispatch({
       type: EDIT_IMAGE,
       payload: res.data
