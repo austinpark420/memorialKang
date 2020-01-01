@@ -94,6 +94,20 @@
                   transform: translate(-50%, -50%);
                 }
               }
+
+              &:hover {
+                transform: scale(1.05);
+                -webkit-transform: scale(1.05);
+                transition: 0.3s;
+              }
+              transition: 0.3s;
+            }
+
+            p {
+              margin-top: 10px;
+              text-align: center;
+              color: #888;
+              font-size: 24px;
             }
           }
         }

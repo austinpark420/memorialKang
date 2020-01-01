@@ -176,6 +176,7 @@ const Images = ({
                         <img src={image.images[0]} alt={image.keys[0]} />
                       </div>
                     </div>
+                    <p>{image.title}</p>
                   </li>
                 </Link>
               ))}

@@ -1,4 +1,6 @@
 .container {
+  min-height: 72vh;
+
   &:before {
     content: '';
     display: block;
@@ -137,6 +139,11 @@
 @media only screen and (max-width: 768px) {
   .container {
     .wraper {
+      img {
+        width: 100%;
+        transform: translateX(0);
+      }
+
       .list {
         a {
           padding: 10px 20px;
