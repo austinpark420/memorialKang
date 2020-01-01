@@ -33,13 +33,7 @@ const Organization = () => {
         </ul>
         <section>
           <ul className={`wordList second ${styles.activeWord}`}>
-            <li>
-              <strong>Overall Impression:</strong> An elegant, malty German
-              amber lager with a clean, rich, toasty and bready malt flavor,
-              restrained bitterness, and a dry finish that encourages another
-              drink. The overall malt impression is soft, elegant, and complex,
-              with a rich aftertaste that is never cloying or heavy.
-            </li>
+            <li></li>
           </ul>
           <ul className={`wordList first`}>
             <li>

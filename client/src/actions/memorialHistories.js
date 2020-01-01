@@ -29,7 +29,7 @@ export const loadMemorialHistories = path => async dispatch => {
 
 export const loadMemorialHistory = path => async dispatch => {
   try {
-    const res = await axios.get(`/api${path}`);
+    const res = await axios.get(`/api/${path}`);
     dispatch({
       type: LOAD_MEMORIALHISTORY,
       payload: res.data
