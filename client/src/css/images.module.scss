@@ -94,6 +94,14 @@
                   transform: translate(-50%, -50%);
                 }
               }
+              p {
+                position: absolute;
+                right: 20px;
+                bottom: 0;
+                padding: 4px 10px;
+                background-color: #999;
+                color: #fff;
+              }
 
               &:hover {
                 transform: scale(1.05);
