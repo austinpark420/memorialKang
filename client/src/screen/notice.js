@@ -21,6 +21,7 @@ const Notice = ({
   }, [loadPosts]);
 
   // Pagination
+
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(15);
 
@@ -28,9 +29,9 @@ const Notice = ({
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-  const pageNumbers = [];
+  let pageNumbers = 0;
   for (let i = 1; i <= Math.ceil(posts.length / postsPerPage); i++) {
-    pageNumbers.push(i);
+    pageNumbers += 1;
   }
 
   const handleClick = selected => {
