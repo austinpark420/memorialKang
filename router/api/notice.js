@@ -14,7 +14,7 @@ const Notice = require('../../models/Notice');
 
 router.get('/', async (req, res) => {
   try {
-    const notices = await Notice.find().sort({ date: -1 });
+    const notices = await Notice.find().sort({ number: -1 });
     res.json(notices);
   } catch (error) {
     console.error(error.message);

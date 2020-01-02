@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -48,13 +48,17 @@ const EditPost = ({
             defaultValue={title}
             required
           />
-          <label htmlFor='category'>분류</label>
-          <select id='category' name='category' required>
-            <option value=''>카테고리 설정</option>
-            <option value='행사일정'>행사일정</option>
-            <option value='예결산보고'>예결산보고</option>
-            <option value='활동보고'>활동보고</option>
-          </select>
+          {path === 'notices' && (
+            <Fragment>
+              <label htmlFor='category'>카테고리</label>
+              <select id='category' name='category' required>
+                <option value=''>카테고리 설정</option>
+                <option value='행사일정'>행사일정</option>
+                <option value='예결산보고'>예결산보고</option>
+                <option value='활동보고'>활동보고</option>
+              </select>
+            </Fragment>
+          )}
           <label htmlFor='files'>파일</label>
           <input
             type='file'
