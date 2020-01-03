@@ -6,6 +6,9 @@ import { routes } from './routes';
 import store from './store';
 import { loadUser } from './actions/auth';
 
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
+
 import {
   Notice,
   Emergency,

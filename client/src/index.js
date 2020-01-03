@@ -5,6 +5,9 @@ import store from './store';
 
 import App from './App';
 
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
+
 ReactDOM.render(
   <Provider store={store}>
     <App />

@@ -147,7 +147,7 @@ const Images = ({
                       <div className={styles.imgCenter}>
                         <img src={image.images[0]} alt={image.keys[0]} />
                       </div>
-                      <p>{image.keys.length}</p>
+                      <p> {image.keys.length}</p>
                     </div>
                   </li>
                 </Link>
@@ -162,7 +162,7 @@ const Images = ({
                       <div className={styles.imgCenter}>
                         <img src={image.images[0]} alt={image.keys[0]} />
                       </div>
-                      <p>{image.keys.length}</p>
+                      <p> {image.keys.length}</p>
                     </div>
                   </li>
                 </Link>
