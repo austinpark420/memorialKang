@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import dateFormat from 'dateformat';
+import { Document, Page, pdfjs } from 'react-pdf';
 
 import Spinner from './spinner';
 import { loadPost, removePost } from '../actions/posts';
@@ -22,6 +23,23 @@ const Post = ({
 
   const path = url.split('/')[1];
   const [redirectToPosts, setRedirectToPosts] = useState(false);
+
+  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  const onDocumentLoadSuccess = ({ numPages }) => {
+    setNumPages(numPages);
+  };
+
+  const handleClickPrev = () => {
+    if (pageNumber === 1) return;
+    setPageNumber(pageNumber - 1);
+  };
+  const handleClickNext = () => {
+    if (pageNumber === numPages) return;
+    setPageNumber(pageNumber + 1);
+  };
 
   const handleClickRemove = async () => {
     if (window.confirm('선택한 게시물을 삭제하시겠습니까?')) {
@@ -81,17 +99,43 @@ const Post = ({
                 {dateFormat(posts.post.date, 'yyyy-mm-dd')}
               </span>
             </div>
-            <pre className={styles.content}>
+            <p className={styles.content}>
               {posts.post.files.locations.map(function(location) {
-                return (
-                  <img
-                    src={location}
-                    alt={decodeURI(location.split('-').splice(-1, 1))}
-                  />
+                return location
+                  .split('.')
+                  .splice(-1, 1)
+                  .toString() === 'pdf' ? (
+                  <Fragment>
+                    <Document
+                      file={location}
+                      onLoadSuccess={onDocumentLoadSuccess}
+                    >
+                      <Page className={styles.pdf} pageNumber={pageNumber} />
+                    </Document>
+                    <div>
+                      <button onClick={() => handleClickPrev()}>
+                        &lt;&nbsp;
+                      </button>
+                      <p>
+                        {pageNumber}/{numPages}
+                      </p>
+                      <button onClick={() => handleClickNext()}>
+                        &nbsp;&gt;
+                      </button>
+                    </div>
+                  </Fragment>
+                ) : (
+                  <Fragment>
+                    <img
+                      src={location}
+                      alt={decodeURI(location.split('-').splice(-1, 1))}
+                    />
+                    <br />
+                  </Fragment>
                 );
               })}
               {posts.post.content}
-            </pre>
+            </p>
           </section>
           <button className={styles.list}>
             <Link to={`/${path}`}>목록</Link>

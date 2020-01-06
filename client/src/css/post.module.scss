@@ -51,6 +51,24 @@
         min-height: 400px;
         padding: 10px 5px;
 
+        .pdf {
+          canvas {
+            margin: 0 auto;
+            max-width: 100%;
+          }
+        }
+
+        div {
+          margin: 0 auto;
+          text-align: center;
+
+          > p,
+          > button {
+            display: inline-block;
+            font-size: 18px;
+          }
+        }
+
         img {
           display: block;
           max-width: 100%;
