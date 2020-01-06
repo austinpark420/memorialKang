@@ -43,6 +43,7 @@ const NewPost = ({ match: { url }, addPost, posts: { post } }) => {
               <option value='행사일정'>행사일정</option>
               <option value='예결산보고'>예결산보고</option>
               <option value='활동보고'>활동보고</option>
+              <option value='기타'>기타</option>
             </select>
           </Fragment>
         )}

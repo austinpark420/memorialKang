@@ -63,6 +63,13 @@ const Header = ({ isAuthenticated, logout }) => {
             </ul>
           </li>
           <li className={styles.menuList}>
+            <p className={styles.subTitle}>
+              <a href='https://docs.google.com/forms/d/e/1FAIpQLSd4pGaslQL7KMlscX0ZKEHAZ7Fms16httf6urjuYJ6Lw5XZsw/viewform'>
+                회원 신청하기
+              </a>
+            </p>
+          </li>
+          <li className={styles.menuList}>
             <p className={styles.subTitle}>추모사업회</p>
             <ul className={styles.subMenu}>
               <li>

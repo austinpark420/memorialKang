@@ -125,14 +125,14 @@ const Main = ({
         </div>
 
         <div className={styles.supportGroup}>
-          <h2>추모사업회 후원회가 되어 주세요</h2>
+          <h2>추모사업회 회원 되어 주세요</h2>
           <img src={require('../images/support.png')} alt='후원회 아이콘' />
           <button className={styles.memorialApplication}>
             <a
               href='https://docs.google.com/forms/d/e/1FAIpQLSd4pGaslQL7KMlscX0ZKEHAZ7Fms16httf6urjuYJ6Lw5XZsw/viewform?usp=sf_link'
               target='_blank'
               rel='noopener noreferrer'
-              children='후원회 신청하기'
+              children='회원가입서 작성하기'
             ></a>
           </button>
         </div>

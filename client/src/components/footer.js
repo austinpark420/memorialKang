@@ -15,7 +15,7 @@ const Footer = () => {
           </li>
           <li>기념관: 서울 종로구 종로 63길 18 강경대 열사 기념관</li>
           <li>대표젼화: 02-300-0906</li>
-          <li>이메일: memorial91@naver.com</li>
+          <li>이메일: 91chusa@gmail.com</li>
           <li>COPYRIGHT c MEMORIAL.OR.KR ALL RIGHTS RESERVED.</li>
           <li>
             Icons made by

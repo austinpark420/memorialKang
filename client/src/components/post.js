@@ -81,7 +81,17 @@ const Post = ({
                 {dateFormat(posts.post.date, 'yyyy-mm-dd')}
               </span>
             </div>
-            <pre className={styles.content}>{posts.post.content}</pre>
+            <pre className={styles.content}>
+              {posts.post.files.locations.map(function(location) {
+                return (
+                  <img
+                    src={location}
+                    alt={decodeURI(location.split('-').splice(-1, 1))}
+                  />
+                );
+              })}
+              {posts.post.content}
+            </pre>
           </section>
           <button className={styles.list}>
             <Link to={`/${path}`}>목록</Link>
