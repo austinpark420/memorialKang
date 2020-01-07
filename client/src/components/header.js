@@ -49,6 +49,13 @@ const Header = ({ isAuthenticated, logout }) => {
         <span></span>
         <ul className={styles.menu}>
           <li className={styles.menuList}>
+            <p className={styles.subTitle}>
+              <a href='https://docs.google.com/forms/d/e/1FAIpQLSd4pGaslQL7KMlscX0ZKEHAZ7Fms16httf6urjuYJ6Lw5XZsw/viewform'>
+                회원 신청하기
+              </a>
+            </p>
+          </li>
+          <li className={styles.menuList}>
             <p className={styles.subTitle}>강경대열사</p>
             <ul className={styles.subMenu}>
               <li>
@@ -63,20 +70,13 @@ const Header = ({ isAuthenticated, logout }) => {
             </ul>
           </li>
           <li className={styles.menuList}>
-            <p className={styles.subTitle}>
-              <a href='https://docs.google.com/forms/d/e/1FAIpQLSd4pGaslQL7KMlscX0ZKEHAZ7Fms16httf6urjuYJ6Lw5XZsw/viewform'>
-                회원 신청하기
-              </a>
-            </p>
-          </li>
-          <li className={styles.menuList}>
             <p className={styles.subTitle}>추모사업회</p>
             <ul className={styles.subMenu}>
               <li>
                 <Link to='/parents' children='유가족인사말' />
               </li>
               <li>
-                <Link to='/organization' children='조직도' />
+                <Link to='/organization' children='회장 인사말' />
               </li>
               <li>
                 <Link to='/notices' children='공지사항' />
@@ -86,6 +86,9 @@ const Header = ({ isAuthenticated, logout }) => {
               </li>
               <li>
                 <Link to='/memorialHall' children='강경대 기념관' />
+              </li>
+              <li>
+                <Link to='/scholarships' children='강경대 장학생' />
               </li>
             </ul>
           </li>
@@ -111,9 +114,6 @@ const Header = ({ isAuthenticated, logout }) => {
               </li>
               <li>
                 <Link to='/awards' children='문학상' />
-              </li>
-              <li>
-                <Link to='/scholarships' children='장학생' />
               </li>
             </ul>
           </li>

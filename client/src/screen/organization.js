@@ -25,10 +25,10 @@ const Organization = () => {
             rel='second'
             tabIndex='0'
           >
-            <h2>2대 회장님</h2>
+            <h2>2대 회장</h2>
           </li>
           <li className={styles.tab} rel='first' tabIndex='1'>
-            <h2>1대 회장님</h2>
+            <h2>1대 회장</h2>
           </li>
         </ul>
         <section>
@@ -61,7 +61,9 @@ const Organization = () => {
             </li>
           </ul>
         </section>
-        <div className={styles.organizationMap}>조직도</div>
+        <div className={styles.organizationMap}>
+          <img src={require('../images/organization.png')} alt='organization' />
+        </div>
       </div>
     </div>
   );
