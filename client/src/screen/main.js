@@ -98,7 +98,10 @@ const Main = ({
         </p>
         <div className={styles.meorial}>
           <div className={styles.organization}>
-            <img src={require('../images/file.png')} alt='추모사업회 아이콘' />
+            <img
+              src={require('../images/whiteMemorial.png')}
+              alt='추모사업회 아이콘'
+            />
             <p>추모사업회</p>
             <span>
               열사가 만들어가고자 했던, 자주,민주,통일 세상을 만들어가기 위한
@@ -110,7 +113,7 @@ const Main = ({
           </div>
           <div className={styles.introduce}>
             <img
-              src={require('../images/planting.png')}
+              src={require('../images/blackMemorial.png')}
               alt='추모제 관련 아이콘'
             />
             <p>추모제</p>
