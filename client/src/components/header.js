@@ -39,7 +39,7 @@ const Header = ({ isAuthenticated, logout }) => {
     <div className={styles.wraper}>
       <div className={styles.logo}>
         <Link to='/' children='추모사업회 로고'>
-          <img src={require('../images/fullLogo.png')} alt='로고' />
+          <img src={require('../images/headerLogo.png')} alt='로고' />
         </Link>
       </div>
       <nav className={styles.nav}>
