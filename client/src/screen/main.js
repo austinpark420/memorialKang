@@ -128,7 +128,7 @@ const Main = ({
         </div>
 
         <div className={styles.supportGroup}>
-          <h2>추모사업회 회원 되어 주세요</h2>
+          <h2>추모사업회 회원이 되어 주세요</h2>
           <img src={require('../images/support.png')} alt='후원회 아이콘' />
           <button className={styles.memorialApplication}>
             <a

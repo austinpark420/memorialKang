@@ -126,7 +126,7 @@ const Header = ({ isAuthenticated, logout }) => {
         <Link to='/'>
           <img
             className={styles.mobileLogo}
-            src={require('../images/logo.png')}
+            src={require('../images/headerLogo.png')}
             alt='로고'
           />
         </Link>
