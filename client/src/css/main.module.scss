@@ -150,7 +150,6 @@
         span {
           display: inline-block;
           line-height: 2;
-          width: 90%;
         }
       }
     }
@@ -257,6 +256,10 @@
           width: 96%;
           margin: 0 auto;
           border-top: 2px solid transparent;
+
+          span {
+            width: 90%;
+          }
         }
       }
 
