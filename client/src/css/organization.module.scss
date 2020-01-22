@@ -15,6 +15,12 @@
       margin: 30px auto;
     }
 
+    section {
+      ul {
+        min-height: 400px;
+      }
+    }
+
     .heading {
       display: flex;
       border-bottom: 1px solid #ccc;
@@ -61,6 +67,19 @@
     .organizationMap {
       width: 460px;
       margin: 0 auto;
+
+      h2 {
+        width: 80%;
+        margin: 0 auto;
+        padding: 10px;
+        text-align: center;
+        font-size: 36px;
+        font-weight: 100;
+        color: #222d5a;
+        border: 1px solid #222d5a;
+        border-radius: 3px;
+      }
+
       img {
         width: 100%;
       }

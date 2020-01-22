@@ -62,6 +62,7 @@ const Organization = () => {
           </ul>
         </section>
         <div className={styles.organizationMap}>
+          <h2>추모사업회 조직도</h2>
           <img src={require('../images/organization.png')} alt='organization' />
         </div>
       </div>
