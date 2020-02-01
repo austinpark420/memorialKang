@@ -17,7 +17,22 @@
 
     section {
       ul {
-        min-height: 400px;
+        min-height: 600px;
+        li {
+          h3 {
+            position: relative;
+            margin-bottom: 16px;
+            font-size: 24px;
+            color: #222d5a;
+
+            span {
+              position: absolute;
+              top: 0;
+              right: 0;
+              font-weight: 200;
+            }
+          }
+        }
       }
     }
 
@@ -52,7 +67,6 @@
       ul {
         display: none;
         li {
-          // display: inline-flex;
           flex-direction: column;
           padding: 10px 0;
           line-height: 200%;
@@ -61,6 +75,7 @@
           img {
             float: left;
             padding-right: 20px;
+            padding-bottom: 100%;
             width: 20%;
           }
         }
@@ -104,6 +119,15 @@
         ul {
           li {
             padding: 0;
+
+            h3 {
+              font-size: 16px;
+              span {
+                position: relative;
+                display: block;
+                text-align: right;
+              }
+            }
 
             img {
               width: 100%;
