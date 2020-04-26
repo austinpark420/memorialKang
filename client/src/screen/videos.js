@@ -15,15 +15,17 @@ const Video = ({
   loadVideos,
   removeVideo,
   addVideo,
-  isAuthenticated
+  isAuthenticated,
 }) => {
   const path = url.split('/')[1];
 
   // filter video
   const documentaryVideos = videos.filter(
-    video => video.category === 'documentary'
+    (video) => video.category === 'documentary'
   );
-  const ceremonyVideos = videos.filter(video => video.category === 'ceremony');
+  const ceremonyVideos = videos.filter(
+    (video) => video.category === 'ceremony'
+  );
 
   useEffect(() => {
     loadVideos(path);
@@ -31,7 +33,7 @@ const Video = ({
 
   // menu tab
   useEffect(() => {
-    $(`.${styles.tab}`).on('click', function() {
+    $(`.${styles.tab}`).on('click', function () {
       $(`.${styles.tab}`).removeClass(`${styles.active}`);
       $(this).addClass(`${styles.active}`);
 
@@ -56,17 +58,17 @@ const Video = ({
   const [formData, setFormData] = useState({
     path,
     category: '',
-    content: ''
+    content: '',
   });
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setFormData({
       ...formData,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
-  const handleClickRemove = id => {
+  const handleClickRemove = (id) => {
     if (window.confirm('선택한 영상을 삭제하시겠습니까?')) {
       removeVideo(id);
     } else {
@@ -74,7 +76,7 @@ const Video = ({
     }
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     addVideo(formData);
     closeModal();
@@ -86,13 +88,13 @@ const Video = ({
         <ul className={styles.heading}>
           <li
             className={`${styles.tab} ${styles.active}`}
-            rel='documentary'
+            rel='ceremony'
             tabIndex='0'
           >
-            <h2>다큐멘터리</h2>
-          </li>
-          <li className={styles.tab} rel='ceremony' tabIndex='1'>
             <h2>추모제 영상</h2>
+          </li>
+          <li className={`${styles.tab}`} rel='documentary' tabIndex='1'>
+            <h2>다큐멘터리</h2>
           </li>
         </ul>
 
@@ -151,9 +153,9 @@ const Video = ({
         </Modal>
 
         <section>
-          <ul className={`videoList documentary ${styles.activeVideo}`}>
+          <ul className={`videoList ceremony ${styles.activeVideo}`}>
             {videos &&
-              documentaryVideos.map(video => (
+              ceremonyVideos.map((video) => (
                 <li key={video._id}>
                   {isAuthenticated && (
                     <button
@@ -173,9 +175,9 @@ const Video = ({
                 </li>
               ))}
           </ul>
-          <ul className={`videoList ceremony`}>
+          <ul className={`videoList documentary`}>
             {videos &&
-              ceremonyVideos.map(video => (
+              documentaryVideos.map((video) => (
                 <li key={video._id}>
                   {isAuthenticated && (
                     <button
@@ -201,9 +203,9 @@ const Video = ({
   );
 };
 
-let mapStateToProps = state => ({
+let mapStateToProps = (state) => ({
   videos: state.videos.videos,
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 Video.propTypes = {
@@ -211,7 +213,7 @@ Video.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   loadVideos: PropTypes.func.isRequired,
   addVideo: PropTypes.func.isRequired,
-  removeVideo: PropTypes.func.isRequired
+  removeVideo: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, { loadVideos, addVideo, removeVideo })(
