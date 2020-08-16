@@ -27,7 +27,6 @@ export const loadPosts = posts => async dispatch => {
 };
 
 // Load post
-
 export const loadPost = path => async dispatch => {
   try {
     const res = await axios.get(`/api${path}`);
