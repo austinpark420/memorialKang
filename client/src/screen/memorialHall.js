@@ -14,14 +14,15 @@ const memorialHall = () => {
           frameBorder='0'
           scrolling='no'
         ></iframe>
-        <button className={styles.memorialApplication}>
-          <a
-            href='https://docs.google.com/forms/d/e/1FAIpQLScToGgK5yVBIFJbWFYBkwlEoIN3KYmaI0v42ETWZRZq3XxUhg/viewform?usp=sf_link'
-            target='_blank'
-            rel='noopener noreferrer'
-            children='기념관 대여 신청서'
-          ></a>
-        </button>
+        {/*<button className={styles.memorialApplication}>*/}
+        {/*  <a*/}
+        {/*    href='https://docs.google.com/forms/d/e/1FAIpQLScToGgK5yVBIFJbWFYBkwlEoIN3KYmaI0v42ETWZRZq3XxUhg/viewform?usp=sf_link'*/}
+        {/*    target='_blank'*/}
+        {/*    rel='noopener noreferrer'*/}
+        {/*    children='기념관 대여 신청서'*/}
+        {/*  ></a>*/}
+        {/*</button>*/}
+        <p>기념관 이전으로 인해서 당분간 기념관 대여신청이 어렵습니다. <br/> 빠른 시일내에 재개할수있도록 하겠습니다. 양해부탁드립니다.</p>
       </div>
     </div>
   );
