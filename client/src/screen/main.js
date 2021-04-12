@@ -24,7 +24,7 @@ const MainSlider = () => {
   return (
     <div className={styles.slider}>
       <Slider {...settings}>
-        <img src={require("../images/30years.jpeg")} alt="main" />
+        <img src={require("../images/main01.jpg")} alt="main" />
       </Slider>
     </div>
   );
@@ -45,9 +45,7 @@ const Main = ({
   return (
     <div className={styles.container}>
       <div className={styles.wraper}>
-        {/* <MainSlider /> */}
-        <img src={require("../images/30years.jpeg")} alt="main" />
-
+        <MainSlider />
         <div className={styles.articleGroup}>
           <section>
             <h2>공지사항</h2>
