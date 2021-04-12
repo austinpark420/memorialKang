@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-import dateFormat from 'dateformat';
+import dateFormat from "dateformat";
 
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-import { loadNotices, loadEmergencies } from '../actions/mainPosts';
-import styles from '../css/main.module.scss';
+import { loadNotices, loadEmergencies } from "../actions/mainPosts";
+import styles from "../css/main.module.scss";
 
 const MainSlider = () => {
   const [settings] = useState({
@@ -19,20 +19,21 @@ const MainSlider = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
   });
   return (
-    <Slider {...settings}>
-      <img src={require('../images/main01.jpg')} alt='main' />
-      <img src={require('../images/main01.jpg')} alt='main' />
-    </Slider>
+    <div className={styles.slider}>
+      <Slider {...settings}>
+        <img src={require("../images/30years.jpeg")} alt="main" />
+      </Slider>
+    </div>
   );
 };
 
 const Main = ({
   mainPosts: { notices, emergencies },
   loadNotices,
-  loadEmergencies
+  loadEmergencies,
 }) => {
   useEffect(() => {
     loadNotices();
@@ -44,18 +45,20 @@ const Main = ({
   return (
     <div className={styles.container}>
       <div className={styles.wraper}>
-        <MainSlider />
+        {/* <MainSlider /> */}
+        <img src={require("../images/30years.jpeg")} alt="main" />
+
         <div className={styles.articleGroup}>
           <section>
             <h2>공지사항</h2>
-            <Link to='/notices' children='더 보기' />
+            <Link to="/notices" children="더 보기" />
             <ul>
               {notices &&
-                notices.map(notice => (
+                notices.map((notice) => (
                   <Link to={`notices/${notice._id}`}>
                     <li key={notice._id}>
                       <span>{notice.title}</span>
-                      <span>{dateFormat(notice.date, 'yyyy-mm-dd')}</span>
+                      <span>{dateFormat(notice.date, "yyyy-mm-dd")}</span>
                     </li>
                   </Link>
                 ))}
@@ -63,14 +66,14 @@ const Main = ({
           </section>
           <section>
             <h2>동판사수 대책위원회</h2>
-            <Link to='/emergencies' children='더 보기' />
+            <Link to="/emergencies" children="더 보기" />
             <ul>
               {emergencies &&
-                emergencies.map(emergency => (
+                emergencies.map((emergency) => (
                   <Link to={`emergencies/${emergency._id}`}>
                     <li key={emergency._id}>
                       <span>{emergency.title}</span>
-                      <span>{dateFormat(emergency.date, 'yyyy-mm-dd')}</span>
+                      <span>{dateFormat(emergency.date, "yyyy-mm-dd")}</span>
                     </li>
                   </Link>
                 ))}
@@ -90,7 +93,7 @@ const Main = ({
               민주, 통일의 세상을 이루기 위해 <br /> 우리는 강경대 열사의 정신을
               계승해 나가야 합니다.
             </p>
-            <Link to='/history'>자세히 보기</Link>
+            <Link to="/history">자세히 보기</Link>
           </div>
         </div>
         <p className={styles.resolution}>
@@ -99,8 +102,8 @@ const Main = ({
         <div className={styles.meorial}>
           <div className={styles.organization}>
             <img
-              src={require('../images/whiteMemorial.png')}
-              alt='추모사업회 아이콘'
+              src={require("../images/whiteMemorial.png")}
+              alt="추모사업회 아이콘"
             />
             <p>추모사업회</p>
             <span>
@@ -113,8 +116,8 @@ const Main = ({
           </div>
           <div className={styles.introduce}>
             <img
-              src={require('../images/blackMemorial.png')}
-              alt='추모제 관련 아이콘'
+              src={require("../images/blackMemorial.png")}
+              alt="추모제 관련 아이콘"
             />
             <p>추모제</p>
             <span>
@@ -129,13 +132,13 @@ const Main = ({
 
         <div className={styles.supportGroup}>
           <h2>추모사업회 회원이 되어 주세요</h2>
-          <img src={require('../images/support.png')} alt='후원회 아이콘' />
+          <img src={require("../images/support.png")} alt="후원회 아이콘" />
           <button className={styles.memorialApplication}>
             <a
-              href='https://docs.google.com/forms/d/e/1FAIpQLSd4pGaslQL7KMlscX0ZKEHAZ7Fms16httf6urjuYJ6Lw5XZsw/viewform?usp=sf_link'
-              target='_blank'
-              rel='noopener noreferrer'
-              children='회원가입서 작성하기'
+              href="https://docs.google.com/forms/d/e/1FAIpQLSd4pGaslQL7KMlscX0ZKEHAZ7Fms16httf6urjuYJ6Lw5XZsw/viewform?usp=sf_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              children="회원가입서 작성하기"
             ></a>
           </button>
         </div>
@@ -144,14 +147,14 @@ const Main = ({
   );
 };
 
-const mapStateToProps = state => ({
-  mainPosts: state.mainPosts
+const mapStateToProps = (state) => ({
+  mainPosts: state.mainPosts,
 });
 
 Main.propTypes = {
   mainPosts: PropTypes.object.isRequired,
   loadEmergencies: PropTypes.func.isRequired,
-  loadNotices: PropTypes.func.isRequired
+  loadNotices: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, { loadNotices, loadEmergencies })(Main);
