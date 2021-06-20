@@ -122,7 +122,7 @@ const ElevenHero = () => {
           <li>
             <img src={require('../images/heros/hero09.png')} alt='hero09' />
             <section>
-              <h3>정상순 (1991년 5월 31일)</h3>
+              <h3>정상순 (1991년 5월 29일)</h3>
               <b>1966년 11월 1일</b> <span>전남 보성 출생</span>
               <b>1985년 2월</b> <span>보성고등학교 졸업</span>
               <b>1991년 5월 22일</b> <span>오후 7시 25분경 전남대 병원 영안실 위에서<br />"노태우 물러가라"며 분신 후 투신</span>
