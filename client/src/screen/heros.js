@@ -27,7 +27,7 @@ const ElevenHero = () => {
           <li>
             <img src={require('../images/heros/hero01.png')} alt='hero01' />
             <section>
-              <h3>김영균 (1971년 5월 2일)</h3>
+              <h3>김영균 (1991년 5월 2일)</h3>
               <b>1971년</b> <span>11월 4일 서울 출생</span> 
               <b>1987년</b> <span>서울 대원고등하굑 입학</span> 
               <b>1989년</b> <span>참교육을 고민하는 소모임 '목마름' 결성, 홍보부장 역임</span> 
@@ -41,7 +41,7 @@ const ElevenHero = () => {
           <li>
             <img src={require('../images/heros/hero02.png')} alt='hero02' />
             <section>
-              <h3>천세용 (1971년 5월 3일)</h3>
+              <h3>천세용 (1991년 5월 3일)</h3>
               <b>1971년 5월</b> <span>서울 출생</span>
               <b>1990년</b> <span>서울 동북고 졸업<br />경원대학교 전산과(2부) 입학</span>
               <b>1990년 3월</b> <span>경원대학교 민족사 연구회 '한얼'에서 활동</span>
@@ -51,7 +51,7 @@ const ElevenHero = () => {
           <li>
             <img src={require('../images/heros/hero03.png')} alt='hero03' />
             <section>
-              <h3>박창수 (1958년 5월 6일)</h3>
+              <h3>박창수 (1991년 5월 6일)</h3>
               <b>1958년 7월 28일</b> <span>부산 출생</span>
               <b>1979년 2월</b> <span>부산 기계공고 졸업</span>
               <b>1981년 7월</b> <span>대한조선공사(현 한진중공업) 배관공으로 입사</span>
@@ -64,7 +64,7 @@ const ElevenHero = () => {
           <li>
             <img src={require('../images/heros/hero04.png')} alt='hero04' />
             <section>
-              <h3>김기설 (1965년 5월 8일)</h3>
+              <h3>김기설 (1991년 5월 8일)</h3>
               <b>1965년</b> <span>경기도 파주 출생</span>
               <b>1983년</b> <span>인천 수도전기통신고 중퇴</span>
               <b>1984년</b> <span>대입검정고시 합격</span>
@@ -77,7 +77,7 @@ const ElevenHero = () => {
           <li>
             <img src={require('../images/heros/hero05.png')} alt='hero05' />
             <section>
-              <h3>윤용하 (1969년 5월 12일)</h3>
+              <h3>윤용하 (1991년 5월 12일)</h3>
               <b>1969년</b> <span>전남 승주 출생</span>
               <b>1981년</b> <span>순천 중앙초등학교 5년 중퇴</span>
               <b>1983년</b> <span>노동일 시작</span>
@@ -89,7 +89,7 @@ const ElevenHero = () => {
           <li>
             <img src={require('../images/heros/hero06.png')} alt='hero06' />
             <section>
-              <h3>이정순 (1952년 5월 18일)</h3>
+              <h3>이정순 (1991년 5월 18일)</h3>
               <b>1952년 3월 19일</b> <span>전남 순천 출생</span>
               <b>1964년 2월</b> <span>순천 남국민학교 졸업</span>
               <b>1991년 5월 18일</b> <span>연세대 정문 앞 철교위에서 분신 후 투신하여 운명<br />이천 민주공원묘역에 안장</span>
@@ -98,7 +98,7 @@ const ElevenHero = () => {
           <li>
             <img src={require('../images/heros/hero07.png')} alt='hero07' />
             <section>
-              <h3>박승희 (1971년 5월 19일)</h3>
+              <h3>박승희 (1991년 5월 19일)</h3>
               <b>1971년 4월 12일</b> <span>전북 전주 출생</span>
               <b>1990년 2월</b> <span>목포 정명여고 졸업</span>
               <b>1990년 3월</b> <span>전남대학교 가정대학 식품영양학과 입학,<br />과대의원 활동 교지 『용봉』편집위원으로 활동</span>
@@ -109,7 +109,7 @@ const ElevenHero = () => {
           <li>
             <img src={require('../images/heros/hero08.png')} alt='hero08' />
             <section>
-              <h3>김귀정 (1966년 5월 25일)</h3>
+              <h3>김귀정 (1991년 5월 25일)</h3>
               <b>1966년</b> <span>서울출생</span>
               <b>1985년</b> <span>한국외국어대학교 용인캠퍼스에 입학하였으나 집안 사정으로 중퇴</span>
               <b>1988년 3월</b> <span>성균관대학교 불어불문학과 입학, 심산연구회 가입활동</span>
@@ -122,7 +122,7 @@ const ElevenHero = () => {
           <li>
             <img src={require('../images/heros/hero09.png')} alt='hero09' />
             <section>
-              <h3>정상순 (1966년 5월 31일)</h3>
+              <h3>정상순 (1991년 5월 31일)</h3>
               <b>1966년 11월 1일</b> <span>전남 보성 출생</span>
               <b>1985년 2월</b> <span>보성고등학교 졸업</span>
               <b>1991년 5월 22일</b> <span>오후 7시 25분경 전남대 병원 영안실 위에서<br />"노태우 물러가라"며 분신 후 투신</span>
@@ -132,7 +132,7 @@ const ElevenHero = () => {
           <li>
             <img src={require('../images/heros/hero10.png')} alt='hero10' />
             <section>
-              <h3>김철수 (1973년 6월 2일)</h3>
+              <h3>김철수 (1991년 6월 2일)</h3>
               <b>1973년 3월</b> <span>전남 보성군 봉산리 출생</span>
               <b>1989년 3월</b> <span>보성고 입학<br />풍물패 "솔개", 봉사동아리 "인터렉트" 활동</span>
               <b>1990년</b> <span>생활영어 최우수상 수상, 91년 3월 모의고사 문과 수석</span>
@@ -143,7 +143,7 @@ const ElevenHero = () => {
           <li>
             <img src={require('../images/heros/hero11.png')} alt='hero11' />
             <section>
-              <h3>손석용 (1970년 8월 19일)</h3>
+              <h3>손석용 (1991년 8월 19일)</h3>
               <b>1970년</b> <span>경북 영덕에서 출생</span>
               <b>1989년</b> <span>대구 대륜고등학교 졸업</span>
               <b>1989년</b> <span>대구대학교 사범대 특수교육과 입학</span>
